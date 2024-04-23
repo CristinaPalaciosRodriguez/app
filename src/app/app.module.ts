@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { EstudiosComponent } from './estudios/estudios.component';
 import { ConocimientosComponent } from './conocimientos/conocimientos.component';
 import { CursosComponent } from './cursos/cursos.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { CursosComponent } from './cursos/cursos.component';
     MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

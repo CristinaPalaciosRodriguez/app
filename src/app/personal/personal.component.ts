@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import * as html2pdf from 'html2pdf.js';
+import { Component, OnInit } from '@angular/core';
+import { jsPDF } from 'jspdf';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-personal',
@@ -7,30 +8,46 @@ import * as html2pdf from 'html2pdf.js';
   styleUrls: ['./personal.component.scss']
 })
 export class PersonalComponent implements OnInit {
-  @ViewChild('contenidoPDF', { static: false }) contenidoPDF: ElementRef;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.cargarPlantilla();
   }
+  
 
   nombre: string = '';
   apellidos: string = '';
   nacionalidad: string = '';
   edad: number = 18;
+  plantillaHTML: string = '';
+
+  cargarPlantilla() {
+    this.http.get('assets/cv.html', { responseType: 'text' })
+      .subscribe(
+        (plantillaHTML: string) => {
+          this.plantillaHTML = plantillaHTML;
+        },
+        (error) => {
+          console.error('Error al cargar la plantilla HTML:', error);
+        }
+      );
+  }
 
   enviarDatos() {
-    const options = {
-      margin: 1,
-      filename: 'datos_personales.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
+     // Reemplazar marcadores de posición con datos dinámicos
+    const contenidoHTML = this.plantillaHTML
+    .replace('{{nombre}}', this.nombre)
+    .replace('{{apellidos}}', this.apellidos)
+    .replace('{{nacionalidad}}', this.nacionalidad)
+    .replace('{{edad}}', this.edad.toString());
 
-    html2pdf()
-      .from(this.contenidoPDF.nativeElement)
-      .set(options)
-      .save();
+  // Generar el PDF
+  const doc = new jsPDF();
+  doc.html(contenidoHTML, {
+    callback: (pdf) => {
+      pdf.save('datos_personales.pdf');
+    }
+  });
   }
 }

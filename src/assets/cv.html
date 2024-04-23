@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantilla de PDF</title>
+  <style>
+    /* Estilos CSS para la plantilla */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+    .datos {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Datos Personales</h1>
+    <div class="datos">
+      <p><strong>Nombre:</strong> {{nombre}}</p>
+      <p><strong>Apellidos:</strong> {{apellidos}}</p>
+      <p><strong>Nacionalidad:</strong> {{nacionalidad}}</p>
+      <p><strong>Edad:</strong> {{edad}}</p>
+    </div>
+  </div>
+</body>
+</html>
