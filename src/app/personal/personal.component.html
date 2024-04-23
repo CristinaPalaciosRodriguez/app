@@ -1,35 +1,42 @@
 <div class="formulario-container">
-    <h2 class="titulo">Datos Personales</h2>
-    <form class="formulario">
-      <div class="fila">
-        <div class="columna">
-          <mat-form-field class="campo">
-            <mat-label>Nombre</mat-label>
-            <input matInput placeholder="Nombre" required>
-          </mat-form-field>
-        </div>
-        <div class="columna">
-          <mat-form-field class="campo">
-            <mat-label>Apellidos</mat-label>
-            <input matInput placeholder="Apellidos" required>
-          </mat-form-field>
-        </div>
+  <h2 class="titulo">Datos Personales</h2>
+  <form class="formulario" (ngSubmit)="enviarDatos()">
+    <div class="fila">
+      <div class="columna">
+        <mat-form-field class="campo">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre" required [(ngModel)]="nombre" name="nombre">
+        </mat-form-field>
       </div>
-      <div class="fila">
-        <div class="columna">
-          <mat-form-field class="campo">
-            <mat-label>Nacionalidad</mat-label>
-            <input matInput placeholder="Nacionalidad" required>
-          </mat-form-field>
-        </div>
-        <div class="columna">
-          <mat-form-field class="campo">
-            <mat-label>Edad</mat-label>
-            <input matInput placeholder="Edad" type="number" min="18" required>
-          </mat-form-field>
-        </div>
+      <div class="columna">
+        <mat-form-field class="campo">
+          <mat-label>Apellidos</mat-label>
+          <input matInput placeholder="Apellidos" required [(ngModel)]="apellidos" name="apellidos">
+        </mat-form-field>
       </div>
-      <button mat-raised-button color="primary" class="boton">Enviar</button>
-    </form>
-  </div>
-  
+    </div>
+    <div class="fila">
+      <div class="columna">
+        <mat-form-field class="campo">
+          <mat-label>Nacionalidad</mat-label>
+          <input matInput placeholder="Nacionalidad" required [(ngModel)]="nacionalidad" name="nacionalidad">
+        </mat-form-field>
+      </div>
+      <div class="columna">
+        <mat-form-field class="campo">
+          <mat-label>Edad</mat-label>
+          <input matInput placeholder="Edad" type="number" min="18" required [(ngModel)]="edad" name="edad">
+        </mat-form-field>
+      </div>
+    </div>
+    <button mat-raised-button color="primary" class="boton" type="submit">Enviar</button>
+  </form>
+</div>
+
+<div #contenidoPDF style="display:none;">
+  <h1>Datos Personales</h1>
+  <p><strong>Nombre:</strong> {{ nombre }}</p>
+  <p><strong>Apellidos:</strong> {{ apellidos }}</p>
+  <p><strong>Nacionalidad:</strong> {{ nacionalidad }}</p>
+  <p><strong>Edad:</strong> {{ edad }}</p>
+</div>

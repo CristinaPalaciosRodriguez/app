@@ -1,0 +1,42 @@
+<div class="formulario-container">
+    <h2 class="titulo">Cursos</h2>
+    <form class="formulario">
+      <div class="fila">
+        <div class="columna">
+          <mat-form-field class="campo">
+            <mat-label>Curso</mat-label>
+            <input matInput placeholder="Curso" name="curso" required [(ngModel)]="curso">
+          </mat-form-field>
+        </div>
+        
+      </div>
+  
+      <button mat-raised-button color="primary" class="boton" (click)="guardarEstudio()">Guardar Estudio</button>
+    </form>
+  
+    <div class="example-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+      
+          <!-- Definición de las columnas -->
+          <ng-container matColumnDef="curso">
+            <th mat-header-cell *matHeaderCellDef> Curso </th>
+            <td mat-cell *matCellDef="let element"> {{ element.curso }} </td>
+          </ng-container>
+      
+          <!-- Columna para el botón de eliminar -->
+          <ng-container matColumnDef="eliminar">
+            <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="warn" (click)="eliminarElemento(element)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+      
+          <!-- Definir el orden de las columnas -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>    
+</div>
+  

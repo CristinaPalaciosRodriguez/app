@@ -20,6 +20,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
+import { EstudiosComponent } from './estudios/estudios.component';
+import { ConocimientosComponent } from './conocimientos/conocimientos.component';
+import { CursosComponent } from './cursos/cursos.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { FormsModule } from '@angular/forms';
     NavigationComponent,
     FormularioComponent,
     PersonalComponent,
-    ExperienciaComponent
+    ExperienciaComponent,
+    EstudiosComponent,
+    ConocimientosComponent,
+    CursosComponent
   ],
   imports: [
     BrowserModule,
