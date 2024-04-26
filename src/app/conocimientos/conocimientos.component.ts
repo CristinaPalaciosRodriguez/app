@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { DataFormularioService } from '../data-formulario.service';
 
 @Component({
   selector: 'app-conocimientos',
@@ -14,7 +15,7 @@ export class ConocimientosComponent implements OnInit {
 
   displayedColumns = ['conocimiento', 'eliminar'];
 
-  constructor() { }
+  constructor(private dataFormularioService: DataFormularioService) { }
 
   ngOnInit(): void {
     console.log('displayedColumns:', this.displayedColumns);
@@ -33,7 +34,7 @@ export class ConocimientosComponent implements OnInit {
       this.dataSource.data = [...this.dataSource.data]; 
 
       console.log('dataSource.data después de agregar:', this.dataSource.data);
-
+      this.dataFormularioService.guardarConocimientos(this.dataSource.data);
       this.resetFormulario();
     } else {
       alert('Por favor completa todos los campos.');
@@ -46,6 +47,7 @@ export class ConocimientosComponent implements OnInit {
 
   eliminarElemento(elemento: ConocimientoElement): void {
     this.dataSource.data = this.dataSource.data.filter(item => item !== elemento);
+    this.dataFormularioService.guardarConocimientos(this.dataSource.data);
   }
 }
 

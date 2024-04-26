@@ -36,3 +36,20 @@
 .mat-form-field .mat-input-element {
   background-color: transparent !important;
 }
+
+.imprimir {
+  display: none; /* Oculta el elemento en la vista del navegador */
+}
+
+
+@media print {
+  .imprimir {
+    display: block;
+  }
+  /* Estilos específicos para la impresión */
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    /* Otros estilos de impresión */
+  }
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { DataFormularioService } from '../data-formulario.service';
 
 @Component({
   selector: 'app-cursos',
@@ -10,21 +11,29 @@ export class CursosComponent implements OnInit {
 
  
   dataSource = new MatTableDataSource<CursoElement>([]);
-  curso: string = '';
+  nombre: string = '';
+  organizacion: string = '';
+  fechaIni: Date | null = null;
+  fechaFin: Date | null = null;
+  descripcion: string = '';
 
-  displayedColumns = ['curso', 'eliminar'];
+  displayedColumns = ['nombre', 'organizacion', 'fechaIni','fechaFin','descripcion', 'eliminar'];
 
-  constructor() { }
+  constructor(private dataFormularioService: DataFormularioService) { }
 
   ngOnInit(): void {
     console.log('displayedColumns:', this.displayedColumns);
     console.log('dataSource.data:', this.dataSource.data);
   }
 
-  guardarEstudio(): void {
-    if (this.curso) {
+  guardarCurso(): void {
+    if (this.nombre && this.organizacion && this.fechaIni && this.fechaFin && this.descripcion) {
       const nuevaExperiencia: CursoElement = {
-        curso: this.curso
+        nombre: this.nombre,
+        organizacion: this.organizacion,
+        fechaIni: this.fechaIni,
+        fechaFin: this.fechaFin,
+        descripcion: this.descripcion
       };
 
       console.log('Nuevo elemento a agregar:', nuevaExperiencia);
@@ -33,7 +42,7 @@ export class CursosComponent implements OnInit {
       this.dataSource.data = [...this.dataSource.data]; 
 
       console.log('dataSource.data después de agregar:', this.dataSource.data);
-
+      this.dataFormularioService.guardarCursos(this.dataSource.data);
       this.resetFormulario();
     } else {
       alert('Por favor completa todos los campos.');
@@ -41,15 +50,24 @@ export class CursosComponent implements OnInit {
   }
 
   resetFormulario(): void {
-    this.curso = '';
+    this.nombre = '';
+    this.organizacion = '';
+    this.fechaIni = null;
+    this.fechaFin = null;
+    this.descripcion = '';
   }
 
   eliminarElemento(elemento: CursoElement): void {
     this.dataSource.data = this.dataSource.data.filter(item => item !== elemento);
+    this.dataFormularioService.guardarCursos(this.dataSource.data);
   }
 }
 
 export interface CursoElement {
-  curso: string;
+  nombre: string;
+  organizacion: string;
+  fechaIni: Date;
+  fechaFin: Date;
+  descripcion: string;
 }
  
