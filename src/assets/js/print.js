@@ -227,6 +227,8 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, estudios, conocim
 
     
     a.document.close();
-    a.print();
+    setTimeout(function () {
+      a.print();
+    }, 1000);
   }
   
