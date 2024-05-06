@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataFormularioService } from '../data-formulario.service';
+import { LanguageService } from '../language.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-experiencia',
@@ -14,10 +16,18 @@ export class ExperienciaComponent implements OnInit {
   fechaInicio: Date | null = null;
   fechaFin: Date | null = null;
   actividades: string = '';
-
+  selectedLanguage: string = 'es';
+  languageTexts: any;
+  private languageSubscription: Subscription;
+  fechaActual: Date = new Date();
   displayedColumns = ['puesto', 'empresa', 'fechaIni', 'fechaFin', 'actividades', 'eliminar'];
 
-  constructor(private dataFormularioService: DataFormularioService) { }
+  constructor(private dataFormularioService: DataFormularioService, private languageService: LanguageService) {
+    this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
+    this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
+      this.languageTexts = languageTexts;
+    });
+   }
 
   ngOnInit(): void {
     console.log('displayedColumns:', this.displayedColumns);
@@ -45,6 +55,10 @@ export class ExperienciaComponent implements OnInit {
     } else {
       alert('Por favor completa todos los campos.');
     }
+  }
+
+  setFechaActual() {
+    this.fechaFin = this.fechaActual;
   }
 
   resetFormulario(): void {

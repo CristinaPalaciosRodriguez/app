@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataFormularioService } from '../data-formulario.service';
+import { LanguageService } from '../language.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-estudios',
@@ -13,20 +15,31 @@ export class EstudiosComponent implements OnInit {
   universidad: string = '';
   carrera: string = '';
   generacion: Date | null = null;
+  fechaIni: Date | null = null;
+  selectedLanguage: string = 'es';
+  languageTexts: any;
+  private languageSubscription: Subscription;
+  fechaActual: Date = new Date();
 
-  displayedColumns = ['universidad', 'carrera', 'generacion', 'eliminar'];
+  displayedColumns = ['universidad', 'carrera', 'fechaIni', 'generacion', 'eliminar'];
 
-  constructor(private dataFormularioService: DataFormularioService) { }
+  constructor(private dataFormularioService: DataFormularioService, private languageService: LanguageService) {
+    this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
+    this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
+      this.languageTexts = languageTexts;
+    });
+   }
 
   ngOnInit(): void {
   }
 
   guardarEstudio(): void {
-    if (this.universidad && this.carrera && this.generacion) {
+    if (this.universidad && this.carrera && this.generacion && this.fechaIni) {
       const nuevaExperiencia: EstudioElement = {
         universidad: this.universidad,
         carrera: this.carrera,
-        generacion: this.generacion
+        generacion: this.generacion,
+        fechaIni: this.fechaIni
       };
 
       this.dataSource.data.push(nuevaExperiencia);
@@ -43,16 +56,22 @@ export class EstudiosComponent implements OnInit {
     this.universidad = '';
     this.carrera = '';
     this.generacion = null;
+    this.fechaIni = null;
   }
 
   eliminarElemento(elemento: EstudioElement): void {
     this.dataSource.data = this.dataSource.data.filter(item => item !== elemento);
     this.dataFormularioService.guardarEstudios(this.dataSource.data);
   }
+
+  setFechaActual() {
+    this.generacion = this.fechaActual;
+  }
 }
 
 export interface EstudioElement {
   universidad: string;
   carrera: string;
+  fechaIni: Date;
   generacion: Date;
 }

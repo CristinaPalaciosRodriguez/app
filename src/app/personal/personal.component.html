@@ -1,31 +1,51 @@
 <div class="formulario-container">
-  <h2 class="titulo">Datos Personales</h2>
+  <h2 class="titulo">DATOS PERSONALES / PERSONAL DATA</h2>
   <form class="formulario" (ngSubmit)="enviarDatos()">
     <div class="fila">
       <div class="columna">
         <mat-form-field class="campo">
-          <mat-label>Nombre</mat-label>
+          <mat-label>{{ languageTexts.nombre }}</mat-label>
           <input matInput placeholder="Nombre" required [(ngModel)]="nombre" name="nombre">
+          <mat-error *ngIf="!nombre">{{ languageTexts.obligatorio }}</mat-error>
         </mat-form-field>
       </div>
       <div class="columna">
         <mat-form-field class="campo">
-          <mat-label>Apellidos</mat-label>
+          <mat-label>{{ languageTexts.apellidos }}</mat-label>
           <input matInput placeholder="Apellidos" required [(ngModel)]="apellidos" name="apellidos">
+          <mat-error *ngIf="!apellidos">{{ languageTexts.obligatorio }}</mat-error>
         </mat-form-field>
       </div>
     </div>
     <div class="fila">
       <div class="columna">
         <mat-form-field class="campo">
-          <mat-label>Nacionalidad</mat-label>
+          <mat-label>{{ languageTexts.nacionalidad }}</mat-label>
           <input matInput placeholder="Nacionalidad" required [(ngModel)]="nacionalidad" name="nacionalidad">
+          <mat-error *ngIf="!nacionalidad">{{ languageTexts.obligatorio }}</mat-error>
         </mat-form-field>
       </div>
       <div class="columna">
         <mat-form-field class="campo">
-          <mat-label>Edad</mat-label>
+          <mat-label>{{ languageTexts.edad }}</mat-label>
           <input matInput placeholder="Edad" type="number" min="18" required [(ngModel)]="edad" name="edad">
+          <mat-error *ngIf="!edad">{{ languageTexts.obligatorio }}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="fila">
+      <div class="columna">
+        <mat-form-field class="campo">
+          <mat-label>{{ languageTexts.ciudad }}</mat-label>
+          <input matInput placeholder="Ciudad" required [(ngModel)]="ciudad" name="ciudad">
+          <mat-error *ngIf="!ciudad">{{ languageTexts.obligatorio }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="columna">
+        <mat-form-field class="campo">
+          <mat-label>{{ languageTexts.pais }}</mat-label>
+          <input matInput placeholder="Pais" required [(ngModel)]="pais" name="pais">
+          <mat-error *ngIf="!pais">{{ languageTexts.obligatorio }}</mat-error>
         </mat-form-field>
       </div>
     </div>

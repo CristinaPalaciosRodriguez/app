@@ -15,3 +15,12 @@
   top: 0;
   z-index: 1;
 }
+
+.spacer {
+  flex: 1; /* Esto crea un espacio flexible entre "CV" y el selector de idioma */
+}
+
+.small-select {
+  width: 150px; /* ajusta el ancho según sea necesario */
+  font-size: 12px; /* ajusta el tamaño de fuente según sea necesario */
+}

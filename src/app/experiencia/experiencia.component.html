@@ -1,40 +1,49 @@
 <div class="formulario-container">
-    <h2 class="titulo">Experiencia Laboral</h2>
+    <h2 class="titulo">EXPERIENCIA LABORAL / WORK EXPERIENCE</h2>
     <form class="formulario">
       <div class="fila">
         <div class="columna">
           <mat-form-field class="campo">
-            <mat-label>Puesto</mat-label>
-            <input matInput placeholder="Puesto" name="puesto" required [(ngModel)]="puesto">
-          </mat-form-field>
-        </div>
-  
-        <div class="columna">
-          <mat-form-field class="campo">
-            <mat-label>Empresa</mat-label>
+            <mat-label>{{ languageTexts.empresa }}</mat-label>
             <input matInput placeholder="Empresa" name="empresa" required [(ngModel)]="empresa">
+            <mat-error *ngIf="!empresa">{{ languageTexts.obligatorio }}</mat-error>
+          </mat-form-field>
+        </div>
+        
+        <div class="columna">
+          <mat-form-field class="campo">
+            <mat-label>{{ languageTexts.puesto }}</mat-label>
+            <input matInput placeholder="Puesto" name="puesto" required [(ngModel)]="puesto">
+            <mat-error *ngIf="!puesto">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
   
         <div class="columna">
           <mat-form-field class="campo">
-            <input matInput [matDatepicker]="pickerInicio" name="fechaIni" placeholder="Selecciona fecha de inicio" required [(ngModel)]="fechaInicio">
+            <input matInput [matDatepicker]="pickerInicio" name="fechaIni" placeholder="{{ languageTexts.fechaIniU }}" required [(ngModel)]="fechaInicio">
             <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
             <mat-datepicker #pickerInicio></mat-datepicker>
+            <mat-error *ngIf="!fechaInicio">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
         
         <div class="columna">
           <mat-form-field class="campo">
-            <input matInput [matDatepicker]="pickerFin" name="fechaFin" placeholder="Selecciona fecha de fin" required [(ngModel)]="fechaFin">
+            <input matInput [matDatepicker]="pickerFin" name="fechaFin" placeholder="{{ languageTexts.fechaFinU }}" required [(ngModel)]="fechaFin">
             <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
             <mat-datepicker #pickerFin></mat-datepicker>
+            <mat-error *ngIf="!fechaFin">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
+
+          <!-- Agregar botón para establecer la fecha actual -->
+          <span>{{ languageTexts.fechaActual }}</span>
+          <button mat-button matSuffix (click)="setFechaActual()">{{ languageTexts.actual }}</button>
         </div>
         
         <div class="columna">
           <mat-form-field class="campo">
-            <textarea matInput placeholder="Actividades" name="actividades" required [(ngModel)]="actividades"></textarea>
+            <textarea matInput placeholder="{{ languageTexts.actividades }}" name="actividades" required [(ngModel)]="actividades"></textarea>
+            <mat-error *ngIf="!actividades">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
       </div>

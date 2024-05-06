@@ -14,6 +14,8 @@ export class DataFormularioService {
   apellidos: string = '';
   nacionalidad: string = '';
   edad: number = 18;
+  ciudad: string = '';
+  pais: string = '';
   estudios: EstudioElement[] = [];
   conocimientos: ConocimientoElement[] = [];
   experiencias: PeriodicElement[] = [];
@@ -27,11 +29,13 @@ export class DataFormularioService {
 
   constructor() { }
 
-  guardarDatos(nombre: string, apellidos: string, nacionalidad: string, edad: number) {
+  guardarDatos(nombre: string, apellidos: string, nacionalidad: string, edad: number, ciudad: string, pais: string) {
     this.nombre = nombre;
     this.apellidos = apellidos;
     this.nacionalidad = nacionalidad;
     this.edad = edad;
+    this.ciudad = ciudad;
+    this.pais = pais;
     this.actualizarEstadoArreglos();
     Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.estudios, this.conocimientos, this.experiencias, this.cursos);
   }

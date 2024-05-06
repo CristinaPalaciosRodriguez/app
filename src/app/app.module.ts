@@ -24,6 +24,8 @@ import { EstudiosComponent } from './estudios/estudios.component';
 import { ConocimientosComponent } from './conocimientos/conocimientos.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSelectModule } from '@angular/material/select';
+import { IdiomasComponent } from './idiomas/idiomas.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     ExperienciaComponent,
     EstudiosComponent,
     ConocimientosComponent,
-    CursosComponent
+    CursosComponent,
+    IdiomasComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
