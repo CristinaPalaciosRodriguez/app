@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DataFormularioService } from '../data-formulario.service';
 import { LanguageService } from '../language.service';
 import { Subscription } from 'rxjs';
+import { PeriodicElement } from '../models/experiencias.interface';
 
 @Component({
   selector: 'app-experiencia',
@@ -16,11 +17,12 @@ export class ExperienciaComponent implements OnInit {
   fechaInicio: Date | null = null;
   fechaFin: Date | null = null;
   actividades: string = '';
+  funciones: string = '';
   selectedLanguage: string = 'es';
   languageTexts: any;
   private languageSubscription: Subscription;
   fechaActual: Date = new Date();
-  displayedColumns = ['puesto', 'empresa', 'fechaIni', 'fechaFin', 'actividades', 'eliminar'];
+  displayedColumns = ['puesto', 'empresa', 'fechaIni', 'fechaFin', 'actividades', 'funciones', 'eliminar'];
 
   constructor(private dataFormularioService: DataFormularioService, private languageService: LanguageService) {
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
@@ -35,13 +37,14 @@ export class ExperienciaComponent implements OnInit {
   }
 
   guardarExperiencia(): void {
-    if (this.puesto && this.empresa && this.fechaInicio && this.fechaFin && this.actividades) {
+    if (this.puesto && this.empresa && this.fechaInicio && this.fechaFin && this.actividades && this.funciones) {
       const nuevaExperiencia: PeriodicElement = {
         puesto: this.puesto,
         empresa: this.empresa,
         fechaIni: this.fechaInicio,
         fechaFin: this.fechaFin,
-        actividades: this.actividades
+        actividades: this.actividades,
+        funciones: this.funciones
       };
 
       console.log('Nuevo elemento a agregar:', nuevaExperiencia);
@@ -67,18 +70,11 @@ export class ExperienciaComponent implements OnInit {
     this.fechaInicio = null;
     this.fechaFin = null;
     this.actividades = '';
+    this.funciones = '';
   }
 
   eliminarElemento(elemento: PeriodicElement): void {
     this.dataSource.data = this.dataSource.data.filter(item => item !== elemento);
     this.dataFormularioService.guardarExperiencias(this.dataSource.data);
   }
-}
-
-export interface PeriodicElement {
-  puesto: string;
-  empresa: string;
-  fechaIni: Date;
-  fechaFin: Date;
-  actividades: string;
 }

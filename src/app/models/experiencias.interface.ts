@@ -4,5 +4,6 @@ export interface PeriodicElement {
     fechaIni: Date;
     fechaFin: Date;
     actividades: string;
+    funciones: string;
   }
   

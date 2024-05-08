@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataFormularioService } from '../data-formulario.service';
+import { LanguageService } from '../language.service';
+import { Subscription } from 'rxjs';
+import { CursoElement } from '../models/cursos.interface';
 
 @Component({
   selector: 'app-cursos',
@@ -16,10 +19,19 @@ export class CursosComponent implements OnInit {
   fechaIni: Date | null = null;
   fechaFin: Date | null = null;
   descripcion: string = '';
+  selectedLanguage: string = 'es';
+  languageTexts: any;
+  private languageSubscription: Subscription;
+  fechaActual: Date = new Date();
 
   displayedColumns = ['nombre', 'organizacion', 'fechaIni','fechaFin','descripcion', 'eliminar'];
 
-  constructor(private dataFormularioService: DataFormularioService) { }
+  constructor(private dataFormularioService: DataFormularioService,  private languageService: LanguageService) { 
+    this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
+    this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
+      this.languageTexts = languageTexts;
+    });
+  }
 
   ngOnInit(): void {
     console.log('displayedColumns:', this.displayedColumns);
@@ -62,12 +74,3 @@ export class CursosComponent implements OnInit {
     this.dataFormularioService.guardarCursos(this.dataSource.data);
   }
 }
-
-export interface CursoElement {
-  nombre: string;
-  organizacion: string;
-  fechaIni: Date;
-  fechaFin: Date;
-  descripcion: string;
-}
- 

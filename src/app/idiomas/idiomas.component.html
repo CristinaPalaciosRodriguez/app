@@ -1,1 +1,43 @@
-<p>idiomas works!</p>
+<div class="formulario-container">
+    <h2 class="titulo">CONOCIMIENTO TECNICO / TECHNICIAL KNOWHOW</h2>
+    <form class="formulario">
+      <div class="fila">
+        <div class="columna">
+          <mat-form-field class="campo">
+            <mat-label>{{ languageTexts.conocimiento }}</mat-label>
+            <input matInput placeholder="Conocimiento" name="conocimiento" required [(ngModel)]="conocimiento">
+            <mat-error *ngIf="!conocimiento">{{ languageTexts.obligatorio }}</mat-error>
+          </mat-form-field>
+        </div>
+        
+      </div>
+  
+      <button mat-raised-button color="primary" class="boton" (click)="guardarIdioma()">{{ languageTexts.guardarCono }}</button>
+    </form>
+  
+    <div class="example-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+      
+          <!-- Definición de las columnas -->
+          <ng-container matColumnDef="conocimiento">
+            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.conocimiento }} </th>
+            <td mat-cell *matCellDef="let element"> {{ element.conocimiento }} </td>
+          </ng-container>
+      
+          <!-- Columna para el botón de eliminar -->
+          <ng-container matColumnDef="eliminar">
+            <th mat-header-cell *matHeaderCellDef>  {{ languageTexts.eliminar }}  </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="warn" (click)="eliminarElemento(element)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+      
+          <!-- Definir el orden de las columnas -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>    
+</div>
+  

@@ -21,6 +21,20 @@ interface LanguageText {
   empresa: string;
   actividades: string;
   conocimiento: string;
+  logros: string;
+  funciones: string;
+  formulario: string;
+  generarDoc: string;
+  guardarCono: string;
+  guardarEstu: string;
+  guardarExp: string;
+  guardarOtro: string;
+  guardarIdioma: string;
+  eliminar: string;
+  fechaInicio: string;
+  fechaFin: string;
+  organizacion: string;
+  tiempodeEst: string;
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -56,6 +70,20 @@ export class LanguageService {
       empresa: 'Enterprise',
       actividades: 'Activities',
       conocimiento: 'Knowledge',
+      logros: 'List three (3) major accomplishments',
+      funciones: 'Indicate three (3) main functions',
+      formulario: 'Form',
+      generarDoc: 'Generate Document',
+      guardarCono: 'Save Knowledge',
+      guardarEstu: 'Save University',
+      guardarExp: 'Save Work Experience',
+      guardarOtro: 'Save another study',
+      guardarIdioma: 'Save Language',
+      eliminar: 'Delete',
+      fechaInicio: 'Start date',
+      fechaFin: 'End date',
+      organizacion: 'Organization',
+      tiempodeEst: 'Study Time',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -78,6 +106,20 @@ export class LanguageService {
       empresa: 'Empresa',
       actividades: 'Actividades',
       conocimiento: 'Conocimiento',
+      logros: 'Indique tres (3) principales logros',
+      funciones: 'Indique tres (3) principales funciones',
+      formulario: 'Formulario',
+      generarDoc: 'Generar documento',
+      guardarCono: 'Guardar Conocimiento',
+      guardarEstu: 'Guardar Estudio',
+      guardarExp: 'Guardar Experiencia Laboral',
+      guardarOtro: 'Guardar otro estudio',
+      guardarIdioma: 'Guardar idioma',
+      eliminar: 'Eliminar',
+      fechaInicio: 'Fecha de inicio',
+      fechaFin: 'Fecha de fin',
+      organizacion: 'Organización',
+      tiempodeEst: 'Tiempo de estudios',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

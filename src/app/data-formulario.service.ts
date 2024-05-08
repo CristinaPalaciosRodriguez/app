@@ -4,6 +4,7 @@ import * as Print from '../assets/js/print.js';
 import { EstudioElement } from './models/estudios.interface';
 import { PeriodicElement } from './models/experiencias.interface';
 import { ConocimientoElement } from './models/conocimientos.interface';
+import { IdiomasElement } from './models/idiomas.interface';
 import { CursoElement } from './models/cursos.interface';
 
 @Injectable({
@@ -20,6 +21,7 @@ export class DataFormularioService {
   conocimientos: ConocimientoElement[] = [];
   experiencias: PeriodicElement[] = [];
   cursos: CursoElement[] = [];
+  idiomas: IdiomasElement[] = [];
 
   // Variables para indicar si los arreglos tienen elementos
   tieneEstudios: boolean = false;
@@ -47,6 +49,11 @@ export class DataFormularioService {
 
   guardarConocimientos(conocimientos: ConocimientoElement[]) {
     this.conocimientos = conocimientos;
+    this.actualizarEstadoArreglos();
+  }
+
+  guardarIdioma(idiomas: IdiomasElement[]) {
+    this.idiomas = idiomas;
     this.actualizarEstadoArreglos();
   }
 

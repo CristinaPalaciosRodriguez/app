@@ -4,8 +4,9 @@
       <div class="fila">
         <div class="columna">
           <mat-form-field class="campo">
-            <mat-label>Nombre</mat-label>
+            <mat-label>{{ languageTexts.nombre }}</mat-label>
             <input matInput placeholder="Nombre" name="nombre" required [(ngModel)]="nombre">
+            <mat-error *ngIf="!nombre">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
   
@@ -13,6 +14,7 @@
           <mat-form-field class="campo">
             <mat-label>Organizacion</mat-label>
             <input matInput placeholder="Organizacion" name="organizacion" required [(ngModel)]="organizacion">
+            <mat-error *ngIf="!organizacion">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
   
@@ -21,6 +23,7 @@
             <input matInput [matDatepicker]="pickerInicio" name="fechaIni" placeholder="Selecciona fecha de inicio" required [(ngModel)]="fechaIni">
             <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
             <mat-datepicker #pickerInicio></mat-datepicker>
+            <mat-error *ngIf="!fechaIni">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
         
@@ -29,12 +32,14 @@
             <input matInput [matDatepicker]="pickerFin" name="fechaFin" placeholder="Selecciona fecha de fin" required [(ngModel)]="fechaFin">
             <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
             <mat-datepicker #pickerFin></mat-datepicker>
+            <mat-error *ngIf="!fechaFin">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
         
         <div class="columna">
           <mat-form-field class="campo">
             <textarea matInput placeholder="Descripción" name="descripcion" required [(ngModel)]="descripcion"></textarea>
+            <mat-error *ngIf="!descripcion">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
       </div>
