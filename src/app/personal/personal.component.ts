@@ -34,7 +34,8 @@ export class PersonalComponent {
   todosArreglosLlenos(): boolean {
     return this.dataFormularioService.tieneEstudios &&
            this.dataFormularioService.tieneConocimientos &&
-           this.dataFormularioService.tieneExperiencias
+           this.dataFormularioService.tieneExperiencias &&
+           this.dataFormularioService.tieneIdiomas
   }
 
 }

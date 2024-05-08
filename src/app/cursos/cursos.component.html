@@ -20,19 +20,17 @@
   
         <div class="columna">
           <mat-form-field class="campo">
-            <input matInput [matDatepicker]="pickerInicio" name="fechaIni" placeholder="{{ languageTexts.fechaIniU }}" required [(ngModel)]="fechaIni">
+            <input matInput [matDatepicker]="pickerInicio" name="fechaIni" placeholder="{{ languageTexts.fechaIniU }}" [(ngModel)]="fechaIni">
             <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
             <mat-datepicker #pickerInicio></mat-datepicker>
-            <mat-error *ngIf="!fechaIni">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
         
         <div class="columna">
           <mat-form-field class="campo">
-            <input matInput [matDatepicker]="pickerFin" name="fechaFin" placeholder="{{ languageTexts.fechaFinU }}" required [(ngModel)]="fechaFin">
+            <input matInput [matDatepicker]="pickerFin" name="fechaFin" placeholder="{{ languageTexts.fechaFinU }}" [(ngModel)]="fechaFin">
             <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
             <mat-datepicker #pickerFin></mat-datepicker>
-            <mat-error *ngIf="!fechaFin">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
         
@@ -54,10 +52,10 @@
         <div class="columna">
             <mat-form-field style="margin-right: 10px;">
                 <mat-select placeholder="{{ languageTexts.tiempodeEst }}" name="tiempoEspecifica" [(ngModel)]="tiempoEspecifica">
-                    <mat-option value="horas">Horas</mat-option>
-                    <mat-option value="meses">Meses</mat-option>
-                    <mat-option value="dias">Días</mat-option>
-                    <mat-option value="años">Años</mat-option>
+                    <mat-option value="horas">{{ languageTexts.horas }}</mat-option>
+                    <mat-option value="dias">{{ languageTexts.dias }}</mat-option>
+                    <mat-option value="meses">{{ languageTexts.meses }}</mat-option>
+                    <mat-option value="años">{{ languageTexts.year }}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field style="margin-right: 10px;">

@@ -43,6 +43,19 @@ interface LanguageText {
   entidad: string;
   entidadet: string;
   cantidad: string;
+  horas: string;
+  meses: string;
+  dias: string;
+  year: string;
+  apellidonombre: string;
+  datospersonales: string;
+  estudioscursados: string;
+  generacion: string;
+  actualidad: string;
+  conocimientotec: string;
+  experiencialab: string;
+  fecha: string;
+  otrosEstudios: string;
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -100,6 +113,19 @@ export class LanguageService {
       entidad: 'Enter entity where course',
       entidadet: 'Entity',
       cantidad: 'Amount of time',
+      horas: 'Hours',
+      meses: 'Months',
+      dias: 'Days',
+      year: 'Years',
+      apellidonombre: 'Surname and first name',
+      datospersonales: 'PERSONAL DATA',
+      estudioscursados: 'STUDIES COMPLETED',
+      generacion: 'Generation',
+      actualidad: 'Currently',
+      conocimientotec: 'TECHNICIAL KNOWHOW',
+      experiencialab: 'WORK EXPERIENCE',
+      fecha: 'Date',
+      otrosEstudios: 'OTHER STUDIES',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -143,7 +169,20 @@ export class LanguageService {
       descripcion: 'Descripción',
       entidad: 'Ingrese entidad en donde curso',
       entidadet: 'Entidad',
-      cantidad: 'Cantidad de tiempo',
+      cantidad: 'Cantidad de tiempo (Aproximado)',
+      horas: 'Horas',
+      meses: 'Meses',
+      dias: 'Días',
+      year: 'Años',
+      apellidonombre: 'Apellido y nombre',
+      datospersonales: 'DATOS PERSONALES',
+      estudioscursados: 'ESTUDIOS CURSADOS',
+      generacion: 'Generación',
+      actualidad: 'Actualmente',
+      conocimientotec: 'CONOCIMIENTO TECNICO',
+      experiencialab: 'EXPERIENCIA LABORAL',
+      fecha: 'Fecha',
+      otrosEstudios: 'OTROS ESTUDIOS',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario
