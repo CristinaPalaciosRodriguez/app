@@ -22,7 +22,7 @@ export class ExperienciaComponent implements OnInit {
   languageTexts: any;
   private languageSubscription: Subscription;
   fechaActual: Date = new Date();
-  displayedColumns = ['puesto', 'empresa', 'fechaIni', 'fechaFin', 'actividades', 'funciones', 'eliminar'];
+  displayedColumns = ['empresa','puesto', 'fechaIni', 'fechaFin', 'actividades', 'funciones', 'eliminar'];
 
   constructor(private dataFormularioService: DataFormularioService, private languageService: LanguageService) {
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado

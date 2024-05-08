@@ -35,6 +35,14 @@ interface LanguageText {
   fechaFin: string;
   organizacion: string;
   tiempodeEst: string;
+  selectidioma: string;
+  idioma: string;
+  logroet: string;
+  funcionet: string;
+  descripcion: string;
+  entidad: string;
+  entidadet: string;
+  cantidad: string;
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -84,6 +92,14 @@ export class LanguageService {
       fechaFin: 'End date',
       organizacion: 'Organization',
       tiempodeEst: 'Study Time',
+      selectidioma: 'Enter the Language',
+      idioma: 'Language',
+      logroet: 'Accomplishments',
+      funcionet: 'Functions',
+      descripcion: 'Description',
+      entidad: 'Enter entity where course',
+      entidadet: 'Entity',
+      cantidad: 'Amount of time',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -120,6 +136,14 @@ export class LanguageService {
       fechaFin: 'Fecha de fin',
       organizacion: 'Organización',
       tiempodeEst: 'Tiempo de estudios',
+      selectidioma: 'Ingrese el idioma',
+      idioma: 'Idioma',
+      logroet: 'Logros',
+      funcionet: 'Funciones',
+      descripcion: 'Descripción',
+      entidad: 'Ingrese entidad en donde curso',
+      entidadet: 'Entidad',
+      cantidad: 'Cantidad de tiempo',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

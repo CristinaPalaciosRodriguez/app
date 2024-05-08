@@ -5,7 +5,7 @@
         <div class="columna">
           <mat-form-field class="campo">
             <mat-label>{{ languageTexts.universidad }}</mat-label>
-            <input matInput placeholder="Universidad" name="universidad" required [(ngModel)]="universidad">
+            <input matInput placeholder="{{ languageTexts.universidad }}" name="universidad" required [(ngModel)]="universidad">
             <mat-error *ngIf="!universidad">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
@@ -13,7 +13,7 @@
         <div class="columna">
             <mat-form-field class="campo">
               <mat-label>{{ languageTexts.carrera }}</mat-label>
-              <input matInput placeholder="Carrera" name="carrera" required [(ngModel)]="carrera">
+              <input matInput placeholder="{{ languageTexts.carrera }}" name="carrera" required [(ngModel)]="carrera">
               <mat-error *ngIf="!carrera">{{ languageTexts.obligatorio }}</mat-error>
             </mat-form-field>
           </div>

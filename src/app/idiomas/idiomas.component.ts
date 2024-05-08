@@ -13,7 +13,7 @@ import { IdiomasElement } from '../models/idiomas.interface';
 export class IdiomasComponent implements OnInit {
 
   dataSource = new MatTableDataSource<IdiomasElement>([]);
-  conocimiento: string = '';
+  idioma: string = '';
   selectedLanguage: string = 'es';
   languageTexts: any;
   private languageSubscription: Subscription;
@@ -33,9 +33,9 @@ export class IdiomasComponent implements OnInit {
   }
 
   guardarIdioma(): void {
-    if (this.conocimiento) {
+    if (this.idioma) {
       const nuevaExperiencia: IdiomasElement = {
-        idioma: this.conocimiento
+        idioma: this.idioma
       };
 
       console.log('Nuevo elemento a agregar:', nuevaExperiencia);
@@ -52,7 +52,7 @@ export class IdiomasComponent implements OnInit {
   }
 
   resetFormulario(): void {
-    this.conocimiento = '';
+    this.idioma = '';
   }
 
   eliminarElemento(elemento: IdiomasElement): void {

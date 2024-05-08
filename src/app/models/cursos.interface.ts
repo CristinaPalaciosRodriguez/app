@@ -4,4 +4,6 @@ export interface CursoElement {
     fechaIni: Date;
     fechaFin: Date;
     descripcion: string;
+    entidad: string;
+    tiempoEstudio: string;
   }

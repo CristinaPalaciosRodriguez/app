@@ -19,12 +19,16 @@ export class CursosComponent implements OnInit {
   fechaIni: Date | null = null;
   fechaFin: Date | null = null;
   descripcion: string = '';
+  entidad: string = '';
+  tiempoEstudio: string = '';
+  tiempoEspecifica: string = '';
+  tiempoNum: number = 1;
   selectedLanguage: string = 'es';
   languageTexts: any;
   private languageSubscription: Subscription;
   fechaActual: Date = new Date();
 
-  displayedColumns = ['nombre', 'organizacion', 'fechaIni','fechaFin','descripcion', 'eliminar'];
+  displayedColumns = ['nombre', 'organizacion', 'fechaIni','fechaFin','descripcion','entidad','tiempoEstudio', 'eliminar'];
 
   constructor(private dataFormularioService: DataFormularioService,  private languageService: LanguageService) { 
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
@@ -39,13 +43,15 @@ export class CursosComponent implements OnInit {
   }
 
   guardarCurso(): void {
-    if (this.nombre && this.organizacion && this.fechaIni && this.fechaFin && this.descripcion) {
+    if (this.nombre && this.organizacion && this.fechaIni && this.fechaFin && this.descripcion && this.entidad && this.tiempoEspecifica && this.tiempoNum) {
       const nuevaExperiencia: CursoElement = {
         nombre: this.nombre,
         organizacion: this.organizacion,
         fechaIni: this.fechaIni,
         fechaFin: this.fechaFin,
-        descripcion: this.descripcion
+        descripcion: this.descripcion,
+        entidad: this.entidad,
+        tiempoEstudio: this.tiempoNum + ' ' + this.tiempoEspecifica
       };
 
       console.log('Nuevo elemento a agregar:', nuevaExperiencia);
@@ -67,6 +73,8 @@ export class CursosComponent implements OnInit {
     this.fechaIni = null;
     this.fechaFin = null;
     this.descripcion = '';
+    this.tiempoEstudio = '';
+    this.entidad = '';
   }
 
   eliminarElemento(elemento: CursoElement): void {

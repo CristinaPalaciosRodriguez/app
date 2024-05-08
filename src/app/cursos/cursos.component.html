@@ -5,22 +5,22 @@
         <div class="columna">
           <mat-form-field class="campo">
             <mat-label>{{ languageTexts.nombre }}</mat-label>
-            <input matInput placeholder="Nombre" name="nombre" required [(ngModel)]="nombre">
+            <input matInput placeholder="{{ languageTexts.nombre }}" name="nombre" required [(ngModel)]="nombre">
             <mat-error *ngIf="!nombre">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
   
         <div class="columna">
           <mat-form-field class="campo">
-            <mat-label>Organizacion</mat-label>
-            <input matInput placeholder="Organizacion" name="organizacion" required [(ngModel)]="organizacion">
+            <mat-label>{{ languageTexts.organizacion }}</mat-label>
+            <input matInput placeholder="{{ languageTexts.organizacion }}" name="organizacion" required [(ngModel)]="organizacion">
             <mat-error *ngIf="!organizacion">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
   
         <div class="columna">
           <mat-form-field class="campo">
-            <input matInput [matDatepicker]="pickerInicio" name="fechaIni" placeholder="Selecciona fecha de inicio" required [(ngModel)]="fechaIni">
+            <input matInput [matDatepicker]="pickerInicio" name="fechaIni" placeholder="{{ languageTexts.fechaIniU }}" required [(ngModel)]="fechaIni">
             <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
             <mat-datepicker #pickerInicio></mat-datepicker>
             <mat-error *ngIf="!fechaIni">{{ languageTexts.obligatorio }}</mat-error>
@@ -29,7 +29,7 @@
         
         <div class="columna">
           <mat-form-field class="campo">
-            <input matInput [matDatepicker]="pickerFin" name="fechaFin" placeholder="Selecciona fecha de fin" required [(ngModel)]="fechaFin">
+            <input matInput [matDatepicker]="pickerFin" name="fechaFin" placeholder="{{ languageTexts.fechaFinU }}" required [(ngModel)]="fechaFin">
             <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
             <mat-datepicker #pickerFin></mat-datepicker>
             <mat-error *ngIf="!fechaFin">{{ languageTexts.obligatorio }}</mat-error>
@@ -38,13 +38,36 @@
         
         <div class="columna">
           <mat-form-field class="campo">
-            <textarea matInput placeholder="Descripción" name="descripcion" required [(ngModel)]="descripcion"></textarea>
+            <textarea matInput placeholder="{{ languageTexts.descripcion }}" name="descripcion" required [(ngModel)]="descripcion"></textarea>
             <mat-error *ngIf="!descripcion">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
+
+        <div class="columna">
+          <mat-form-field class="campo">
+            <mat-label>{{ languageTexts.entidad }}</mat-label>
+            <input matInput placeholder="{{ languageTexts.entidadet }}" name="entidad" required [(ngModel)]="entidad">
+            <mat-error *ngIf="!nombre">{{ languageTexts.obligatorio }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="columna">
+            <mat-form-field style="margin-right: 10px;">
+                <mat-select placeholder="{{ languageTexts.tiempodeEst }}" name="tiempoEspecifica" [(ngModel)]="tiempoEspecifica">
+                    <mat-option value="horas">Horas</mat-option>
+                    <mat-option value="meses">Meses</mat-option>
+                    <mat-option value="dias">Días</mat-option>
+                    <mat-option value="años">Años</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field style="margin-right: 10px;">
+              <input matInput placeholder="{{ languageTexts.cantidad }}" type="number" min="1" required [(ngModel)]="tiempoNum" name="tiempoNum">
+              <mat-error *ngIf="!tiempoNum">{{ languageTexts.obligatorio }}</mat-error>
+            </mat-form-field>
+        </div>
       </div>
   
-      <button mat-raised-button color="primary" class="boton" (click)="guardarCurso()">Guardar Curso</button>
+      <button mat-raised-button color="primary" class="boton" (click)="guardarCurso()">{{ languageTexts.guardarOtro }}</button>
     </form>
   
     <div class="example-container mat-elevation-z8">
@@ -52,33 +75,43 @@
       
           <!-- Definición de las columnas -->
           <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.nombre }} </th>
             <td mat-cell *matCellDef="let element"> {{ element.nombre }} </td>
           </ng-container>
       
           <ng-container matColumnDef="organizacion">
-            <th mat-header-cell *matHeaderCellDef> Organización </th>
+            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.organizacion }} </th>
             <td mat-cell *matCellDef="let element"> {{ element.organizacion }} </td>
           </ng-container>
       
           <ng-container matColumnDef="fechaIni">
-            <th mat-header-cell *matHeaderCellDef> Fecha Inicio </th>
+            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.fechaInicio }} </th>
             <td mat-cell *matCellDef="let element"> {{ element.fechaIni | date:'dd-MM-yyyy' }} </td>
           </ng-container>
       
           <ng-container matColumnDef="fechaFin">
-            <th mat-header-cell *matHeaderCellDef> Fecha Fin </th>
+            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.fechaFin }} </th>
             <td mat-cell *matCellDef="let element"> {{ element.fechaFin | date:'dd-MM-yyyy' }} </td>
           </ng-container>
       
           <ng-container matColumnDef="descripcion">
-            <th mat-header-cell *matHeaderCellDef> Descripción </th>
+            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.descripcion }} </th>
             <td mat-cell *matCellDef="let element"> {{ element.descripcion }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="entidad">
+            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.entidadet }} </th>
+            <td mat-cell *matCellDef="let element"> {{ element.entidad }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="tiempoEstudio">
+            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.tiempodeEst }} </th>
+            <td mat-cell *matCellDef="let element"> {{ element.tiempoEstudio }} </td>
           </ng-container>
       
           <!-- Columna para el botón de eliminar -->
           <ng-container matColumnDef="eliminar">
-            <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.eliminar }} </th>
             <td mat-cell *matCellDef="let element">
               <button mat-icon-button color="warn" (click)="eliminarElemento(element)">
                 <mat-icon>delete</mat-icon>
