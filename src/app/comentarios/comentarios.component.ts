@@ -21,13 +21,14 @@ export class ComentariosComponent implements OnInit {
   languageTexts: any;
   private languageSubscription: Subscription;
   comentario: string = '';
+  disenoHoja: string = 'Diseño de una columna';
 
   ngOnInit(): void {
   }
 
   
   enviarDatos() {
-    this.dataFormularioService.guardarDatos(this.comentario);
+    this.dataFormularioService.guardarDatos(this.comentario, this.disenoHoja);
   }
 
   todosArreglosLlenos(): boolean {

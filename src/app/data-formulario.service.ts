@@ -44,7 +44,7 @@ export class DataFormularioService {
     });
   }
 
-  guardarDatos(comentarios: string) {
+  guardarDatos(comentarios: string, estilo: string) {
     this.comentarios = comentarios;
     this.actualizarEstadoArreglos();
     Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.estudios, this.conocimientos,

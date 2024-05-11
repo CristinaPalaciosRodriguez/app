@@ -42,7 +42,11 @@
   .imprimir {
     display: none; /* Oculta el elemento en la vista del navegador */
   }
-  
+
+  .lip {
+    display: flex;
+    align-items: center; /* Alinear verticalmente los elementos en el centro si es necesario */
+  }
   
   @media print {
     .imprimir {

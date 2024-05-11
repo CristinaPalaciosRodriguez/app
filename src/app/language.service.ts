@@ -57,6 +57,10 @@ interface LanguageText {
   fecha: string;
   otrosEstudios: string;
   comentarios: string;
+  tiposcurso: string;
+  estilos: string;
+  estilo1: string;
+  estilo2: string;
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -128,6 +132,10 @@ export class LanguageService {
       fecha: 'Date',
       otrosEstudios: 'OTHER STUDIES',
       comentarios: 'Comments',
+      tiposcurso: 'COURSES, DIPLOMA, MASTERS, DOCTORATE, CERTIFICATION',
+      estilos: 'Document Design',
+      estilo1: 'A column',
+      estilo2: 'Two columns',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -186,6 +194,10 @@ export class LanguageService {
       fecha: 'Fecha',
       otrosEstudios: 'OTROS ESTUDIOS',
       comentarios: 'Comentarios',
+      tiposcurso: 'CURSOS, DIPLOMADO, MAESTRIA, DOCTORADO, CERTIFICACIÓN',
+      estilos: 'Diseño del documento',
+      estilo1: 'Una columna',
+      estilo2: 'Dos columnas',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

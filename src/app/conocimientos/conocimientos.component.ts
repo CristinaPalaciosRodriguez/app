@@ -14,7 +14,17 @@ import {SelectionModel} from '@angular/cdk/collections';
 export class ConocimientosComponent implements OnInit {
 
   selection = new SelectionModel<ConocimientoElement>(true, []);
-  dataSource = new MatTableDataSource<ConocimientoElement>([]);
+  dataSource = new MatTableDataSource<ConocimientoElement>([
+    { conocimiento: 'PLC', position: 1 },
+    { conocimiento: 'TIA PORTAL', position: 2 },
+    { conocimiento: 'SCADA', position: 3 },
+    { conocimiento: 'API', position: 4 },
+    { conocimiento: 'MVC', position: 5 },
+    { conocimiento: 'SQL', position: 6 },
+    { conocimiento: 'MySQL', position: 7 },
+    { conocimiento: 'Power BI', position: 8 },
+    // Agrega más elementos si es necesario
+  ]);
   conocimiento: string = '';
   selectedLanguage: string = 'es';
   languageTexts: any;
@@ -49,7 +59,8 @@ export class ConocimientosComponent implements OnInit {
       this.selection.select(nuevaExperiencia);
 
       console.log('dataSource.data después de agregar:', this.dataSource.data);
-      this.dataFormularioService.guardarConocimientos(this.dataSource.data);
+      //this.dataFormularioService.guardarConocimientos(this.dataSource.data);
+      this.dataFormularioService.guardarConocimientos(this.selection.selected);
       this.resetFormulario();
     } else {
       alert('Por favor completa todos los campos.');
@@ -70,6 +81,7 @@ export class ConocimientosComponent implements OnInit {
    isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
+    this.dataFormularioService.guardarConocimientos(this.selection.selected);
     return numSelected === numRows;
   }
 
@@ -78,6 +90,7 @@ export class ConocimientosComponent implements OnInit {
     this.isAllSelected() ?
         this.selection.clear() :
         this.dataSource.data.forEach(row => this.selection.select(row));
+    this.dataFormularioService.guardarConocimientos(this.selection.selected);
   }
 
   /** The label for the checkbox on the passed row */

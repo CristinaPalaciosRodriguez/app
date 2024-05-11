@@ -9,6 +9,16 @@
           </mat-form-field>
         </div>
        </div>
-      <button mat-raised-button color="primary" class="boton"  [disabled]="!todosArreglosLlenos()" type="submit">{{ languageTexts.generarDoc }}</button>
-    </form>
+       <div class="lip">
+        <div>
+            <mat-form-field style="margin-right: 10px;">
+                <mat-select placeholder="{{ languageTexts.estilos }}" name="disenoHoja" [(ngModel)]="disenoHoja">
+                    <mat-option value="Diseño de una columna">{{ languageTexts.estilo1 }}</mat-option>
+                    <mat-option value="Diseño de dos columnas">{{ languageTexts.estilo2 }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" class="boton"  [disabled]="!todosArreglosLlenos()" type="submit">{{ languageTexts.generarDoc }}</button>
+      </div>
+       </form>
   </div>
