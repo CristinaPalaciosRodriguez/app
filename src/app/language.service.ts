@@ -56,6 +56,7 @@ interface LanguageText {
   experiencialab: string;
   fecha: string;
   otrosEstudios: string;
+  comentarios: string;
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -126,6 +127,7 @@ export class LanguageService {
       experiencialab: 'WORK EXPERIENCE',
       fecha: 'Date',
       otrosEstudios: 'OTHER STUDIES',
+      comentarios: 'Comments',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -183,6 +185,7 @@ export class LanguageService {
       experiencialab: 'EXPERIENCIA LABORAL',
       fecha: 'Fecha',
       otrosEstudios: 'OTROS ESTUDIOS',
+      comentarios: 'Comentarios',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

@@ -3,7 +3,7 @@ export interface PeriodicElement {
     empresa: string;
     fechaIni: Date;
     fechaFin: Date;
-    actividades: string;
-    funciones: string;
+    actividades: string[];
+    funciones: string[];
   }
   

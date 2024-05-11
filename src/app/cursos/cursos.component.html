@@ -83,13 +83,13 @@
           </ng-container>
       
           <ng-container matColumnDef="fechaIni">
-            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.fechaInicio }} </th>
-            <td mat-cell *matCellDef="let element"> {{ element.fechaIni | date:'dd-MM-yyyy' }} </td>
+            <th mat-header-cell *matHeaderCellDef style="width: 100px;"> {{ languageTexts.fechaInicio }} </th>
+            <td mat-cell *matCellDef="let element" style="width: 100px;"> {{ element.fechaIni | date:'dd-MM-yyyy' }} </td>
           </ng-container>
       
           <ng-container matColumnDef="fechaFin">
-            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.fechaFin }} </th>
-            <td mat-cell *matCellDef="let element"> {{ element.fechaFin | date:'dd-MM-yyyy' }} </td>
+            <th mat-header-cell *matHeaderCellDef style="width: 100px;"> {{ languageTexts.fechaFin }} </th>
+            <td mat-cell *matCellDef="let element" style="width: 100px;"> {{ element.fechaFin | date:'dd-MM-yyyy' }} </td>
           </ng-container>
       
           <ng-container matColumnDef="descripcion">
@@ -109,8 +109,8 @@
       
           <!-- Columna para el botón de eliminar -->
           <ng-container matColumnDef="eliminar">
-            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.eliminar }} </th>
-            <td mat-cell *matCellDef="let element">
+            <th mat-header-cell *matHeaderCellDef style="width: 40px;"> {{ languageTexts.eliminar }} </th>
+            <td mat-cell *matCellDef="let element" style="width: 40px;">
               <button mat-icon-button color="warn" (click)="eliminarElemento(element)">
                 <mat-icon>delete</mat-icon>
               </button>

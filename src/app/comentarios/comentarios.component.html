@@ -1,0 +1,14 @@
+<div class="formulario-container">
+    <h2 class="titulo">NOTAS O COMENTARIOS / NOTES OR COMMENTS</h2>
+    <form class="formulario" (ngSubmit)="enviarDatos()">
+      <div class="fila">
+        <div class="columna">
+          <mat-form-field class="campo">
+            <mat-label>{{ languageTexts.comentarios }}</mat-label>
+            <textarea matInput class="mi-textarea" placeholder="{{ languageTexts.comentarios }}" name="comentario" [(ngModel)]="comentario"></textarea>
+          </mat-form-field>
+        </div>
+       </div>
+      <button mat-raised-button color="primary" class="boton"  [disabled]="!todosArreglosLlenos()" type="submit">{{ languageTexts.generarDoc }}</button>
+    </form>
+  </div>

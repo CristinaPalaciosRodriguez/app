@@ -4,6 +4,10 @@ import { DataFormularioService } from '../data-formulario.service';
 import { LanguageService } from '../language.service';
 import { Subscription } from 'rxjs';
 import { PeriodicElement } from '../models/experiencias.interface';
+import { Logro } from '../models/logro.interface';
+import { Funcion } from '../models/funcion.interface';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-experiencia',
@@ -16,8 +20,8 @@ export class ExperienciaComponent implements OnInit {
   empresa: string = '';
   fechaInicio: Date | null = null;
   fechaFin: Date | null = null;
-  actividades: string = '';
-  funciones: string = '';
+  actividades: string[] = [];
+  funciones: string[] = [];
   selectedLanguage: string = 'es';
   languageTexts: any;
   private languageSubscription: Subscription;
@@ -37,7 +41,7 @@ export class ExperienciaComponent implements OnInit {
   }
 
   guardarExperiencia(): void {
-    if (this.puesto && this.empresa && this.fechaInicio && this.fechaFin && this.actividades && this.funciones) {
+    if (this.puesto && this.empresa && this.fechaInicio && this.fechaFin && this.actividades.length !== 0 && this.funciones.length !== 0) {
       const nuevaExperiencia: PeriodicElement = {
         puesto: this.puesto,
         empresa: this.empresa,
@@ -69,12 +73,77 @@ export class ExperienciaComponent implements OnInit {
     this.empresa = '';
     this.fechaInicio = null;
     this.fechaFin = null;
-    this.actividades = '';
-    this.funciones = '';
+    this.actividades = [];
+    this.funciones = [];
+    this.logros = [];
+    this.funcionesArray = [];
   }
 
   eliminarElemento(elemento: PeriodicElement): void {
     this.dataSource.data = this.dataSource.data.filter(item => item !== elemento);
     this.dataFormularioService.guardarExperiencias(this.dataSource.data);
+  }
+
+  // Para la parte de funcion campo logros y funciones
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  visibleFun = true;
+  selectableFun = true;
+  removableFun = true;
+  addOnBlurFun = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  logros: Logro[] = [];
+  funcionesArray: Funcion[] = [];
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our fruit
+    if ((value || '').trim()) {
+      this.logros.push({nombreLogro: value.trim()});
+      this.actividades.push(value.trim());
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  remove(logro: Logro): void {
+    const index = this.logros.indexOf(logro);
+
+    if (index >= 0) {
+      this.logros.splice(index, 1);
+      this.actividades.splice(index, 1);
+    }
+  }
+
+  addFunciones(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    // Add our fruit
+    if ((value || '').trim()) {
+      this.funcionesArray.push({nombreFuncion: value.trim()});
+      this.funciones.push(value.trim());
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  removeFunciones(funcion: Funcion): void {
+    const index = this.funcionesArray.indexOf(funcion);
+
+    if (index >= 0) {
+      this.funcionesArray.splice(index, 1);
+      this.funciones.splice(index, 1);
+    }
   }
 }

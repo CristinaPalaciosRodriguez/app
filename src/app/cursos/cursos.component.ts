@@ -12,7 +12,6 @@ import { CursoElement } from '../models/cursos.interface';
 })
 export class CursosComponent implements OnInit {
 
- 
   dataSource = new MatTableDataSource<CursoElement>([]);
   nombre: string = '';
   organizacion: string = '';
@@ -51,7 +50,7 @@ export class CursosComponent implements OnInit {
         fechaFin: this.fechaFin,
         descripcion: this.descripcion,
         entidad: this.entidad,
-        tiempoEstudio: this.tiempoNum + ' ' + this.tiempoEspecifica
+        tiempoEstudio: this.tiempoNum + ' ' + this.tiempoEspecifica,
       };
 
       console.log('Nuevo elemento a agregar:', nuevaExperiencia);

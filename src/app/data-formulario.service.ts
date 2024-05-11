@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class DataFormularioService {
   nombre: string = '';
+  comentarios: string = '';
   apellidos: string = '';
   nacionalidad: string = '';
   edad: number = 18;
@@ -43,7 +44,14 @@ export class DataFormularioService {
     });
   }
 
-  guardarDatos(nombre: string, apellidos: string, nacionalidad: string, edad: number, ciudad: string, pais: string) {
+  guardarDatos(comentarios: string) {
+    this.comentarios = comentarios;
+    this.actualizarEstadoArreglos();
+    Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.estudios, this.conocimientos,
+      this.experiencias, this.cursos, this.idiomas, this.languageTexts);
+  }
+
+  guardarPersonal(nombre: string, apellidos: string, nacionalidad: string, edad: number, ciudad: string, pais: string) {
     this.nombre = nombre;
     this.apellidos = apellidos;
     this.nacionalidad = nacionalidad;
@@ -51,8 +59,6 @@ export class DataFormularioService {
     this.ciudad = ciudad;
     this.pais = pais;
     this.actualizarEstadoArreglos();
-    Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.estudios, this.conocimientos,
-      this.experiencias, this.cursos, this.idiomas, this.languageTexts);
   }
 
   guardarEstudios(estudios: EstudioElement[]) {
@@ -83,7 +89,7 @@ export class DataFormularioService {
   private actualizarEstadoArreglos() {
     this.tieneEstudios = this.estudios.length > 0;
     this.tieneConocimientos = this.conocimientos.length > 0;
-    this.tieneExperiencias = this.experiencias.length > 0;
+    this.tieneExperiencias = this.experiencias.length > 0
     this.tieneCursos = this.cursos.length > 0;
     this.tieneIdiomas = this.idiomas.length > 0;
   }

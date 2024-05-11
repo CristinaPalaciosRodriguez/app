@@ -26,6 +26,9 @@ import { CursosComponent } from './cursos/cursos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { IdiomasComponent } from './idiomas/idiomas.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { ComentariosComponent } from './comentarios/comentarios.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { IdiomasComponent } from './idiomas/idiomas.component';
     EstudiosComponent,
     ConocimientosComponent,
     CursosComponent,
-    IdiomasComponent
+    IdiomasComponent,
+    ComentariosComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,9 @@ import { IdiomasComponent } from './idiomas/idiomas.component';
     MatNativeDateModule,
     FormsModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatChipsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

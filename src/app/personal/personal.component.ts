@@ -27,15 +27,9 @@ export class PersonalComponent {
   pais: string = '';
   plantillaHTML: string = '';
 
-  enviarDatos() {
-    this.dataFormularioService.guardarDatos(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais);
-  }
-
-  todosArreglosLlenos(): boolean {
-    return this.dataFormularioService.tieneEstudios &&
-           this.dataFormularioService.tieneConocimientos &&
-           this.dataFormularioService.tieneExperiencias &&
-           this.dataFormularioService.tieneIdiomas
+  handleBlurEvent(): void {
+    console.log("LLEGA AQUI")
+    this.dataFormularioService.guardarPersonal(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais);
   }
 
 }
