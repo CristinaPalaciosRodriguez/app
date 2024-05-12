@@ -58,7 +58,6 @@ export class ConocimientosComponent implements OnInit {
       
       this.selection.select(nuevaExperiencia);
 
-      console.log('dataSource.data después de agregar:', this.dataSource.data);
       //this.dataFormularioService.guardarConocimientos(this.dataSource.data);
       this.dataFormularioService.guardarConocimientos(this.selection.selected);
       this.resetFormulario();

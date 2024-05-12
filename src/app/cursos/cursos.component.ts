@@ -58,7 +58,6 @@ export class CursosComponent implements OnInit {
       this.dataSource.data.push(nuevaExperiencia);
       this.dataSource.data = [...this.dataSource.data]; 
 
-      console.log('dataSource.data después de agregar:', this.dataSource.data);
       this.dataFormularioService.guardarCursos(this.dataSource.data);
       this.resetFormulario();
     } else {

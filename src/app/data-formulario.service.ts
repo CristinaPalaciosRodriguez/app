@@ -47,8 +47,14 @@ export class DataFormularioService {
   guardarDatos(comentarios: string, estilo: string) {
     this.comentarios = comentarios;
     this.actualizarEstadoArreglos();
-    Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.estudios, this.conocimientos,
-      this.experiencias, this.cursos, this.idiomas, this.languageTexts);
+    if(estilo === "Diseño de una columna"){
+      console.log(estilo)
+      Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.estudios, this.conocimientos,
+        this.experiencias, this.cursos, this.idiomas, this.languageTexts);
+    } else {
+      console.log(estilo)
+    }
+
   }
 
   guardarPersonal(nombre: string, apellidos: string, nacionalidad: string, edad: number, ciudad: string, pais: string) {
