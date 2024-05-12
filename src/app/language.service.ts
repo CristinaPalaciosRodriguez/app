@@ -61,6 +61,7 @@ interface LanguageText {
   estilos: string;
   estilo1: string;
   estilo2: string;
+  idiomas: string;
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -136,6 +137,7 @@ export class LanguageService {
       estilos: 'Document Design',
       estilo1: 'A column',
       estilo2: 'Two columns',
+      idiomas: 'LANGUAGES',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -198,6 +200,7 @@ export class LanguageService {
       estilos: 'Diseño del documento',
       estilo1: 'Una columna',
       estilo2: 'Dos columnas',
+      idiomas: 'IDIOMAS',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

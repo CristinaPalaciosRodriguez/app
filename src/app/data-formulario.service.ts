@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 // @ts-ignore
 import * as Print from '../assets/js/print.js';
+// @ts-ignore
+import * as Print2 from '../assets/js/print2.js';
 import { EstudioElement } from './models/estudios.interface';
 import { PeriodicElement } from './models/experiencias.interface';
 import { ConocimientoElement } from './models/conocimientos.interface';
@@ -48,11 +50,11 @@ export class DataFormularioService {
     this.comentarios = comentarios;
     this.actualizarEstadoArreglos();
     if(estilo === "Diseño de una columna"){
-      console.log(estilo)
       Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.estudios, this.conocimientos,
         this.experiencias, this.cursos, this.idiomas, this.languageTexts);
     } else {
-      console.log(estilo)
+      Print2.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.estudios, this.conocimientos,
+        this.experiencias, this.cursos, this.idiomas, this.languageTexts);
     }
 
   }
