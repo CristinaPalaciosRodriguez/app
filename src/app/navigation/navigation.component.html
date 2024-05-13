@@ -23,7 +23,7 @@
       <span class="spacer"></span> <!-- Agregar un espacio entre "CV" y el selector de idioma -->
       <mat-form-field class="small-select">
         <mat-label>{{ languageTexts.selectLanguage }}</mat-label>
-        <mat-select [(value)]="selectedLanguage" (selectionChange)="updateLanguageTexts()">
+        <mat-select [(value)]="selectedLanguage" (selectionChange)="updateLanguageTexts()" class="custom-select">
           <mat-option *ngFor="let language of languages" [value]="language.value">
             {{ language.viewValue }}
           </mat-option>

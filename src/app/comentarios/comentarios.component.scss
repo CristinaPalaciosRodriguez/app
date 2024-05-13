@@ -47,6 +47,12 @@
     display: flex;
     align-items: center; /* Alinear verticalmente los elementos en el centro si es necesario */
   }
+  /* styles.css o styles.scss */
+.btazul {
+  background-color: #33CEFF ; /* Cambia el color de fondo */
+  color: black ; /* Cambia el color del texto a negro */
+}
+
   
   @media print {
     .imprimir {

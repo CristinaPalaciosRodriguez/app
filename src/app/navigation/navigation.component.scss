@@ -16,6 +16,23 @@
   z-index: 1;
 }
 
+.mat-toolbar {
+  background-color: #33CEFF; /* Rojo */
+}
+.mat-toolbar span {
+  color: black; /* Color del texto negro */
+}
+::ng-deep .mat-select-value {
+  color: black !important;
+}
+
+::ng-deep .mat-form-field-label {
+  color: black !important;
+}
+.custom-select .mat-select-value {
+  color: black !important;
+}
+
 .spacer {
   flex: 1; /* Esto crea un espacio flexible entre "CV" y el selector de idioma */
 }

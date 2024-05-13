@@ -181,11 +181,23 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, estudios, conocim
       const fechaInicio = new Date(experiencia.fechaIni);
       const fechaFin = new Date(experiencia.fechaFin);
 
+      // Obtener el mes y el año actual
+      const mesActual = capitalizarPrimeraLetra(new Date().toLocaleString('default', { month: 'long' }));
+      const añoActual = new Date().getFullYear();
+
       // Extraer el mes y el año de cada fecha
       const mesInicio = capitalizarPrimeraLetra(fechaInicio.toLocaleString('default', { month: 'long' }));
       const añoInicio = fechaInicio.getFullYear();
-      const mesFin = capitalizarPrimeraLetra(fechaFin.toLocaleString('default', { month: 'long' }));
-      const añoFin = fechaFin.getFullYear();
+      let mesFin, añoFin;
+
+      // Verificar si la fecha fin es igual al mes y año actuales
+      if (fechaFin.getMonth() === new Date().getMonth() && fechaFin.getFullYear() === añoActual) {
+          mesFin = languageTexts.actualidad;
+          añoFin = "";
+      } else {
+          mesFin = capitalizarPrimeraLetra(fechaFin.toLocaleString('default', { month: 'long' }));
+          añoFin = fechaFin.getFullYear();
+      }
 
       // Construir la cadena de tiempo formateada
       const tiempoFormateado = `${mesInicio} ${añoInicio} - ${mesFin} ${añoFin}`;
@@ -248,11 +260,23 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, estudios, conocim
           const fechaInicio = new Date(curso.fechaIni);
           const fechaFin = new Date(curso.fechaFin);
 
-          // Extraer el mes y el año de cada fecha
-          const mesInicio = capitalizarPrimeraLetra(fechaInicio.toLocaleString('default', { month: 'long' }));
-          const añoInicio = fechaInicio.getFullYear();
-          const mesFin = capitalizarPrimeraLetra(fechaFin.toLocaleString('default', { month: 'long' }));
-          const añoFin = fechaFin.getFullYear();
+          // Obtener el mes y el año actual
+        const mesActual = capitalizarPrimeraLetra(new Date().toLocaleString('default', { month: 'long' }));
+        const añoActual = new Date().getFullYear();
+
+        // Extraer el mes y el año de cada fecha
+        const mesInicio = capitalizarPrimeraLetra(fechaInicio.toLocaleString('default', { month: 'long' }));
+        const añoInicio = fechaInicio.getFullYear();
+        let mesFin, añoFin;
+
+        // Verificar si la fecha fin es igual al mes y año actuales
+        if (fechaFin.getMonth() === new Date().getMonth() && fechaFin.getFullYear() === añoActual) {
+            mesFin = languageTexts.actualidad;
+            añoFin = "";
+        } else {
+            mesFin = capitalizarPrimeraLetra(fechaFin.toLocaleString('default', { month: 'long' }));
+            añoFin = fechaFin.getFullYear();
+        }
 
           // Construir la cadena de tiempo formateada
           const tiempoFormateado = `${mesInicio} ${añoInicio} - ${mesFin} ${añoFin}`;
@@ -285,7 +309,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, estudios, conocim
     // =========== IDIOMAS ============
     a.document.write('<div style="display: flex; border-bottom: 1px solid black;">');
     a.document.write('<div style="display: flex; flex-direction: column; margin-top:3%;">');
-    a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">IDIOMAS</label>');
+    a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">'+languageTexts.idiomas+'</label>');
     a.document.write('</div>'); // Cerramos la última columna
     a.document.write("</div>");
 

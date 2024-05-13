@@ -1,4 +1,4 @@
-export function printDiv2(nombre, apellido, nacionalidad, edad, estudios, conocimientos, experiencias, cursos, idiomas, languageTexts) {
+export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, estudios, conocimientos, experiencias, cursos, idiomas, languageTexts) {
 
     var a = window.open("", "", "height=1000, width=1000");
     a.document.write("<html><body>");
@@ -16,18 +16,13 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, estudios, conoci
     a.document.write("</div>");
     a.document.write("</div>");
 
-    // CV
-    a.document.write('<div style="margin-bottom:2%; text-align: left; margin-top:3%;">');
-    a.document.write(
-        '<label style="font-size: 25px; font-family: \'Franklin Gothic Medium Cond\';">Curriculum Vitae</label>'
-    );
-    a.document.write("</div>");
-
     //Datos Personales
     a.document.write('<div style="margin-top: 20px;">');
-    a.document.write(`<div style="font-weight: bold; font-family: \'Arial\'; font-size: 18px;"><label>${languageTexts.apellidonombre}: ${apellido} ${nombre}</label></div>`);
-    a.document.write(`<div style="font-weight: bold; font-family: \'Arial\'; font-size: 18px;"><label>${languageTexts.nacionalidad}: ${nacionalidad}</label></div>`);
-    a.document.write(`<div style="font-weight: bold; font-family: \'Arial\'; font-size: 18px;"><label>${languageTexts.edad}: ${edad}</label></div>`);
+    a.document.write(`<div style="font-weight: bold; font-family: \'Mediator Serif Narrow Bold\'; font-size: 40px;"><label>${apellido} ${nombre}</label></div>`);
+    a.document.write(`<div style="font-family: \'TilpSerif EF Bold Italic\'; font-size: 16px;"><label>${languageTexts.edad}: ${edad}</label></div>`);
+    a.document.write(`<div style="font-family: \'TilpSerif EF Bold Italic\'; font-size: 16px;"><label>${languageTexts.nacionalidad}: ${nacionalidad}</label></div>`);
+    a.document.write(`<div style="font-family: \'TilpSerif EF Bold Italic\'; font-size: 16px;"><label>${languageTexts.ciudad}: ${ciudad}</label></div>`);
+    a.document.write(`<div style="font-family: \'TilpSerif EF Bold Italic\'; font-size: 16px;"><label>${languageTexts.pais}: ${pais}</label></div>`);
     a.document.write("</div>");
 
     //SEPARAMIENTO DEL PDF
@@ -43,31 +38,118 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, estudios, conoci
 
     // =========== 1. EXPERIENCIA LABORAL ============
     a.document.write(
-        '<div style="display: flex; flex-direction: column; border-bottom: 1px solid black;">'
+        '<div style="display: flex; flex-direction: column;">'
     );
     a.document.write('<div style="display: flex; margin-top:3%;">');
     a.document.write(
         '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">' + languageTexts.experiencialab + '</label>'
     );
     a.document.write("</div>");
+
+    function capitalizarPrimeraLetra(cadena) {
+        return cadena.charAt(0).toUpperCase() + cadena.slice(1);
+      }
     // Aquí debes añadir el código para mostrar la experiencia laboral
+    experiencias.forEach(experiencia => {
+        a.document.write('<div style="margin-top: 15px;">');
+        a.document.write(`<p style="font-family: \'Mediator Serif Narrow Bold\', sans-serif; font-size: 18px; margin-bottom: 5px; color: #444;"><strong>${experiencia.puesto}</strong> - <strong>${experiencia.empresa}</strong></p>`);
+    
+        // =========== Tiempo ============
+        // Convertir las fechas a objetos de fecha JavaScript
+    const fechaInicio = new Date(experiencia.fechaIni);
+    const fechaFin = new Date(experiencia.fechaFin);
+
+    // Obtener el mes y el año actual
+    const mesActual = capitalizarPrimeraLetra(new Date().toLocaleString('default', { month: 'long' }));
+    const añoActual = new Date().getFullYear();
+
+    // Extraer el mes y el año de cada fecha
+    const mesInicio = capitalizarPrimeraLetra(fechaInicio.toLocaleString('default', { month: 'long' }));
+    const añoInicio = fechaInicio.getFullYear();
+    let mesFin, añoFin;
+
+    // Verificar si la fecha fin es igual al mes y año actuales
+    if (fechaFin.getMonth() === new Date().getMonth() && fechaFin.getFullYear() === añoActual) {
+        mesFin = languageTexts.actualidad;
+        añoFin = "";
+    } else {
+        mesFin = capitalizarPrimeraLetra(fechaFin.toLocaleString('default', { month: 'long' }));
+        añoFin = fechaFin.getFullYear();
+    }
+
+    // Construir la cadena de tiempo formateada
+    const tiempoFormateado = `${mesInicio} ${añoInicio} - ${mesFin} ${añoFin}`;
+
+    a.document.write(`<p style="font-family: 'Tara SC Light', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${tiempoFormateado}</p>`);
+    
+        a.document.write('<div style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 10px; color: #666;"><ul style="list-style-type: disc; padding-left: 20px;">'); // Inicio de la lista
+        experiencia.actividades.forEach(function(actividad) {
+            a.document.write(`<li>${actividad}</li>`); // Mostrar cada actividad como un elemento de lista
+        });
+        a.document.write('</ul></div>'); // Fin de la lista
+    
+        a.document.write('<div style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 10px; color: #666;"><ul style="list-style-type: disc; padding-left: 20px;">'); // Inicio de la lista
+        experiencia.funciones.forEach(function(funcion) {
+            a.document.write(`<li>${funcion}</li>`); // Mostrar cada función como un elemento de lista
+        });
+        a.document.write('</ul></div>'); // Fin de la lista
+    
+        a.document.write("</div>"); // Cerrar el div de la experiencia laboral
+    });
     a.document.write("</div>");
 
     // =========== 2. ESTUDIOS ============
     a.document.write(
-        '<div style="display: flex; flex-direction: column; border-bottom: 1px solid black; margin-top: 20px;">'
+        '<div style="display: flex; flex-direction: column; margin-top: 20px;">'
     );
     a.document.write('<div style="display: flex; margin-top:3%;">');
     a.document.write(
         '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">' + languageTexts.estudioscursados + '</label>'
     );
     a.document.write("</div>");
-    // Aquí debes añadir el código para mostrar los estudios
+    
+    estudios.forEach(estudio => {
+        a.document.write('<div style="margin-top: 15px;">');
+        a.document.write(`<p style="font-family: \'Mediator Serif Narrow Bold\', sans-serif; font-size: 18px; margin-bottom: 5px; color: #444;"><strong>${estudio.universidad}</strong></strong></p>`);
+        a.document.write(`<p style="font-family: \'TilpSerif EF Bold Italic\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${estudio.carrera}</p>`);
+
+        // =========== Tiempo ============
+        // Convertir las fechas a objetos de fecha JavaScript
+        const fechaInicio = new Date(estudio.fechaIni);
+        const fechaFin = new Date(estudio.generacion);
+
+        // Obtener el mes y el año actual
+        const mesActual = capitalizarPrimeraLetra(new Date().toLocaleString('default', { month: 'long' }));
+        const añoActual = new Date().getFullYear();
+
+        // Extraer el mes y el año de cada fecha
+    const mesInicio = capitalizarPrimeraLetra(fechaInicio.toLocaleString('default', { month: 'long' }));
+    const añoInicio = fechaInicio.getFullYear();
+    let mesFin, añoFin;
+
+    // Verificar si la fecha fin es igual al mes y año actuales
+    if (fechaFin.getMonth() === new Date().getMonth() && fechaFin.getFullYear() === añoActual) {
+        mesFin = languageTexts.actualidad;
+        añoFin = "";
+    } else {
+        mesFin = capitalizarPrimeraLetra(fechaFin.toLocaleString('default', { month: 'long' }));
+        añoFin = fechaFin.getFullYear();
+    }
+
+    // Construir la cadena de tiempo formateada
+    const tiempoFormateado = `${mesInicio} ${añoInicio} - ${mesFin} ${añoFin}`;
+
+        a.document.write(`<p style="font-family: \'Tara SC Light\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${tiempoFormateado}</p>`);
+
+        a.document.write("</div>"); // Cerrar el div del conocimiento
+    });
     a.document.write("</div>");
 
+    // Verificar si hay cursos antes de escribir el contenido
+    if (cursos.length > 0) {
     // =========== 3. CURSOS ============
     a.document.write(
-        '<div style="display: flex; flex-direction: column; border-bottom: 1px solid black; margin-top: 20px;">'
+        '<div style="display: flex; flex-direction: column; margin-top: 20px;">'
     );
     a.document.write('<div style="display: flex; margin-top:3%;">');
     a.document.write(
@@ -75,7 +157,46 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, estudios, conoci
     );
     a.document.write("</div>");
     // Aquí debes añadir el código para mostrar los cursos
+    cursos.forEach(curso => {
+        a.document.write('<div style="margin-top: 15px;">');
+        a.document.write(`<p style="font-family: \'Mediator Serif Narrow Bold\', sans-serif; font-size: 18px; margin-bottom: 5px; color: #444;"><strong>${curso.nombre}</strong></strong></p>`);
+         // =========== Tiempo ============
+        // Convertir las fechas a objetos de fecha JavaScript
+        const fechaInicio = new Date(curso.fechaIni);
+        const fechaFin = new Date(curso.fechaFin);
+
+        // Obtener el mes y el año actual
+        const mesActual = capitalizarPrimeraLetra(new Date().toLocaleString('default', { month: 'long' }));
+        const añoActual = new Date().getFullYear();
+
+        // Extraer el mes y el año de cada fecha
+        const mesInicio = capitalizarPrimeraLetra(fechaInicio.toLocaleString('default', { month: 'long' }));
+        const añoInicio = fechaInicio.getFullYear();
+        let mesFin, añoFin;
+
+        // Verificar si la fecha fin es igual al mes y año actuales
+        if (fechaFin.getMonth() === new Date().getMonth() && fechaFin.getFullYear() === añoActual) {
+            mesFin = languageTexts.actualidad;
+            añoFin = "";
+        } else {
+            mesFin = capitalizarPrimeraLetra(fechaFin.toLocaleString('default', { month: 'long' }));
+            añoFin = fechaFin.getFullYear();
+        }
+
+        // Construir la cadena de tiempo formateada
+        const tiempoFormateado = `${mesInicio} ${añoInicio} - ${mesFin} ${añoFin}`;
+        
+        a.document.write(`<p style="font-family: \'TilpSerif EF Bold Italic\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${curso.organizacion}</p>`);
+        
+        a.document.write(`<p style="font-family: \'Tara SC Light\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${tiempoFormateado}</p>`);
+        a.document.write(`<p style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${curso.entidad} - ${curso.tiempoEstudio}</p>`);
+        a.document.write(`<p style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${curso.descripcion}</p>`);
+
+        a.document.write("</div>");
+    });
+
     a.document.write("</div>");
+}
 
     a.document.write("</div>");
 
@@ -84,7 +205,7 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, estudios, conoci
 
     // =========== 4. CONOCIMIENTOS ============
     a.document.write(
-        '<div style="display: flex; flex-direction: column; border-bottom: 1px solid black;">'
+        '<div style="display: flex; flex-direction: column;">'
     );
     a.document.write('<div style="display: flex; margin-top:3%;">');
     a.document.write(
@@ -92,11 +213,16 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, estudios, conoci
     );
     a.document.write("</div>");
     // Aquí debes añadir el código para mostrar los conocimientos
+    conocimientos.forEach(conocimiento => {
+        a.document.write('<div style="margin-top: 1px;">');
+        a.document.write(`<p style="font-family: \'TilpSerif EF Bold Italic\', sans-serif; font-size: 16px; margin-bottom: 2px; color: #444;">${conocimiento.conocimiento}</p>`);
+        a.document.write("</div>");
+    });
     a.document.write("</div>");
 
     // =========== 5. IDIOMAS ============
     a.document.write(
-        '<div style="display: flex; flex-direction: column; border-bottom: 1px solid black; margin-top: 20px;">'
+        '<div style="display: flex; flex-direction: column;  margin-top: 20px;">'
     );
     a.document.write('<div style="display: flex; margin-top:3%;">');
     a.document.write(
@@ -104,6 +230,11 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, estudios, conoci
     );
     a.document.write("</div>");
     // Aquí debes añadir el código para mostrar los idiomas
+    idiomas.forEach(idioma => {
+        a.document.write('<div style="margin-top: 1px;">');
+        a.document.write(`<p style="font-family: \'TilpSerif EF Bold Italic\', sans-serif; font-size: 16px; margin-bottom: 2px; color: #444;">${idioma.idioma}</p>`);
+        a.document.write("</div>");
+    });
     a.document.write("</div>");
 
     a.document.write("</div>");

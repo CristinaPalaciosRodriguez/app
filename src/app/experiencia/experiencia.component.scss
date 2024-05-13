@@ -13,6 +13,12 @@
   margin-bottom: 20px;
 }
 
+/* styles.css o styles.scss */
+button {
+  background-color: #33CEFF !important; /* Cambia el color de fondo */
+  color: black !important; /* Cambia el color del texto a negro */
+}
+
 .example-container {
     height: 400px;
     overflow: auto;

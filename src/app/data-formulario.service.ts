@@ -53,7 +53,7 @@ export class DataFormularioService {
       Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.estudios, this.conocimientos,
         this.experiencias, this.cursos, this.idiomas, this.languageTexts);
     } else {
-      Print2.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.estudios, this.conocimientos,
+      Print2.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.estudios, this.conocimientos,
         this.experiencias, this.cursos, this.idiomas, this.languageTexts);
     }
 
