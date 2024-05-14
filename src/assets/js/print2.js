@@ -42,7 +42,7 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
     );
     a.document.write('<div style="display: flex; margin-top:3%;">');
     a.document.write(
-        '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">' + languageTexts.experiencialab + '</label>'
+        '<label style="font-weight: bold; font-family: \'Tara SC Bold\'; color: #3D5FEA !important; font-size: 20px; margin-top: 2%; ">' + languageTexts.experiencialab + '</label>'
     );
     a.document.write("</div>");
 
@@ -104,7 +104,7 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
     );
     a.document.write('<div style="display: flex; margin-top:3%;">');
     a.document.write(
-        '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">' + languageTexts.estudioscursados + '</label>'
+        '<label style="font-weight: bold; font-family: \'Tara SC Bold\'; color: #3D5FEA !important; font-size: 20px; margin-top: 2%; ">' + languageTexts.estudioscursados + '</label>'
     );
     a.document.write("</div>");
     
@@ -153,7 +153,7 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
     );
     a.document.write('<div style="display: flex; margin-top:3%;">');
     a.document.write(
-        '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">' + languageTexts.otrosEstudios + '</label>'
+        '<label style="font-weight: bold; font-family: \'Tara SC Bold\'; font-size: 20px; color: #3D5FEA !important;  margin-top: 2%; ">' + languageTexts.otrosEstudios + '</label>'
     );
     a.document.write("</div>");
     // Aquí debes añadir el código para mostrar los cursos
@@ -209,7 +209,7 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
     );
     a.document.write('<div style="display: flex; margin-top:3%;">');
     a.document.write(
-        '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">' + languageTexts.conocimientotec + '</label>'
+        '<label style="font-weight: bold; font-family: \'Tara SC Bold\'; color: #3D5FEA !important; font-size: 20px; margin-top: 2%; ">' + languageTexts.conocimientotec + '</label>'
     );
     a.document.write("</div>");
     // Aquí debes añadir el código para mostrar los conocimientos
@@ -222,11 +222,11 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
 
     // =========== 5. IDIOMAS ============
     a.document.write(
-        '<div style="display: flex; flex-direction: column;  margin-top: 20px;">'
+        '<div style="display: flex; flex-direction: column; color: #3D5FEA !important; margin-top: 20px;">'
     );
     a.document.write('<div style="display: flex; margin-top:3%;">');
     a.document.write(
-        '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">' + languageTexts.idiomas + '</label>'
+        '<label style="font-weight: bold; font-family: \'Tara SC Bold\'; font-size: 20px; margin-top: 2%; ">' + languageTexts.idiomas + '</label>'
     );
     a.document.write("</div>");
     // Aquí debes añadir el código para mostrar los idiomas

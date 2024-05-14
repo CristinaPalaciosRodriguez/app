@@ -62,6 +62,8 @@ interface LanguageText {
   estilo1: string;
   estilo2: string;
   idiomas: string;
+  comentariotTitulo: string;
+  indicaConocimiento: string;
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -138,6 +140,8 @@ export class LanguageService {
       estilo1: 'A column',
       estilo2: 'Two columns',
       idiomas: 'LANGUAGES',
+      comentariotTitulo: 'NOTES OR COMMENTS',
+      indicaConocimiento: 'Select the knowledge in the table (In the box) or enter a new knowledge (Type in the field)',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -201,6 +205,8 @@ export class LanguageService {
       estilo1: 'Una columna',
       estilo2: 'Dos columnas',
       idiomas: 'IDIOMAS',
+      comentariotTitulo: 'NOTAS O COMENTARIOS',
+      indicaConocimiento: 'Seleccione el conocimiento en la tabla (En la casilla) o ingrese un nuevo conocimiento (Escriba en el campo)',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

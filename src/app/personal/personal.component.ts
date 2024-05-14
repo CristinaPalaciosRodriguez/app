@@ -22,14 +22,21 @@ export class PersonalComponent {
   nombre: string = '';
   apellidos: string = '';
   nacionalidad: string = '';
-  edad: number = 18;
+  edad: number = 0;
   ciudad: string = '';
   pais: string = '';
   plantillaHTML: string = '';
 
   handleBlurEvent(): void {
     console.log("LLEGA AQUI")
+    this.ngOnDestroy();
     this.dataFormularioService.guardarPersonal(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais);
+  }
+
+  ngOnDestroy() {
+    // Guardar los datos al salir del componente o de la página
+    this.dataFormularioService.guardarDatosLocal();
+    
   }
 
 }

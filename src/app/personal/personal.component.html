@@ -5,14 +5,14 @@
       <div class="columna">
         <mat-form-field class="campo">
           <mat-label>{{ languageTexts.nombre }}</mat-label>
-          <input matInput placeholder="{{ languageTexts.nombre }}" required [(ngModel)]="nombre" name="nombre">
+          <input matInput placeholder="{{ languageTexts.nombre }}" required [(ngModel)]="nombre" name="nombre" (input)="handleBlurEvent()">
           <mat-error *ngIf="!nombre">{{ languageTexts.obligatorio }}</mat-error>
         </mat-form-field>
       </div>
       <div class="columna">
         <mat-form-field class="campo">
           <mat-label>{{ languageTexts.apellidos }}</mat-label>
-          <input matInput placeholder="{{ languageTexts.apellidos }}" required [(ngModel)]="apellidos" name="apellidos">
+          <input matInput placeholder="{{ languageTexts.apellidos }}" required [(ngModel)]="apellidos" name="apellidos" (input)="handleBlurEvent()">
           <mat-error *ngIf="!apellidos">{{ languageTexts.obligatorio }}</mat-error>
         </mat-form-field>
       </div>
@@ -21,7 +21,7 @@
       <div class="columna">
         <mat-form-field class="campo">
           <mat-label>{{ languageTexts.nacionalidad }}</mat-label>
-          <input matInput placeholder="{{ languageTexts.nacionalidad }}" required [(ngModel)]="nacionalidad" name="nacionalidad">
+          <input matInput placeholder="{{ languageTexts.nacionalidad }}" required [(ngModel)]="nacionalidad" name="nacionalidad" (input)="handleBlurEvent()">
           <mat-error *ngIf="!nacionalidad">{{ languageTexts.obligatorio }}</mat-error>
         </mat-form-field>
       </div>
@@ -31,20 +31,20 @@
           <input matInput placeholder="{{ languageTexts.edad }}" type="number" min="18" required [(ngModel)]="edad" name="edad">
           <mat-error *ngIf="!edad">{{ languageTexts.obligatorio }}</mat-error>
         </mat-form-field>
-      </div>
+      </div>          
     </div>
     <div class="fila">
       <div class="columna">
         <mat-form-field class="campo">
           <mat-label>{{ languageTexts.ciudad }}</mat-label>
-          <input matInput placeholder="{{ languageTexts.ciudad }}" required [(ngModel)]="ciudad" name="ciudad">
+          <input matInput placeholder="{{ languageTexts.ciudad }}" required [(ngModel)]="ciudad" name="ciudad" (input)="handleBlurEvent()">
           <mat-error *ngIf="!ciudad">{{ languageTexts.obligatorio }}</mat-error>
         </mat-form-field>
       </div>
       <div class="columna">
         <mat-form-field class="campo">
           <mat-label>{{ languageTexts.pais }}</mat-label>
-          <input matInput placeholder="{{ languageTexts.pais }}" required [(ngModel)]="pais" name="pais">
+          <input matInput placeholder="{{ languageTexts.pais }}" required [(ngModel)]="pais" name="pais" (input)="handleBlurEvent()">
           <mat-error *ngIf="!pais">{{ languageTexts.obligatorio }}</mat-error>
         </mat-form-field>
       </div>

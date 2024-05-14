@@ -15,6 +15,8 @@ import { Subscription } from 'rxjs';
   providedIn: 'root'
 })
 export class DataFormularioService {
+  private readonly datosKey = 'datosFormulario';
+
   nombre: string = '';
   comentarios: string = '';
   apellidos: string = '';
@@ -34,6 +36,7 @@ export class DataFormularioService {
   tieneExperiencias: boolean = false;
   tieneCursos: boolean = false;
   tieneIdiomas: boolean = false;
+  tienePersonal: boolean = false;
 
   selectedLanguage: string = 'es';
   languageTexts: any;
@@ -44,14 +47,37 @@ export class DataFormularioService {
     this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
       this.languageTexts = languageTexts;
     });
+
+    const datosGuardados = localStorage.getItem(this.datosKey);
+    if (datosGuardados) {
+      const datos = JSON.parse(datosGuardados);
+      // Asignar los datos recuperados a las propiedades del servicio
+      this.nombre = datos.nombre;
+      this.apellidos = datos.apellidos;
+      this.nacionalidad = datos.nacionalidad;
+      this.edad = datos.edad;
+      this.ciudad = datos.ciudad;
+      this.pais = datos.pais;
+      this.estudios = datos.estudios;
+      this.conocimientos = datos.conocimientos;
+      this.experiencias = datos.experiencias;
+      this.cursos = datos.cursos;
+      this.idiomas = datos.idiomas;
+      this.tieneEstudios = datos.tieneEstudios;
+      this.tieneConocimientos = datos.tieneConocimientos;
+      this.tieneExperiencias = datos.tieneExperiencias;
+      this.tieneCursos = datos.tieneCursos;
+      this.tieneIdiomas = datos.tieneIdiomas;
+      this.tienePersonal = datos.tienePersonal;
+    }
   }
 
   guardarDatos(comentarios: string, estilo: string) {
     this.comentarios = comentarios;
     this.actualizarEstadoArreglos();
     if(estilo === "Diseño de una columna"){
-      Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.estudios, this.conocimientos,
-        this.experiencias, this.cursos, this.idiomas, this.languageTexts);
+      Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.estudios, this.conocimientos,
+        this.experiencias, this.cursos, this.idiomas, this.languageTexts, this.comentarios);
     } else {
       Print2.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.estudios, this.conocimientos,
         this.experiencias, this.cursos, this.idiomas, this.languageTexts);
@@ -100,5 +126,35 @@ export class DataFormularioService {
     this.tieneExperiencias = this.experiencias.length > 0
     this.tieneCursos = this.cursos.length > 0;
     this.tieneIdiomas = this.idiomas.length > 0;
+
+    if(this.nombre != "" && this.apellidos != "" && this.nacionalidad != "" && this.ciudad != "" && this.pais != "" ) {
+      this.tienePersonal = true;
+    } else {
+      this.tienePersonal = false;
+    }
   }
+
+  guardarDatosLocal() {
+    const datos = {
+      nombre: this.nombre,
+      apellidos: this.apellidos,
+      nacionalidad: this.nacionalidad,
+      edad: this.edad,
+      ciudad: this.ciudad,
+      pais: this.pais,
+      estudios: this.estudios,
+      conocimientos: this.conocimientos,
+      experiencias: this.experiencias,
+      cursos: this.cursos,
+      idiomas: this.idiomas,
+      tieneEstudios: this.tieneEstudios,
+      tieneConocimientos: this.tieneConocimientos,
+      tieneExperiencias: this.tieneExperiencias,
+      tieneCursos: this.tieneCursos,
+      tieneIdiomas: this.tieneIdiomas,
+      tienePersonal: this.tienePersonal
+    };
+    localStorage.setItem(this.datosKey, JSON.stringify(datos));
+  }
+
 }

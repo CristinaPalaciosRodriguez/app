@@ -36,6 +36,7 @@ export class ComentariosComponent implements OnInit {
     return this.dataFormularioService.tieneEstudios &&
            this.dataFormularioService.tieneConocimientos &&
            this.dataFormularioService.tieneExperiencias &&
-           this.dataFormularioService.tieneIdiomas
+           this.dataFormularioService.tieneIdiomas &&
+           this.dataFormularioService.tienePersonal
   }
 }
