@@ -49,13 +49,16 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
     // =========== Nacionalidad ============
     a.document.write('<div style="display: flex; margin-top: 10px;">');
     a.document.write('<div style="font-weight: bold; flex:6; font-family: \'Arial\'; font-size: 18px;"><label>'  + languageTexts.nacionalidad+  ': ' + nacionalidad + '</label></div>');
-    a.document.write('<div style="font-weight: bold; flex:6; font-family: \'Arial\'; font-size: 18px;"><label>'  + languageTexts.ciudad+  ': ' + ciudad + '</label></div>');
+    a.document.write("</div>");
+
+    // =========== Edad ============
+    a.document.write('<div style="display: flex; margin-top: 10px;">');
+    a.document.write('<div style="font-weight: bold; flex:6; font-family: \'Arial\'; font-size: 18px;"><label>' + languageTexts.residenciaactual + ': ' + ciudad + '</label></div>');
     a.document.write("</div>");
 
     // =========== Edad ============
     a.document.write('<div style="display: flex; margin-top: 10px;">');
     a.document.write('<div style="font-weight: bold; flex:6; font-family: \'Arial\'; font-size: 18px;"><label>' + languageTexts.edad + ': ' + edad + '</label></div>');
-    a.document.write('<div style="font-weight: bold; flex:6; font-family: \'Arial\'; font-size: 18px;"><label>'  + languageTexts.pais+  ': ' + pais + '</label></div>');
     a.document.write("</div>");
 
     // =========== ESTUDIOS CURSADOS ============

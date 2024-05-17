@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataFormularioService } from '../data-formulario.service';
 import { LanguageService } from '../language.service';
@@ -7,13 +7,12 @@ import { ConocimientoElement } from '../models/conocimientos.interface';
 import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
-  selector: 'app-conocimientos',
-  templateUrl: './conocimientos.component.html',
-  styleUrls: ['./conocimientos.component.scss']
+  selector: 'app-conocimiento-total',
+  templateUrl: './conocimiento-total.component.html',
+  styleUrls: ['./conocimiento-total.component.scss']
 })
-export class ConocimientosComponent implements OnInit {
-  @Input() categoryTitle!: string;
-  
+export class ConocimientoTotalComponent implements OnInit {
+
   selection = new SelectionModel<ConocimientoElement>(true, []);
   dataSource = new MatTableDataSource<ConocimientoElement>([
     { conocimiento: 'PLC', position: 1 },
@@ -101,4 +100,11 @@ export class ConocimientosComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
+
+  categories = [
+    { title: 'CONOCIMIENTO TECNICO / TECHNICAL KNOWHOW' },
+    { title: 'CONOCIMIENTO ADMINISTRATIVO / ADMINISTRATIVE KNOWHOW' },
+    { title: 'CONOCIMIENTO DE GESTIÓN / MANAGEMENT KNOWHOW' }
+  ];
+
 }

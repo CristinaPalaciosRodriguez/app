@@ -1,0 +1,51 @@
+
+.formulario-container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* styles.css o styles.scss */
+  button {
+    background-color: #33CEFF !important; /* Cambia el color de fondo */
+    color: black !important; /* Cambia el color del texto a negro */
+  }
+  
+  
+  .titulo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .example-container {
+      height: 400px;
+      overflow: auto;
+    }
+    
+    table {
+      width: 100%;
+    }
+    
+    .fila {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .columna {
+      flex-basis: calc(50% - 10px);
+      margin-bottom: 20px;
+    }
+  
+    .campo {
+      width: 100%;
+    }
+  
+    .example-container {
+      margin-top: 20px;
+      height: 400px;
+      overflow: auto;
+    }

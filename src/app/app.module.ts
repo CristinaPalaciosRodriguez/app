@@ -29,6 +29,8 @@ import { IdiomasComponent } from './idiomas/idiomas.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { ComentariosComponent } from './comentarios/comentarios.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { SkillsComponent } from './skills/skills.component';
+import { ConocimientoTotalComponent } from './conocimiento-total/conocimiento-total.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     CursosComponent,
     IdiomasComponent,
     ComentariosComponent,
+    SkillsComponent,
+    ConocimientoTotalComponent,
   ],
   imports: [
     BrowserModule,

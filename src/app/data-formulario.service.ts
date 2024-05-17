@@ -6,6 +6,7 @@ import * as Print2 from '../assets/js/print2.js';
 import { EstudioElement } from './models/estudios.interface';
 import { PeriodicElement } from './models/experiencias.interface';
 import { ConocimientoElement } from './models/conocimientos.interface';
+import { SkillsElement } from './models/skills.interface';
 import { IdiomasElement } from './models/idiomas.interface';
 import { CursoElement } from './models/cursos.interface';
 import { LanguageService } from './language.service';
@@ -26,6 +27,7 @@ export class DataFormularioService {
   pais: string = '';
   estudios: EstudioElement[] = [];
   conocimientos: ConocimientoElement[] = [];
+  skills: SkillsElement[] = [];
   experiencias: PeriodicElement[] = [];
   cursos: CursoElement[] = [];
   idiomas: IdiomasElement[] = [];
@@ -37,6 +39,7 @@ export class DataFormularioService {
   tieneCursos: boolean = false;
   tieneIdiomas: boolean = false;
   tienePersonal: boolean = false;
+  tieneSkills: boolean = false;
 
   selectedLanguage: string = 'es';
   languageTexts: any;
@@ -105,6 +108,11 @@ export class DataFormularioService {
     this.actualizarEstadoArreglos();
   }
 
+  guardarSkills(skill: SkillsElement[]) {
+    this.skills = skill;
+    this.actualizarEstadoArreglos();
+  }
+
   guardarIdioma(idiomas: IdiomasElement[]) {
     this.idiomas = idiomas;
     this.actualizarEstadoArreglos();
@@ -126,35 +134,13 @@ export class DataFormularioService {
     this.tieneExperiencias = this.experiencias.length > 0
     this.tieneCursos = this.cursos.length > 0;
     this.tieneIdiomas = this.idiomas.length > 0;
+    this.tieneSkills = this.skills.length > 0;
 
     if(this.nombre != "" && this.apellidos != "" && this.nacionalidad != "" && this.ciudad != "" && this.pais != "" ) {
       this.tienePersonal = true;
     } else {
       this.tienePersonal = false;
     }
-  }
-
-  guardarDatosLocal() {
-    const datos = {
-      nombre: this.nombre,
-      apellidos: this.apellidos,
-      nacionalidad: this.nacionalidad,
-      edad: this.edad,
-      ciudad: this.ciudad,
-      pais: this.pais,
-      estudios: this.estudios,
-      conocimientos: this.conocimientos,
-      experiencias: this.experiencias,
-      cursos: this.cursos,
-      idiomas: this.idiomas,
-      tieneEstudios: this.tieneEstudios,
-      tieneConocimientos: this.tieneConocimientos,
-      tieneExperiencias: this.tieneExperiencias,
-      tieneCursos: this.tieneCursos,
-      tieneIdiomas: this.tieneIdiomas,
-      tienePersonal: this.tienePersonal
-    };
-    localStorage.setItem(this.datosKey, JSON.stringify(datos));
   }
 
 }

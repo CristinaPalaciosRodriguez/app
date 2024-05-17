@@ -1,0 +1,64 @@
+<div class="formulario-container">
+    <h2 class="titulo">HABILIDADES BLANDAS / SOFT SKILLS</h2>
+    <form class="formulario">
+      <div class="fila">
+        <h3 class="titulo">{{ languageTexts.indicaSkill }}</h3>
+      </div>
+
+      <div class="fila">
+        <div class="columna">
+          <mat-form-field class="campo">
+            <mat-label>{{ languageTexts.skill }}</mat-label>
+            <input matInput placeholder="{{ languageTexts.skill }}" name="skill" required [(ngModel)]="skill">
+            <mat-error *ngIf="!skill">{{ languageTexts.obligatorio }}</mat-error>
+          </mat-form-field>
+        </div>
+        
+      </div>
+  
+      <button mat-raised-button color="primary" class="boton" (click)="guardarSkill()">{{ languageTexts.guardarSkill }}</button>
+    </form>
+  
+    <div class="example-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox (change)="$event ? masterToggle() : null"
+                            [checked]="selection.hasValue() && isAllSelected()"
+                            [indeterminate]="selection.hasValue() && !isAllSelected()"
+                            [aria-label]="checkboxLabel()">
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox (click)="$event.stopPropagation()"
+                            (change)="$event ? selection.toggle(row) : null"
+                            [checked]="selection.isSelected(row)"
+                            [aria-label]="checkboxLabel(row)">
+              </mat-checkbox>
+            </td>
+          </ng-container>
+      
+          <!-- Definición de las columnas -->
+          <ng-container matColumnDef="skill">
+            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.skill }} </th>
+            <td mat-cell *matCellDef="let element"> {{ element.skill }} </td>
+          </ng-container>
+      
+          <!-- Columna para el botón de eliminar -->
+          <ng-container matColumnDef="eliminar">
+            <th mat-header-cell *matHeaderCellDef>  {{ languageTexts.eliminar }}  </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="warn" (click)="eliminarElemento(element)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+      
+          <!-- Definir el orden de las columnas -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>    
+</div>
+  

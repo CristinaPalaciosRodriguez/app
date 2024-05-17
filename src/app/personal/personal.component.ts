@@ -34,9 +34,7 @@ export class PersonalComponent {
   }
 
   ngOnDestroy() {
-    // Guardar los datos al salir del componente o de la página
-    this.dataFormularioService.guardarDatosLocal();
-    
+   
   }
 
 }

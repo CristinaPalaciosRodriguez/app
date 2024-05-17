@@ -64,6 +64,10 @@ interface LanguageText {
   idiomas: string;
   comentariotTitulo: string;
   indicaConocimiento: string;
+  residenciaactual: string;
+  indicaSkill: string;
+  skill: string;
+  guardarSkill: string;
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -142,6 +146,10 @@ export class LanguageService {
       idiomas: 'LANGUAGES',
       comentariotTitulo: 'NOTES OR COMMENTS',
       indicaConocimiento: 'Select the knowledge in the table (In the box) or enter a new knowledge (Type in the field)',
+      residenciaactual: 'Current residence',
+      indicaSkill: 'Select the skill in the table (In the box) or enter a new skill (Type in the field)',
+      skill: 'Soft skill',
+      guardarSkill: 'Save Soft Skill',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -207,6 +215,10 @@ export class LanguageService {
       idiomas: 'IDIOMAS',
       comentariotTitulo: 'NOTAS O COMENTARIOS',
       indicaConocimiento: 'Seleccione el conocimiento en la tabla (En la casilla) o ingrese un nuevo conocimiento (Escriba en el campo)',
+      residenciaactual: 'Residencia actual',
+      indicaSkill: 'Seleccione la habilidad en la tabla (En la casilla) o ingrese una nueva habilidad (Escriba en el campo)',
+      skill: 'Habilidad blanda',
+      guardarSkill: 'Guardar habilidad blanda',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario
