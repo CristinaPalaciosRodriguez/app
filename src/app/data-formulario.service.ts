@@ -80,7 +80,7 @@ export class DataFormularioService {
     this.actualizarEstadoArreglos();
     if(estilo === "Diseño de una columna"){
       Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.estudios, this.conocimientos,
-        this.experiencias, this.cursos, this.idiomas, this.languageTexts, this.comentarios);
+        this.experiencias, this.cursos, this.idiomas, this.languageTexts, this.comentarios, this.skills);
     } else {
       Print2.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.estudios, this.conocimientos,
         this.experiencias, this.cursos, this.idiomas, this.languageTexts);
@@ -104,7 +104,25 @@ export class DataFormularioService {
   }
 
   guardarConocimientos(conocimientos: ConocimientoElement[]) {
-    this.conocimientos = conocimientos;
+    // Recorrer el arreglo recibido
+    conocimientos.forEach((conocimiento) => {
+      // Comprobar si el conocimiento no está ya en this.conocimientos
+      if (!this.conocimientos.some((elem) => elem.conocimiento === conocimiento.conocimiento)) {
+        // Si no está, agregarlo a this.conocimientos
+        this.conocimientos.push(conocimiento);
+      }
+    });
+  
+    // Actualizar el estado de los arreglos
+    this.actualizarEstadoArreglos();
+  }
+
+  eliminarConocimientos(conocimientos: ConocimientoElement[]) {
+    this.conocimientos = this.conocimientos.filter(conocimiento =>
+      !conocimientos.some(elem => elem.conocimiento === conocimiento.conocimiento)
+    );
+
+    // Actualizar el estado de los arreglos
     this.actualizarEstadoArreglos();
   }
 

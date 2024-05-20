@@ -31,6 +31,7 @@ import { ComentariosComponent } from './comentarios/comentarios.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SkillsComponent } from './skills/skills.component';
 import { ConocimientoTotalComponent } from './conocimiento-total/conocimiento-total.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { ConocimientoTotalComponent } from './conocimiento-total/conocimiento-to
     HttpClientModule,
     MatSelectModule,
     MatChipsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

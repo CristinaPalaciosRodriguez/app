@@ -1,3 +1,4 @@
+/* styles.css o styles.scss */
 
 .formulario-container {
   width: 100%;
@@ -6,44 +7,57 @@
   border-radius: 10px;
 }
 
-/* styles.css o styles.scss */
 button {
   background-color: #33CEFF !important; /* Cambia el color de fondo */
   color: black !important; /* Cambia el color del texto a negro */
 }
 
-
 .titulo {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduce el margen inferior */
 }
 
 .example-container {
-    height: 400px;
-    overflow: auto;
-  }
-  
-  table {
-    width: 100%;
-  }
-  
-  .fila {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .columna {
-    flex-basis: calc(50% - 10px);
-    margin-bottom: 20px;
-  }
+  height: 400px;
+  overflow: auto;
+}
 
-  .campo {
-    width: 100%;
-  }
+table {
+  width: 100%;
+}
 
-  .example-container {
-    margin-top: 20px;
-    height: 400px;
-    overflow: auto;
-  }
+.fila {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.columna {
+  flex-basis: calc(50% - 10px);
+  margin-bottom: 20px;
+}
+
+.campo {
+  width: 100%;
+}
+
+.mat-expansion-panel {
+  margin-bottom: 10px; /* Reduce el espacio entre los paneles */
+}
+
+.mat-expansion-panel-header {
+  background-color: white; /* Opcional: Cambia el color de fondo del header del panel */
+}
+
+.mat-expansion-panel-content {
+  padding: 10px; /* Opcional: Ajusta el padding del contenido del panel */
+}
+
+.conocimientos-container {
+  margin-bottom: 5px; /* Reduce el espacio entre los componentes */
+}
+
+.ng-container {
+  display: flex;
+  flex-direction: column;
+}

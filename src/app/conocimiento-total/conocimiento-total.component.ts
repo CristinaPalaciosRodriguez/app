@@ -15,14 +15,13 @@ export class ConocimientoTotalComponent implements OnInit {
 
   selection = new SelectionModel<ConocimientoElement>(true, []);
   dataSource = new MatTableDataSource<ConocimientoElement>([
-    { conocimiento: 'PLC', position: 1 },
-    { conocimiento: 'TIA PORTAL', position: 2 },
-    { conocimiento: 'SCADA', position: 3 },
-    { conocimiento: 'API', position: 4 },
-    { conocimiento: 'MVC', position: 5 },
-    { conocimiento: 'SQL', position: 6 },
-    { conocimiento: 'MySQL', position: 7 },
-    { conocimiento: 'Power BI', position: 8 },
+    { conocimiento: 'Safety', position: 1 },
+    { conocimiento: 'Sensores', position: 2 },
+    { conocimiento: 'Válvulas', position: 3 },
+    { conocimiento: 'Encoders', position: 4 },
+    { conocimiento: 'Sistemas de vision', position: 5 },
+    { conocimiento: 'Accionamientos / Protecciones', position: 6 },
+    { conocimiento: 'Lectura y diseños de Planos Electricos', position: 7 },
     // Agrega más elementos si es necesario
   ]);
   conocimiento: string = '';
@@ -44,6 +43,7 @@ export class ConocimientoTotalComponent implements OnInit {
     console.log('dataSource.data:', this.dataSource.data);
   }
 
+  
   guardarConocimiento(): void {
     if (this.conocimiento) {
       const nuevaExperiencia: ConocimientoElement = {
@@ -51,14 +51,11 @@ export class ConocimientoTotalComponent implements OnInit {
         position: (this.dataSource.data.length + 1)
       };
 
-      console.log('Nuevo elemento a agregar:', nuevaExperiencia);
-
       this.dataSource.data.push(nuevaExperiencia);
-      this.dataSource.data = [...this.dataSource.data]; 
+      this.dataSource.data = [...this.dataSource.data];
       
       this.selection.select(nuevaExperiencia);
 
-      //this.dataFormularioService.guardarConocimientos(this.dataSource.data);
       this.dataFormularioService.guardarConocimientos(this.selection.selected);
       this.resetFormulario();
     } else {
@@ -72,39 +69,50 @@ export class ConocimientoTotalComponent implements OnInit {
 
   eliminarElemento(elemento: ConocimientoElement): void {
     this.dataSource.data = this.dataSource.data.filter(item => item !== elemento);
-    this.selection.deselect(elemento); // Deselecciona el elemento eliminado
-    this.dataFormularioService.guardarConocimientos(this.dataSource.data);
+    this.selection.deselect(elemento);
+    this.dataFormularioService.eliminarConocimientos([elemento]);
   }
 
-   // Para select en tabla
-   isAllSelected() {
+  isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
-    this.dataFormularioService.guardarConocimientos(this.selection.selected);
     return numSelected === numRows;
   }
 
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
-    this.dataFormularioService.guardarConocimientos(this.selection.selected);
+    if (this.isAllSelected()) {
+      const deselectedElements = [...this.selection.selected];
+      this.selection.clear();
+      this.dataFormularioService.eliminarConocimientos(deselectedElements);
+    } else {
+      this.dataSource.data.forEach(row => this.selection.select(row));
+      this.dataFormularioService.guardarConocimientos(this.selection.selected);
+    }
   }
 
-  /** The label for the checkbox on the passed row */
   checkboxLabel(row?: ConocimientoElement): string {
-    console.log("this.selection",this.selection.selected);
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
+  toggleSelection(row: ConocimientoElement) {
+    this.selection.toggle(row);
+    if (this.selection.isSelected(row)) {
+      this.dataFormularioService.guardarConocimientos([row]);
+    } else {
+      this.dataFormularioService.eliminarConocimientos([row]);
+    }
+  }
+
   categories = [
-    { title: 'CONOCIMIENTO TECNICO / TECHNICAL KNOWHOW' },
-    { title: 'CONOCIMIENTO ADMINISTRATIVO / ADMINISTRATIVE KNOWHOW' },
-    { title: 'CONOCIMIENTO DE GESTIÓN / MANAGEMENT KNOWHOW' }
+    { title: 'PLCs' },
+    { title: 'HMIs' },
+    { title: 'DRIVEs / SERVOs' },
+    { title: 'Software' },
+    { title: 'Lenguaje de Programacion' },
+    { title: 'Network' }
   ];
 
 }
