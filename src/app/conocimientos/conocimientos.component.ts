@@ -123,9 +123,12 @@ export class ConocimientosComponent implements OnInit, OnChanges {
       case 'Software':
         this.dataSource.data = this.conocimientosSoftware;
         break;
-      case 'Lenguaje de Programacion':
+      case 'Lenguaje de programación':
         this.dataSource.data = this.conocimientosLenguaje;
         break;
+        case 'Language of programming':
+          this.dataSource.data = this.conocimientosLenguaje;
+          break;
       case 'Network':
         this.dataSource.data = this.conocimientosNetwork;
         break;

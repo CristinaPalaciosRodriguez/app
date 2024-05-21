@@ -120,7 +120,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
 
     // Columna de conocimientos
     a.document.write('<div style="flex: 1; margin-right: 20px;">');
-    a.document.write('<div style="display: flex; flex-direction: column; margin-top:3%;">');
+    a.document.write('<div style="display: flex; flex-direction: column; margin-top:3%; border-bottom: 1px solid black;">');
     a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;">' + languageTexts.conocimientotec + '</label>');
     a.document.write('</div>');
 
@@ -139,8 +139,8 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
 
     // Columna de habilidades
     a.document.write('<div style="flex: 1; margin-left: 20px;">');
-    a.document.write('<div style="display: flex; flex-direction: column; margin-top:3%;">');
-    a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;">' + languageTexts.skill + '</label>');
+    a.document.write('<div style="display: flex; flex-direction: column; margin-top:3%; border-bottom: 1px solid black;">');
+    a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;">' + languageTexts.skillEt + '</label>');
     a.document.write('</div>');
 
     const numSkills = skills.length;

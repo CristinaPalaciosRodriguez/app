@@ -68,6 +68,11 @@ interface LanguageText {
   indicaSkill: string;
   skill: string;
   guardarSkill: string;
+  skillEt: string;
+  lenguajeProgramacion: string;
+  conocimiento5: string;
+  conocimiento6: string;
+  conocimiento7: string;
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -150,6 +155,11 @@ export class LanguageService {
       indicaSkill: 'Select the skill in the table (In the box) or enter a new skill (Type in the field)',
       skill: 'Soft skill',
       guardarSkill: 'Save Soft Skill',
+      skillEt: 'SOFT SKILLS',
+      lenguajeProgramacion: 'Language of programming',
+      conocimiento5: 'Vision Systems',
+      conocimiento6: 'Drives / Protections',
+      conocimiento7: 'Reading and Designing Electrical Drawings',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -219,6 +229,11 @@ export class LanguageService {
       indicaSkill: 'Seleccione la habilidad en la tabla (En la casilla) o ingrese una nueva habilidad (Escriba en el campo)',
       skill: 'Habilidad blanda',
       guardarSkill: 'Guardar habilidad blanda',
+      skillEt: 'HABILIDADES BLANDAS',
+      lenguajeProgramacion: 'Lenguaje de programación',
+      conocimiento5: 'Sistemas de vision',
+      conocimiento6: 'Accionamientos / Protecciones',
+      conocimiento7: 'Lectura y diseños de Planos Electricos',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

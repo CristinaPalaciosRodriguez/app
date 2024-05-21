@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: 'formulario', component: FormularioComponent }
 ];
 
+//app/formulario
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

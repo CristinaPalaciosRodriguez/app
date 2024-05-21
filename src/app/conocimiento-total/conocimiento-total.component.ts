@@ -6,6 +6,10 @@ import { Subscription } from 'rxjs';
 import { ConocimientoElement } from '../models/conocimientos.interface';
 import {SelectionModel} from '@angular/cdk/collections';
 
+type Category = {
+  title: string;
+};
+
 @Component({
   selector: 'app-conocimiento-total',
   templateUrl: './conocimiento-total.component.html',
@@ -14,16 +18,8 @@ import {SelectionModel} from '@angular/cdk/collections';
 export class ConocimientoTotalComponent implements OnInit {
 
   selection = new SelectionModel<ConocimientoElement>(true, []);
-  dataSource = new MatTableDataSource<ConocimientoElement>([
-    { conocimiento: 'Safety', position: 1 },
-    { conocimiento: 'Sensores', position: 2 },
-    { conocimiento: 'Válvulas', position: 3 },
-    { conocimiento: 'Encoders', position: 4 },
-    { conocimiento: 'Sistemas de vision', position: 5 },
-    { conocimiento: 'Accionamientos / Protecciones', position: 6 },
-    { conocimiento: 'Lectura y diseños de Planos Electricos', position: 7 },
-    // Agrega más elementos si es necesario
-  ]);
+  dataSource = new MatTableDataSource<ConocimientoElement>([]);
+  categories: Category[] = [];
   conocimiento: string = '';
   selectedLanguage: string = 'es';
   languageTexts: any;
@@ -35,6 +31,7 @@ export class ConocimientoTotalComponent implements OnInit {
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
     this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
       this.languageTexts = languageTexts;
+      this.updateCategories();
     });
    }
 
@@ -106,13 +103,26 @@ export class ConocimientoTotalComponent implements OnInit {
     }
   }
 
-  categories = [
-    { title: 'PLCs' },
-    { title: 'HMIs' },
-    { title: 'DRIVEs / SERVOs' },
-    { title: 'Software' },
-    { title: 'Lenguaje de Programacion' },
-    { title: 'Network' }
-  ];
+  updateCategories() {
+    this.categories = [
+      { title: 'PLCs' },
+      { title: 'HMIs' },
+      { title: 'DRIVEs / SERVOs' },
+      { title: 'Software' },
+      { title: this.languageTexts.lenguajeProgramacion },
+      { title: 'Network' }
+    ];
+
+    this.dataSource.data = [
+      { conocimiento: 'Safety', position: 1 },
+      { conocimiento: 'Sensores', position: 2 },
+      { conocimiento: 'Válvulas', position: 3 },
+      { conocimiento: 'Encoders', position: 4 },
+      { conocimiento: this.languageTexts.conocimiento5 , position: 5 },
+      { conocimiento: this.languageTexts.conocimiento6 , position: 6 },
+      { conocimiento: this.languageTexts.conocimiento7 , position: 7 },
+      // Agrega más elementos si es necesario
+    ];
+  }
 
 }

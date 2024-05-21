@@ -17,14 +17,6 @@ export class SkillsComponent implements OnInit {
   
   selection = new SelectionModel<SkillsElement>(true, []);
   dataSource = new MatTableDataSource<SkillsElement>([
-    { skill: 'PLC', position: 1 },
-    { skill: 'TIA PORTAL', position: 2 },
-    { skill: 'SCADA', position: 3 },
-    { skill: 'API', position: 4 },
-    { skill: 'MVC', position: 5 },
-    { skill: 'SQL', position: 6 },
-    { skill: 'MySQL', position: 7 },
-    { skill: 'Power BI', position: 8 },
     // Agrega más elementos si es necesario
   ]);
   skill: string = '';
