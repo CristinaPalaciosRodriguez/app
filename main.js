@@ -3123,7 +3123,7 @@ function NavigationComponent_mat_option_23_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"](" ", language_r5.viewValue, " ");
 } }
-const _c0 = function () { return ["/formulario"]; };
+const _c0 = function () { return [""]; };
 class NavigationComponent {
     constructor(breakpointObserver, languageService) {
         this.breakpointObserver = breakpointObserver;
@@ -3604,7 +3604,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routes = [
-    { path: '', redirectTo: 'formulario', pathMatch: 'full' },
+    { path: '', component: _formulario_formulario_component__WEBPACK_IMPORTED_MODULE_1__["FormularioComponent"] },
     { path: 'formulario', component: _formulario_formulario_component__WEBPACK_IMPORTED_MODULE_1__["FormularioComponent"] }
 ];
 class AppRoutingModule {
