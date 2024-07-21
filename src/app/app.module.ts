@@ -32,6 +32,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SkillsComponent } from './skills/skills.component';
 import { ConocimientoTotalComponent } from './conocimiento-total/conocimiento-total.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { CvModalComponent } from './cv-modal/cv-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     ComentariosComponent,
     SkillsComponent,
     ConocimientoTotalComponent,
+    CvModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSelectModule,
     MatChipsModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

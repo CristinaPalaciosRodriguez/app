@@ -1,24 +1,40 @@
 <div class="formulario-container">
-    <h2 class="titulo">NOTAS O COMENTARIOS / NOTES OR COMMENTS</h2>
-    <form class="formulario" (ngSubmit)="enviarDatos()">
-      <div class="fila">
-        <div class="columna">
-          <mat-form-field class="campo">
-            <mat-label>{{ languageTexts.comentarios }}</mat-label>
-            <textarea matInput class="mi-textarea" placeholder="{{ languageTexts.comentarios }}" name="comentario" [(ngModel)]="comentario"></textarea>
-          </mat-form-field>
-        </div>
-       </div>
-       <div class="lip">
-        <div>
-            <mat-form-field style="margin-right: 10px;">
-                <mat-select placeholder="{{ languageTexts.estilos }}" name="disenoHoja" [(ngModel)]="disenoHoja">
-                    <mat-option value="Diseño de una columna">{{ languageTexts.estilo1 }}</mat-option>
-                    <mat-option value="Diseño de dos columnas">{{ languageTexts.estilo2 }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <button mat-raised-button class="btazul"  [disabled]="!todosArreglosLlenos()" type="submit">{{ languageTexts.generarDoc }}</button>
+  <h2 class="titulo">NOTAS O COMENTARIOS / NOTES OR COMMENTS</h2>
+  <form class="formulario" (ngSubmit)="verificarArreglos($event)">
+    <div class="fila">
+      <div class="columna">
+        <mat-form-field class="campo">
+          <mat-label>{{ languageTexts.comentarios }}</mat-label>
+          <textarea
+            matInput
+            class="mi-textarea"
+            placeholder="{{ languageTexts.comentarios }}"
+            name="comentario"
+            [(ngModel)]="comentario"
+          ></textarea>
+        </mat-form-field>
       </div>
-       </form>
-  </div>
+    </div>
+    <div class="lip">
+      <div>
+        <mat-form-field style="margin-right: 10px">
+          <mat-select
+            placeholder="{{ languageTexts.estilos }}"
+            name="disenoHoja"
+            [(ngModel)]="disenoHoja"
+          >
+            <mat-option value="Diseño de una columna">{{
+              languageTexts.estilo1
+            }}</mat-option>
+            <mat-option value="Diseño de dos columnas">{{
+              languageTexts.estilo2
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button class="btazul" type="submit">{{ languageTexts.generarDoc }}</button>
+    </div>
+  </form>
+  <button mat-raised-button color="primary" (click)="openPdfViewer()">Abrir PDF</button>
+</div>
+

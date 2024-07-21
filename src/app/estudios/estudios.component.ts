@@ -3,6 +3,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DataFormularioService } from '../data-formulario.service';
 import { LanguageService } from '../language.service';
 import { Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-estudios',
@@ -28,12 +30,11 @@ export class EstudiosComponent implements OnInit {
     this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
       this.languageTexts = languageTexts;
     });
-   }
-
-  ngOnInit(): void {
   }
 
-  guardarEstudio(): void {
+  ngOnInit(): void { }
+
+  guardarEstudio(form: NgForm): void {
     if (this.universidad && this.carrera && this.generacion && this.fechaIni) {
       const nuevaExperiencia: EstudioElement = {
         universidad: this.universidad,
@@ -43,20 +44,25 @@ export class EstudiosComponent implements OnInit {
       };
 
       this.dataSource.data.push(nuevaExperiencia);
-      this.dataSource.data = [...this.dataSource.data]; 
+      this.dataSource.data = [...this.dataSource.data];
 
       this.dataFormularioService.guardarEstudios(this.dataSource.data);
-      this.resetFormulario();
+      this.resetFormulario(form);
     } else {
-      alert('Por favor completa todos los campos.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor completa todos los campos obligatorios.',
+      });
     }
   }
 
-  resetFormulario(): void {
+  resetFormulario(form: NgForm): void {
     this.universidad = '';
     this.carrera = '';
     this.generacion = null;
     this.fechaIni = null;
+    form.resetForm();
   }
 
   eliminarElemento(elemento: EstudioElement): void {
