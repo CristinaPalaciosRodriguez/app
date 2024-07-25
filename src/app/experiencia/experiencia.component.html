@@ -1,110 +1,107 @@
 <div class="formulario-container">
     <h2 class="titulo">EXPERIENCIA LABORAL / WORK EXPERIENCE</h2>
-    <form class="formulario">
+    <form class="formulario" #experienciaForm="ngForm" (ngSubmit)="guardarExperiencia(experienciaForm)">
       <div class="fila">
         <div class="columna">
           <mat-form-field class="campo">
             <mat-label>{{ languageTexts.empresa }}</mat-label>
-            <input matInput placeholder="{{ languageTexts.empresa }}" name="empresa" required [(ngModel)]="empresa">
-            <mat-error *ngIf="!empresa">{{ languageTexts.obligatorio }}</mat-error>
+            <input matInput placeholder="{{ languageTexts.empresa }}" name="empresa" required [(ngModel)]="empresa" #empresaModel="ngModel">
+            <mat-error *ngIf="empresaModel.invalid && (empresaModel.dirty || empresaModel.touched)">
+              {{ languageTexts.obligatorio }}
+            </mat-error>
           </mat-form-field>
         </div>
-        
+
         <div class="columna">
           <mat-form-field class="campo">
             <mat-label>{{ languageTexts.puesto }}</mat-label>
-            <input matInput placeholder="{{ languageTexts.puesto }}" name="puesto" required [(ngModel)]="puesto">
-            <mat-error *ngIf="!puesto">{{ languageTexts.obligatorio }}</mat-error>
+            <input matInput placeholder="{{ languageTexts.puesto }}" name="puesto" required [(ngModel)]="puesto" #puestoModel="ngModel">
+            <mat-error *ngIf="puestoModel.invalid && (puestoModel.dirty || puestoModel.touched)">
+              {{ languageTexts.obligatorio }}
+            </mat-error>
           </mat-form-field>
         </div>
-  
+
         <div class="columna">
           <mat-form-field class="campo">
-            <input matInput [matDatepicker]="pickerInicio" name="fechaIni" placeholder="{{ languageTexts.fechaIniU }}" required [(ngModel)]="fechaInicio">
+            <input matInput [matDatepicker]="pickerInicio" name="fechaIni" placeholder="{{ languageTexts.fechaIniU }}" required [(ngModel)]="fechaInicio" #fechaInicioModel="ngModel">
             <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
             <mat-datepicker #pickerInicio></mat-datepicker>
-            <mat-error *ngIf="!fechaInicio">{{ languageTexts.obligatorio }}</mat-error>
+            <mat-error *ngIf="fechaInicioModel.invalid && (fechaInicioModel.dirty || fechaInicioModel.touched)">
+              {{ languageTexts.obligatorio }}
+            </mat-error>
           </mat-form-field>
         </div>
-        
+
         <div class="columna">
           <mat-form-field class="campo">
-            <input matInput [matDatepicker]="pickerFin" name="fechaFin" placeholder="{{ languageTexts.fechaFinU }}" required [(ngModel)]="fechaFin">
+            <input matInput [matDatepicker]="pickerFin" name="fechaFin" placeholder="{{ languageTexts.fechaFinU }}" required [(ngModel)]="fechaFin" #fechaFinModel="ngModel">
             <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
             <mat-datepicker #pickerFin></mat-datepicker>
-            <mat-error *ngIf="!fechaFin">{{ languageTexts.obligatorio }}</mat-error>
+            <mat-error *ngIf="fechaFinModel.invalid && (fechaFinModel.dirty || fechaFinModel.touched)">
+              {{ languageTexts.obligatorio }}
+            </mat-error>
           </mat-form-field>
 
           <!-- Agregar botón para establecer la fecha actual -->
           <span style="padding-right: 5px;">{{ languageTexts.fechaActual }}</span>
-          <button mat-button matSuffix (click)="setFechaActual()">{{ languageTexts.actual }}</button>
+          <button mat-button matSuffix type="button" (click)="setFechaActual()">{{ languageTexts.actual }}</button>
         </div>
 
         <div class="columna">
           <mat-form-field class="campo">
             <mat-chip-list #chipList required>
-              <mat-chip *ngFor="let logro of logros" [selectable]="selectable"
-                        [removable]="removable" (removed)="remove(logro)">
+              <mat-chip *ngFor="let logro of logros" [selectable]="selectable" [removable]="removable" (removed)="remove(logro)">
                 {{logro.nombreLogro}}
                 <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
               </mat-chip>
-              <input placeholder="{{ languageTexts.logros }}" required
-                     [matChipInputFor]="chipList"
-                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                     [matChipInputAddOnBlur]="addOnBlur"
-                     (matChipInputTokenEnd)="add($event)">
+              <input placeholder="{{ languageTexts.logros }}" required [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
             </mat-chip-list>
             <mat-error *ngIf="logros.length === 0">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
-        </div>        
+        </div>
 
         <div class="columna">
           <mat-form-field class="campo">
             <mat-chip-list #chipList2 required>
-              <mat-chip *ngFor="let funcion of funcionesArray" [selectable]="selectableFun"
-                       [removable]="removableFun" (removed)="removeFunciones(funcion)">
+              <mat-chip *ngFor="let funcion of funcionesArray" [selectable]="selectableFun" [removable]="removableFun" (removed)="removeFunciones(funcion)">
                 {{funcion.nombreFuncion}}
                 <mat-icon matChipRemove *ngIf="removableFun">cancel</mat-icon>
               </mat-chip>
-              <input placeholder="{{ languageTexts.funciones }}"
-                     [matChipInputFor]="chipList2"
-                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                     [matChipInputAddOnBlur]="addOnBlurFun"
-                     (matChipInputTokenEnd)="addFunciones($event)">
+              <input placeholder="{{ languageTexts.funciones }}" [matChipInputFor]="chipList2" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlurFun" (matChipInputTokenEnd)="addFunciones($event)">
             </mat-chip-list>
-            <mat-error *ngIf="funciones.length === 0">{{ languageTexts.obligatorio }}</mat-error>
+            <mat-error *ngIf="funcionesArray.length === 0">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
         </div>
-        
       </div>
-  
-      <button mat-raised-button color="primary" class="boton" (click)="guardarExperiencia()">{{ languageTexts.guardarExp }}</button>
+
+      <button mat-raised-button color="primary" class="boton" type="submit">{{ languageTexts.guardarExp }}</button>
     </form>
-  
+
     <div class="example-container mat-elevation-z8">
         <table mat-table [dataSource]="dataSource">
-      
+
           <ng-container matColumnDef="empresa">
             <th mat-header-cell *matHeaderCellDef style="width: 150px;"> {{ languageTexts.empresa }} </th>
             <td mat-cell *matCellDef="let element" style="width: 150px;"> {{ element.empresa }} </td>
           </ng-container>
-          
+
           <!-- Definición de las columnas -->
           <ng-container matColumnDef="puesto">
             <th mat-header-cell *matHeaderCellDef style="width: 100px;"> {{ languageTexts.puesto }} </th>
             <td mat-cell *matCellDef="let element" style="width: 100px;"> {{ element.puesto }} </td>
           </ng-container>
-      
+
           <ng-container matColumnDef="fechaIni">
             <th mat-header-cell *matHeaderCellDef style="width: 100px;"> {{ languageTexts.fechaInicio }} </th>
             <td mat-cell *matCellDef="let element" style="width: 100px;"> {{ element.fechaIni | date:'dd-MM-yyyy' }} </td>
           </ng-container>
-      
+
           <ng-container matColumnDef="fechaFin">
             <th mat-header-cell *matHeaderCellDef style="width: 100px;"> {{ languageTexts.fechaFin }} </th>
             <td mat-cell *matCellDef="let element" style="width: 100px;"> {{ element.fechaFin | date:'dd-MM-yyyy' }} </td>
           </ng-container>
-      
+
           <ng-container matColumnDef="actividades">
             <th mat-header-cell *matHeaderCellDef> {{ languageTexts.logroet }} </th>
             <td mat-cell *matCellDef="let element">
@@ -112,8 +109,8 @@
                 <li *ngFor="let actividad of element.actividades">{{ actividad }}</li>
               </ul>
             </td>
-          </ng-container>       
-          
+          </ng-container>
+
           <ng-container matColumnDef="funciones">
             <th mat-header-cell *matHeaderCellDef> {{ languageTexts.funcionet }} </th>
             <td mat-cell *matCellDef="let element">
@@ -122,7 +119,7 @@
               </ul>
             </td>
           </ng-container>
-      
+
           <!-- Columna para el botón de eliminar -->
           <ng-container matColumnDef="eliminar">
             <th mat-header-cell *matHeaderCellDef style="width: 40px;"> {{ languageTexts.eliminar }} </th>
@@ -132,11 +129,10 @@
               </button>
             </td>
           </ng-container>
-      
+
           <!-- Definir el orden de las columnas -->
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-      </div>    
+      </div>
 </div>
-  

@@ -68,7 +68,7 @@ export class ComentariosComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: `El arreglo de ${resultado.arregloVacio} está vacío`,
+        text: `La sección de ${resultado.arregloVacio} está vacío`,
       });
     } else {
       // Si todos los arreglos están llenos, permite el submit

@@ -4,6 +4,8 @@ import { DataFormularioService } from '../data-formulario.service';
 import { LanguageService } from '../language.service';
 import { Subscription } from 'rxjs';
 import { IdiomasElement } from '../models/idiomas.interface';
+import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-idiomas',
@@ -25,34 +27,38 @@ export class IdiomasComponent implements OnInit {
     this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
       this.languageTexts = languageTexts;
     });
-   }
+  }
 
   ngOnInit(): void {
     console.log('displayedColumns:', this.displayedColumns);
     console.log('dataSource.data:', this.dataSource.data);
   }
 
-  guardarIdioma(): void {
-    if (this.idioma) {
-      const nuevaExperiencia: IdiomasElement = {
+  guardarIdioma(form: NgForm): void {
+    if (form.valid) {
+      const nuevoIdioma: IdiomasElement = {
         idioma: this.idioma
       };
 
-      console.log('Nuevo elemento a agregar:', nuevaExperiencia);
+      console.log('Nuevo elemento a agregar:', nuevoIdioma);
 
-      this.dataSource.data.push(nuevaExperiencia);
-      this.dataSource.data = [...this.dataSource.data]; 
+      this.dataSource.data.push(nuevoIdioma);
+      this.dataSource.data = [...this.dataSource.data];
 
-      console.log('dataSource.data después de agregar:', this.dataSource.data);
       this.dataFormularioService.guardarIdioma(this.dataSource.data);
-      this.resetFormulario();
+      this.resetFormulario(form);
     } else {
-      alert('Por favor completa todos los campos.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor completa todos los campos obligatorios.',
+      });
     }
   }
 
-  resetFormulario(): void {
+  resetFormulario(form: NgForm): void {
     this.idioma = '';
+    form.resetForm();
   }
 
   eliminarElemento(elemento: IdiomasElement): void {

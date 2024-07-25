@@ -4,6 +4,8 @@ import { DataFormularioService } from '../data-formulario.service';
 import { LanguageService } from '../language.service';
 import { Subscription } from 'rxjs';
 import { CursoElement } from '../models/cursos.interface';
+import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-cursos',
@@ -27,9 +29,9 @@ export class CursosComponent implements OnInit {
   private languageSubscription: Subscription;
   fechaActual: Date = new Date();
 
-  displayedColumns = ['nombre', 'organizacion', 'fechaIni','fechaFin','descripcion','entidad','tiempoEstudio', 'eliminar'];
+  displayedColumns = ['nombre', 'organizacion', 'fechaIni', 'fechaFin', 'descripcion', 'entidad', 'tiempoEstudio', 'eliminar'];
 
-  constructor(private dataFormularioService: DataFormularioService,  private languageService: LanguageService) { 
+  constructor(private dataFormularioService: DataFormularioService, private languageService: LanguageService) {
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
     this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
       this.languageTexts = languageTexts;
@@ -41,9 +43,9 @@ export class CursosComponent implements OnInit {
     console.log('dataSource.data:', this.dataSource.data);
   }
 
-  guardarCurso(): void {
+  guardarCurso(form: NgForm): void {
     if (this.nombre && this.organizacion && this.fechaIni && this.fechaFin && this.descripcion && this.entidad && this.tiempoEspecifica && this.tiempoNum) {
-      const nuevaExperiencia: CursoElement = {
+      const nuevoCurso: CursoElement = {
         nombre: this.nombre,
         organizacion: this.organizacion,
         fechaIni: this.fechaIni,
@@ -53,26 +55,32 @@ export class CursosComponent implements OnInit {
         tiempoEstudio: this.tiempoNum + ' ' + this.tiempoEspecifica,
       };
 
-      console.log('Nuevo elemento a agregar:', nuevaExperiencia);
+      console.log('Nuevo elemento a agregar:', nuevoCurso);
 
-      this.dataSource.data.push(nuevaExperiencia);
-      this.dataSource.data = [...this.dataSource.data]; 
+      this.dataSource.data.push(nuevoCurso);
+      this.dataSource.data = [...this.dataSource.data];
 
       this.dataFormularioService.guardarCursos(this.dataSource.data);
-      this.resetFormulario();
+      this.resetFormulario(form);
     } else {
-      alert('Por favor completa todos los campos.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor completa todos los campos obligatorios.',
+      });
     }
   }
 
-  resetFormulario(): void {
+  resetFormulario(form: NgForm): void {
     this.nombre = '';
     this.organizacion = '';
     this.fechaIni = null;
     this.fechaFin = null;
     this.descripcion = '';
-    this.tiempoEstudio = '';
     this.entidad = '';
+    this.tiempoEspecifica = '';
+    this.tiempoNum = 1;
+    form.resetForm();
   }
 
   eliminarElemento(elemento: CursoElement): void {
