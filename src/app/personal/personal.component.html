@@ -1,5 +1,6 @@
 <div class="formulario-container">
   <h2 class="titulo">DATOS PERSONALES / PERSONAL DATA</h2>
+  <h3 class="campo">{{ languageTexts.indicacion }}</h3>
   <form class="formulario" (focusout)="handleBlurEvent()">
     <div class="fila">
       <div class="columna">
@@ -31,7 +32,7 @@
           <input matInput placeholder="{{ languageTexts.edad }}" type="number" min="18" required [(ngModel)]="edad" name="edad">
           <mat-error *ngIf="!edad">{{ languageTexts.obligatorio }}</mat-error>
         </mat-form-field>
-      </div>          
+      </div>
     </div>
     <div class="fila">
       <div class="columna">

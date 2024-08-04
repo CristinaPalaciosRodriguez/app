@@ -83,7 +83,7 @@ export class DataFormularioService {
         this.experiencias, this.cursos, this.idiomas, this.languageTexts, this.comentarios, this.skills);
     } else {
       Print2.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.estudios, this.conocimientos,
-        this.experiencias, this.cursos, this.idiomas, this.languageTexts);
+        this.experiencias, this.cursos, this.idiomas, this.languageTexts, this.skills);
     }
 
   }
@@ -167,7 +167,7 @@ export class DataFormularioService {
         this.experiencias, this.cursos, this.idiomas, this.languageTexts, this.comentarios, this.skills);
     } else {
       Print2.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.estudios, this.conocimientos,
-        this.experiencias, this.cursos, this.idiomas, this.languageTexts);
+        this.experiencias, this.cursos, this.idiomas, this.languageTexts, this.skills);
     }
 
   }

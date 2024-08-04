@@ -73,6 +73,7 @@ interface LanguageText {
   conocimiento5: string;
   conocimiento6: string;
   conocimiento7: string;
+  indicacion: string;
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -160,6 +161,7 @@ export class LanguageService {
       conocimiento5: 'Vision Systems',
       conocimiento6: 'Drives / Protections',
       conocimiento7: 'Reading and Designing Electrical Drawings',
+      indicacion: 'Please fill out all required fields and generate the document, that document must be forwarded by mail to the human resources staff'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -234,6 +236,7 @@ export class LanguageService {
       conocimiento5: 'Sistemas de vision',
       conocimiento6: 'Accionamientos / Protecciones',
       conocimiento7: 'Lectura y diseños de Planos Electricos',
+      indicacion: 'Por favor, llene todos los campos requeridos y genere el documento, ese documento debe reenviarlo por correo al personal de recursos humanos.'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario
