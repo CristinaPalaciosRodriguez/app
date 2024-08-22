@@ -74,6 +74,10 @@ interface LanguageText {
   conocimiento6: string;
   conocimiento7: string;
   indicacion: string;
+  selectnivel: string;
+  basico: string;
+  intermedio: string;
+  avanzado: string;
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -161,7 +165,11 @@ export class LanguageService {
       conocimiento5: 'Vision Systems',
       conocimiento6: 'Drives / Protections',
       conocimiento7: 'Reading and Designing Electrical Drawings',
-      indicacion: 'Please fill out all required fields and generate the document, that document must be forwarded by mail to the human resources staff'
+      indicacion: 'This form will generate a PDF document, please send it to the human resources staff.',
+      selectnivel: 'Select language level',
+      basico: 'Basic',
+      intermedio: 'Intermediate',
+      avanzado: 'Advanced',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -236,7 +244,11 @@ export class LanguageService {
       conocimiento5: 'Sistemas de vision',
       conocimiento6: 'Accionamientos / Protecciones',
       conocimiento7: 'Lectura y diseños de Planos Electricos',
-      indicacion: 'Por favor, llene todos los campos requeridos y genere el documento, ese documento debe reenviarlo por correo al personal de recursos humanos.'
+      indicacion: 'En este formulario se generara un documento en PDF, favor de enviarlo al personal de recursos humanos.',
+      selectnivel: 'Selecciona el nivel del idioma',
+      basico: 'Básico',
+      intermedio: 'Intermedio',
+      avanzado: 'Avanzado',
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

@@ -36,7 +36,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
     );
     a.document.write('<div style="display: flex; ">');
     a.document.write(
-      '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">'+ languageTexts.datospersonales +'</label>'
+      '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;  color: #3D5FEA !important;">'+ languageTexts.datospersonales +'</label>'
     );
     a.document.write("</div>");
     a.document.write("</div>");
@@ -67,7 +67,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
     );
     a.document.write('<div style="display: flex; margin-top:3%;">');
     a.document.write(
-      '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">' + languageTexts.estudioscursados + '</label>'
+      '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;  color: #3D5FEA !important; ">' + languageTexts.estudioscursados + '</label>'
     );
     a.document.write("</div>");
     a.document.write("</div>");
@@ -121,7 +121,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
     // Columna de conocimientos
     a.document.write('<div style="flex: 1; margin-right: 20px;">');
     a.document.write('<div style="display: flex; flex-direction: column; margin-top:3%; border-bottom: 1px solid black;">');
-    a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;">' + languageTexts.conocimientotec + '</label>');
+    a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;  color: #3D5FEA !important;">' + languageTexts.conocimientotec + '</label>');
     a.document.write('</div>');
 
     const numConocimientos = conocimientos.length;
@@ -140,7 +140,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
     // Columna de habilidades
     a.document.write('<div style="flex: 1; margin-left: 20px;">');
     a.document.write('<div style="display: flex; flex-direction: column; margin-top:3%; border-bottom: 1px solid black;">');
-    a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;">' + languageTexts.skillEt + '</label>');
+    a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;  color: #3D5FEA !important;">' + languageTexts.skillEt + '</label>');
     a.document.write('</div>');
 
     const numSkills = skills.length;
@@ -159,7 +159,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
     } else if (conocimientos.length > 13 && skills.length > 0) {
       a.document.write('<div style="display: flex; border-bottom: 1px solid black;">');
       a.document.write('<div style="display: flex; flex-direction: column; margin-top:3%;">');
-      a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;">' + languageTexts.conocimientotec + '</label>');
+      a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;  color: #3D5FEA !important;">' + languageTexts.conocimientotec + '</label>');
       a.document.write('</div>'); // Cerramos la última columna
       a.document.write("</div>");
         // Si no hay skills, mostramos solo la columna de conocimientos como está actualmente
@@ -191,34 +191,55 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
             // Cierra la columna actual
             a.document.write('</div>');
         }
+        a.document.write('</div>');
+        a.document.write('</div>');
+
+
+
+
+        a.document.write('<div style="display: flex; border-bottom: 1px solid black;">');
+        a.document.write('<div style="display: flex; flex-direction: column; margin-top:3%;">');
+        a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;  color: #3D5FEA !important;">' + languageTexts.skillEt + '</label>');
+        a.document.write('</div>');
+        a.document.write("</div>");
+
+        // Si no hay skills, mostramos solo la columna de conocimientos como está actualmente
+        a.document.write('<div style="display: flex;">');
+
+        const numSkills = skills.length;
+        const numColumnasS = Math.ceil(numSkills / 10); // Calcula el número de columnas necesarias
+
+        for (let i = 0; i < numColumnasS; i++) {
+            // Abre una nueva columna
+            a.document.write('<div style="flex: 1; margin-right: 20px;">');
+
+            // Itera sobre los 8 conocimientos para esta columna o menos si no hay suficientes
+            for (let j = i * 8; j < Math.min((i + 1) * 10, numSkills); j++) {
+                const skill = skills[j];
+                // =========== Conocimiento ============
+                a.document.write('<div style="display: flex; align-items: center; margin-top: 10px;">');
+                a.document.write('<div style="font-family: Arial; font-size: 18px; margin-right: 10px;"><label>•</label></div>');
+                a.document.write(`<div style="font-family: Arial; font-size: 18px;"><label>${skill.skill}</label></div>`);
+                a.document.write('</div>');
+            }
+
+            // Si la columna no tiene 8 conocimientos, añade espacios en blanco
+            const numSkillsEnColumna = Math.min(numSkills - i * 10, 10);
+            for (let k = numSkillsEnColumna; k < 10; k++) {
+                a.document.write('<div style="height: 22px;"></div>'); // Espacio en blanco para completar 8 elementos
+            }
+
+            // Cierra la columna actual
+            a.document.write('</div>');
+        }
+
 
         a.document.write('</div>'); // Cierra el contenedor de la única columna
 
-
-         // Columna de habilidades
-         a.document.write('<div style="display: flex; border-bottom: 1px solid black;">');
-         a.document.write('<div style="display: flex; flex-direction: column; margin-top:3%;">');
-         a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;">' + languageTexts.skillEt + '</label>');
-         a.document.write('</div>'); // Cerramos la última columna
-         a.document.write("</div>");
-
-    const numSkills = skills.length;
-
-    for (let j = 0; j < numSkills; j++) {
-        const skill = skills[j];
-        // =========== Skill ============
-        a.document.write('<div style="display: flex; align-items: center; margin-top: 10px;">');
-        a.document.write('<div style="font-family: Arial; font-size: 18px; margin-right: 10px;"><label>•</label></div>');
-        a.document.write(`<div style="font-family: Arial; font-size: 18px;"><label>${skill.skill}</label></div>`);
-        a.document.write('</div>');
-    }
-
-    a.document.write('</div>');
-    a.document.write('</div>');
     } else {
       a.document.write('<div style="display: flex; border-bottom: 1px solid black;">');
       a.document.write('<div style="display: flex; flex-direction: column; margin-top:3%;">');
-      a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;">' + languageTexts.conocimientotec + '</label>');
+      a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;  color: #3D5FEA !important;">' + languageTexts.conocimientotec + '</label>');
       a.document.write('</div>'); // Cerramos la última columna
       a.document.write("</div>");
         // Si no hay skills, mostramos solo la columna de conocimientos como está actualmente
@@ -261,7 +282,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
     );
     a.document.write('<div style="display: flex; margin-top:3%;">');
     a.document.write(
-      '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">'+languageTexts.experiencialab+'</label>'
+      '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;  color: #3D5FEA !important; ">'+languageTexts.experiencialab+'</label>'
     );
     a.document.write("</div>");
     a.document.write("</div>");
@@ -316,7 +337,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
 
 
       // =========== Logros ============
-      a.document.write('<div style="font-weight: bold; font-family: \'Arial\'; font-size: 18px; margin-bottom: 5px; margin-top: 10px;"><label>'+languageTexts.logroet+':</label></div>');
+      a.document.write('<div style="font-weight: bold; font-family: \'Arial\'; font-size: 18px; margin-bottom: 5px; margin-top: 10px;  color: #3D5FEA !important;"><label>'+languageTexts.logroet+':</label></div>');
       a.document.write('<div style="font-family: \'Arial\'; font-size: 18px; margin-bottom: 10px;">');
       a.document.write('<ul>'); // Inicio de la lista
       experiencia.actividades.forEach(function(actividad) {
@@ -327,7 +348,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
 
 
        // =========== Funciones ============
-       a.document.write('<div style="font-weight: bold; font-family: \'Arial\'; font-size: 18px; margin-bottom: 5px; margin-top: 10px;"><label>'+languageTexts.funcionet+':</label></div>');
+       a.document.write('<div style="font-weight: bold; font-family: \'Arial\'; font-size: 18px; margin-bottom: 5px; margin-top: 10px;  color: #3D5FEA !important;"><label>'+languageTexts.funcionet+':</label></div>');
        a.document.write('<div style="font-family: \'Arial\'; font-size: 18px; margin-bottom: 10px;">');
        a.document.write('<ul>'); // Inicio de la lista
        experiencia.funciones.forEach(function(funcion) {
@@ -348,7 +369,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
       );
       a.document.write('<div style="display: flex; margin-top:3%;">');
       a.document.write(
-          '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">'+languageTexts.otrosEstudios+'</label>'
+          '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;  color: #3D5FEA !important; ">'+languageTexts.otrosEstudios+'</label>'
       );
       a.document.write("</div>");
       a.document.write("</div>");
@@ -415,7 +436,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
     // =========== IDIOMAS ============
     a.document.write('<div style="display: flex; border-bottom: 1px solid black;">');
     a.document.write('<div style="display: flex; flex-direction: column; margin-top:3%;">');
-    a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">'+languageTexts.idiomas+'</label>');
+    a.document.write('<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;  color: #3D5FEA !important; ">'+languageTexts.idiomas+'</label>');
     a.document.write('</div>'); // Cerramos la última columna
     a.document.write("</div>");
 
@@ -434,7 +455,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
               // =========== Conocimiento ============
               a.document.write('<div style="display: flex; align-items: center; margin-top: 10px;">');
               a.document.write('<div style="font-family: Arial; font-size: 18px; margin-right: 10px;"><label>•</label></div>');
-              a.document.write(`<div style="font-family: Arial; font-size: 18px;"><label>${idioma.idioma}</label></div>`);
+              a.document.write(`<div style="font-family: Arial; font-size: 18px;"><label>${idioma.idioma + ' - '+ idioma.nivel}</label></div>`);
               a.document.write('</div>');
           }
 
@@ -457,7 +478,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
         );
         a.document.write('<div style="display: flex; margin-top:3%;">');
         a.document.write(
-          '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%; ">'+languageTexts.comentariotTitulo+'</label>'
+          '<label style="font-weight: bold; font-family: \'Franklin Gothic Medium Cond\'; font-size: 20px; margin-top: 2%;  color: #3D5FEA !important;">'+languageTexts.comentariotTitulo+'</label>'
         );
         a.document.write("</div>");
         a.document.write("</div>");
@@ -623,7 +644,7 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
     htmlContent += `
       <div class="list-item">
         <label>•</label>
-        <label>${idioma.idioma}</label>
+        <label>${idioma.idioma + ' - '+ idioma.nivel}</label>
       </div>
     `;
   });

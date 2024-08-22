@@ -52,7 +52,7 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
     // Aquí debes añadir el código para mostrar la experiencia laboral
     experiencias.forEach(experiencia => {
         a.document.write('<div style="margin-top: 15px;">');
-        a.document.write(`<p style="font-family: \'Mediator Serif Narrow Bold\', sans-serif; font-size: 18px; margin-bottom: 5px; color: #444;"><strong>${experiencia.puesto}</strong> - <strong>${experiencia.empresa}</strong></p>`);
+        a.document.write(`<p style="font-family: \'Mediator Serif Narrow Bold\', sans-serif; font-size: 18px; margin-bottom: 5px; color: black;"><strong>${experiencia.puesto}</strong> - <strong>${experiencia.empresa}</strong></p>`);
 
         // =========== Tiempo ============
         // Convertir las fechas a objetos de fecha JavaScript
@@ -80,15 +80,15 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
     // Construir la cadena de tiempo formateada
     const tiempoFormateado = `${mesInicio} ${añoInicio} - ${mesFin} ${añoFin}`;
 
-    a.document.write(`<p style="font-family: 'Tara SC Light', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${tiempoFormateado}</p>`);
+    a.document.write(`<p style="font-family: 'Tara SC Light', sans-serif; font-size: 16px; margin-bottom: 5px; color: black;">${tiempoFormateado}</p>`);
 
-        a.document.write('<div style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 10px; color: #666;"><ul style="list-style-type: disc; padding-left: 20px;">'); // Inicio de la lista
+        a.document.write('<div style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 10px; color: black;;"><ul style="list-style-type: disc; padding-left: 20px;">'); // Inicio de la lista
         experiencia.actividades.forEach(function(actividad) {
             a.document.write(`<li>${actividad}</li>`); // Mostrar cada actividad como un elemento de lista
         });
         a.document.write('</ul></div>'); // Fin de la lista
 
-        a.document.write('<div style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 10px; color: #666;"><ul style="list-style-type: disc; padding-left: 20px;">'); // Inicio de la lista
+        a.document.write('<div style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 10px; color: black;;"><ul style="list-style-type: disc; padding-left: 20px;">'); // Inicio de la lista
         experiencia.funciones.forEach(function(funcion) {
             a.document.write(`<li>${funcion}</li>`); // Mostrar cada función como un elemento de lista
         });
@@ -110,8 +110,8 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
 
     estudios.forEach(estudio => {
         a.document.write('<div style="margin-top: 15px;">');
-        a.document.write(`<p style="font-family: \'Mediator Serif Narrow Bold\', sans-serif; font-size: 18px; margin-bottom: 5px; color: #444;"><strong>${estudio.universidad}</strong></strong></p>`);
-        a.document.write(`<p style="font-family: \'TilpSerif EF Bold Italic\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${estudio.carrera}</p>`);
+        a.document.write(`<p style="font-family: \'Mediator Serif Narrow Bold\', sans-serif; font-size: 18px; margin-bottom: 5px; color: black;"><strong>${estudio.universidad}</strong></strong></p>`);
+        a.document.write(`<p style="font-family: \'TilpSerif EF Bold Italic\', sans-serif; font-size: 16px; margin-bottom: 5px; color: black;">${estudio.carrera}</p>`);
 
         // =========== Tiempo ============
         // Convertir las fechas a objetos de fecha JavaScript
@@ -139,7 +139,7 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
     // Construir la cadena de tiempo formateada
     const tiempoFormateado = `${mesInicio} ${añoInicio} - ${mesFin} ${añoFin}`;
 
-        a.document.write(`<p style="font-family: \'Tara SC Light\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${tiempoFormateado}</p>`);
+        a.document.write(`<p style="font-family: \'Tara SC Light\', sans-serif; font-size: 16px; margin-bottom: 5px; color: black;">${tiempoFormateado}</p>`);
 
         a.document.write("</div>"); // Cerrar el div del conocimiento
     });
@@ -159,7 +159,7 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
     // Aquí debes añadir el código para mostrar los cursos
     cursos.forEach(curso => {
         a.document.write('<div style="margin-top: 15px;">');
-        a.document.write(`<p style="font-family: \'Mediator Serif Narrow Bold\', sans-serif; font-size: 18px; margin-bottom: 5px; color: #444;"><strong>${curso.nombre}</strong></strong></p>`);
+        a.document.write(`<p style="font-family: \'Mediator Serif Narrow Bold\', sans-serif; font-size: 18px; margin-bottom: 5px; color: black;"><strong>${curso.nombre}</strong></strong></p>`);
          // =========== Tiempo ============
         // Convertir las fechas a objetos de fecha JavaScript
         const fechaInicio = new Date(curso.fechaIni);
@@ -186,11 +186,11 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
         // Construir la cadena de tiempo formateada
         const tiempoFormateado = `${mesInicio} ${añoInicio} - ${mesFin} ${añoFin}`;
 
-        a.document.write(`<p style="font-family: \'TilpSerif EF Bold Italic\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${curso.organizacion}</p>`);
+        a.document.write(`<p style="font-family: \'TilpSerif EF Bold Italic\', sans-serif; font-size: 16px; margin-bottom: 5px; color: black;">${curso.organizacion}</p>`);
 
-        a.document.write(`<p style="font-family: \'Tara SC Light\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${tiempoFormateado}</p>`);
-        a.document.write(`<p style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${curso.entidad} - ${curso.tiempoEstudio}</p>`);
-        a.document.write(`<p style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${curso.descripcion}</p>`);
+        a.document.write(`<p style="font-family: \'Tara SC Light\', sans-serif; font-size: 16px; margin-bottom: 5px; color: black;">${tiempoFormateado}</p>`);
+        a.document.write(`<p style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 5px; color: black;">${curso.entidad} - ${curso.tiempoEstudio}</p>`);
+        a.document.write(`<p style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 5px; color: black;">${curso.descripcion}</p>`);
 
         a.document.write("</div>");
     });
@@ -215,7 +215,7 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
     // Aquí debes añadir el código para mostrar los conocimientos
     conocimientos.forEach(conocimiento => {
         a.document.write('<div style="margin-top: 0.5%; margin-bottom: 0.5%;">'); // Ajusta los márgenes superior e inferior
-        a.document.write(`<p style="font-family: 'TilpSerif EF Bold Italic', sans-serif; font-size: 16px; margin: 0; color: #444;">${conocimiento.conocimiento}</p>`); // Elimina margen inferior y superior
+        a.document.write(`<p style="font-family: 'TilpSerif EF Bold Italic', sans-serif; font-size: 16px; margin: 0; color: black;">${conocimiento.conocimiento}</p>`); // Elimina margen inferior y superior
         a.document.write("</div>");
     });
     a.document.write("</div>");
@@ -233,7 +233,7 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
       // Aquí debes añadir el código para mostrar los conocimientos
       skills.forEach(skills => {
           a.document.write('<div style="margin-top: 0.5%; margin-bottom: 0.5%;">'); // Ajusta los márgenes superior e inferior
-          a.document.write(`<p style="font-family: 'TilpSerif EF Bold Italic', sans-serif; font-size: 16px; margin: 0; color: #444;">${skills.skill}</p>`); // Elimina margen inferior y superior
+          a.document.write(`<p style="font-family: 'TilpSerif EF Bold Italic', sans-serif; font-size: 16px; margin: 0; color: black;">${skills.skill}</p>`); // Elimina margen inferior y superior
           a.document.write("</div>");
       });
       a.document.write("</div>");
@@ -251,7 +251,7 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
     // Aquí debes añadir el código para mostrar los idiomas
     idiomas.forEach(idioma => {
         a.document.write('<div style="margin-top: 1px;">');
-        a.document.write(`<p style="font-family: \'TilpSerif EF Bold Italic\', sans-serif; font-size: 16px; margin-bottom: 2px; color: #444;">${idioma.idioma}</p>`);
+        a.document.write(`<p style="font-family: \'TilpSerif EF Bold Italic\', sans-serif; font-size: 16px; margin-bottom: 2px; color: black;">${idioma.idioma + ' - '+ idioma.nivel}</p>`);
         a.document.write("</div>");
     });
     a.document.write("</div>");

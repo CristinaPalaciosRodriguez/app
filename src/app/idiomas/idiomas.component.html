@@ -1,42 +1,60 @@
 <div class="formulario-container">
-    <h2 class="titulo">IDIOMAS / LANGUAGES</h2>
-    <form class="formulario" #idiomaForm="ngForm" (ngSubmit)="guardarIdioma(idiomaForm)">
-      <div class="fila">
-        <div class="columna">
-          <mat-form-field class="campo">
-            <mat-label>{{ languageTexts.selectidioma }}</mat-label>
-            <input matInput placeholder="{{ languageTexts.idioma }}" name="idioma" required [(ngModel)]="idioma" #idiomaModel="ngModel">
-            <mat-error *ngIf="idiomaModel.invalid && (idiomaModel.dirty || idiomaModel.touched)">
-              {{ languageTexts.obligatorio }}
-            </mat-error>
-          </mat-form-field>
-        </div>
+  <h2 class="titulo">IDIOMAS / LANGUAGES</h2>
+  <form class="formulario" #idiomaForm="ngForm" (ngSubmit)="guardarIdioma(idiomaForm)">
+    <div class="fila">
+      <div class="columna">
+        <mat-form-field class="campo">
+          <mat-label>{{ languageTexts.selectidioma }}</mat-label>
+          <input matInput placeholder="{{ languageTexts.idioma }}" name="idioma" required [(ngModel)]="idioma" #idiomaModel="ngModel">
+          <mat-error *ngIf="idiomaModel.invalid && (idiomaModel.dirty || idiomaModel.touched)">
+            {{ languageTexts.obligatorio }}
+          </mat-error>
+        </mat-form-field>
       </div>
-      <button mat-raised-button color="primary" class="boton" type="submit">{{ languageTexts.guardarIdioma }}</button>
-    </form>
-
-    <div class="example-container mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource">
-
-          <!-- Definición de las columnas -->
-          <ng-container matColumnDef="idioma">
-            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.idioma }} </th>
-            <td mat-cell *matCellDef="let element"> {{ element.idioma }} </td>
-          </ng-container>
-
-          <!-- Columna para el botón de eliminar -->
-          <ng-container matColumnDef="eliminar">
-            <th mat-header-cell *matHeaderCellDef>  {{ languageTexts.eliminar }}  </th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-icon-button color="warn" (click)="eliminarElemento(element)">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </td>
-          </ng-container>
-
-          <!-- Definir el orden de las columnas -->
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+      <div class="columna">
+        <mat-form-field class="campo">
+          <mat-label>{{ languageTexts.selectnivel }}</mat-label>
+          <mat-select name="nivel" required [(ngModel)]="nivel" #nivelModel="ngModel">
+            <mat-option *ngFor="let option of nivelOptions" [value]="option.value">
+              {{ option.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="nivelModel.invalid && (nivelModel.dirty || nivelModel.touched)">
+            {{ languageTexts.obligatorio }}
+          </mat-error>
+        </mat-form-field>
       </div>
+    </div>
+    <button mat-raised-button color="primary" class="boton" type="submit">{{ languageTexts.guardarIdioma }}</button>
+  </form>
+
+  <div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Definición de las columnas -->
+      <ng-container matColumnDef="idioma">
+        <th mat-header-cell *matHeaderCellDef> {{ languageTexts.idioma }} </th>
+        <td mat-cell *matCellDef="let element"> {{ element.idioma }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nivel">
+        <th mat-header-cell *matHeaderCellDef> {{ languageTexts.nivel }} </th>
+        <td mat-cell *matCellDef="let element"> {{ element.nivel }} </td>
+      </ng-container>
+
+      <!-- Columna para el botón de eliminar -->
+      <ng-container matColumnDef="eliminar">
+        <th mat-header-cell *matHeaderCellDef>  {{ languageTexts.eliminar }}  </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="warn" (click)="eliminarElemento(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Definir el orden de las columnas -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataFormularioService } from '../data-formulario.service';
 import { LanguageService } from '../language.service';
@@ -12,32 +12,42 @@ import { NgForm } from '@angular/forms';
   templateUrl: './idiomas.component.html',
   styleUrls: ['./idiomas.component.scss']
 })
-export class IdiomasComponent implements OnInit {
+export class IdiomasComponent implements OnInit, OnDestroy {
 
   dataSource = new MatTableDataSource<IdiomasElement>([]);
   idioma: string = '';
+  nivel: string = '';
   selectedLanguage: string = 'es';
   languageTexts: any;
+  nivelOptions: any;
   private languageSubscription: Subscription;
 
-  displayedColumns = ['idioma', 'eliminar'];
+  displayedColumns = ['idioma', 'nivel', 'eliminar'];
 
   constructor(private dataFormularioService: DataFormularioService, private languageService: LanguageService) {
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
     this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
       this.languageTexts = languageTexts;
+      this.nivelOptions = [
+        { value: languageTexts.basico, viewValue: languageTexts.basico },
+        { value: languageTexts.intermedio, viewValue: languageTexts.intermedio },
+        { value: languageTexts.avanzado, viewValue: languageTexts.avanzado }
+      ];
     });
   }
 
   ngOnInit(): void {
-    console.log('displayedColumns:', this.displayedColumns);
-    console.log('dataSource.data:', this.dataSource.data);
+  }
+
+  ngOnDestroy(): void {
+    this.languageSubscription.unsubscribe(); // Unsubscribe to avoid memory leaks
   }
 
   guardarIdioma(form: NgForm): void {
     if (form.valid) {
       const nuevoIdioma: IdiomasElement = {
-        idioma: this.idioma
+        idioma: this.idioma,
+        nivel: this.nivel
       };
 
       console.log('Nuevo elemento a agregar:', nuevoIdioma);
@@ -58,6 +68,7 @@ export class IdiomasComponent implements OnInit {
 
   resetFormulario(form: NgForm): void {
     this.idioma = '';
+    this.nivel = '';
     form.resetForm();
   }
 
