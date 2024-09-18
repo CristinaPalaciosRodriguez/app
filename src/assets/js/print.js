@@ -25,9 +25,9 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
     a.document.write("</div>");
 
     //SEPARAMIENTO DEL PDF
-    a.document.write(
-      '<div style="display: inline-block; align-items: center; width:100%;">'
-    );
+    // a.document.write(
+    //   '<div style="display: inline-block; align-items: center; width:100%;">'
+    // );
 
 
     // =========== 1. DATOS PERSONALES ============
