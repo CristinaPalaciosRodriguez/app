@@ -50,6 +50,16 @@
 
         <div class="columna">
           <mat-form-field class="campo">
+            <mat-label>{{ languageTexts.descripcion }}</mat-label>
+            <textarea matInput placeholder="{{ languageTexts.descripcion }}" name="descripcion" required [(ngModel)]="descripcion" #descripcionModel="ngModel" rows="5"></textarea>
+            <mat-error *ngIf="descripcionModel.invalid && (descripcionModel.dirty || descripcionModel.touched)">
+              {{ languageTexts.obligatorio }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- <div class="columna">
+          <mat-form-field class="campo">
             <mat-chip-list #chipList required>
               <mat-chip *ngFor="let logro of logros" [selectable]="selectable" [removable]="removable" (removed)="remove(logro)">
                 {{logro.nombreLogro}}
@@ -72,7 +82,7 @@
             </mat-chip-list>
             <mat-error *ngIf="funcionesArray.length === 0">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>
-        </div>
+        </div> -->
       </div>
 
       <button mat-raised-button color="primary" class="boton" type="submit">{{ languageTexts.guardarExp }}</button>
@@ -102,7 +112,13 @@
             <td mat-cell *matCellDef="let element" style="width: 100px;"> {{ element.fechaFin | date:'dd-MM-yyyy' }} </td>
           </ng-container>
 
-          <ng-container matColumnDef="actividades">
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef style="width: 200px;"> {{ languageTexts.descripcion }} </th>
+            <td mat-cell *matCellDef="let element" style="width: 200px;"> {{ element.descripcion }} </td>
+          </ng-container>
+
+
+          <!-- <ng-container matColumnDef="actividades">
             <th mat-header-cell *matHeaderCellDef> {{ languageTexts.logroet }} </th>
             <td mat-cell *matCellDef="let element">
               <ul>
@@ -118,7 +134,7 @@
                 <li *ngFor="let funcion of element.funciones">{{ funcion }}</li>
               </ul>
             </td>
-          </ng-container>
+          </ng-container> -->
 
           <!-- Columna para el botón de eliminar -->
           <ng-container matColumnDef="eliminar">

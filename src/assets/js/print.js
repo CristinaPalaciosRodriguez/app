@@ -336,26 +336,29 @@ export function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, est
       a.document.write("</div>");
 
 
-      // =========== Logros ============
-      a.document.write('<div style="font-weight: bold; font-family: \'Arial\'; font-size: 18px; margin-bottom: 5px; margin-top: 10px;  color: #3D5FEA !important;"><label>'+languageTexts.logroet+':</label></div>');
-      a.document.write('<div style="font-family: \'Arial\'; font-size: 18px; margin-bottom: 10px;">');
-      a.document.write('<ul>'); // Inicio de la lista
-      experiencia.actividades.forEach(function(actividad) {
-        a.document.write(`<li>${actividad}</li>`); // Mostrar cada actividad como un elemento de lista
-      });
-      a.document.write('</ul>'); // Fin de la lista
+      a.document.write('<div style="display: flex; margin-top: 10px;">');
+      a.document.write('<div style=" flex:10; font-family: \'Arial\'; font-size: 18px;"><label>' + experiencia.descripcion + '</label></div>');
       a.document.write("</div>");
+      // =========== Logros ============
+      // a.document.write('<div style="font-weight: bold; font-family: \'Arial\'; font-size: 18px; margin-bottom: 5px; margin-top: 10px;  color: #3D5FEA !important;"><label>'+languageTexts.logroet+':</label></div>');
+      // a.document.write('<div style="font-family: \'Arial\'; font-size: 18px; margin-bottom: 10px;">');
+      // a.document.write('<ul>'); // Inicio de la lista
+      // experiencia.actividades.forEach(function(actividad) {
+      //   a.document.write(`<li>${actividad}</li>`); // Mostrar cada actividad como un elemento de lista
+      // });
+      // a.document.write('</ul>'); // Fin de la lista
+      // a.document.write("</div>");
 
 
        // =========== Funciones ============
-       a.document.write('<div style="font-weight: bold; font-family: \'Arial\'; font-size: 18px; margin-bottom: 5px; margin-top: 10px;  color: #3D5FEA !important;"><label>'+languageTexts.funcionet+':</label></div>');
-       a.document.write('<div style="font-family: \'Arial\'; font-size: 18px; margin-bottom: 10px;">');
-       a.document.write('<ul>'); // Inicio de la lista
-       experiencia.funciones.forEach(function(funcion) {
-         a.document.write(`<li>${funcion}</li>`);
-       });
-       a.document.write('</ul>'); // Fin de la lista
-       a.document.write("</div>");
+      //  a.document.write('<div style="font-weight: bold; font-family: \'Arial\'; font-size: 18px; margin-bottom: 5px; margin-top: 10px;  color: #3D5FEA !important;"><label>'+languageTexts.funcionet+':</label></div>');
+      //  a.document.write('<div style="font-family: \'Arial\'; font-size: 18px; margin-bottom: 10px;">');
+      //  a.document.write('<ul>'); // Inicio de la lista
+      //  experiencia.funciones.forEach(function(funcion) {
+      //    a.document.write(`<li>${funcion}</li>`);
+      //  });
+      //  a.document.write('</ul>'); // Fin de la lista
+      //  a.document.write("</div>");
 
       a.document.write("</div>");
     });

@@ -20,6 +20,7 @@ export class ExperienciaComponent implements OnInit {
   dataSource = new MatTableDataSource<PeriodicElement>([]);
   puesto: string = '';
   empresa: string = '';
+  descripcion: string = '';
   fechaInicio: Date | null = null;
   fechaFin: Date | null = null;
   actividades: string[] = [];
@@ -28,7 +29,7 @@ export class ExperienciaComponent implements OnInit {
   languageTexts: any;
   private languageSubscription: Subscription;
   fechaActual: Date = new Date();
-  displayedColumns = ['empresa', 'puesto', 'fechaIni', 'fechaFin', 'actividades', 'funciones', 'eliminar'];
+  displayedColumns = ['empresa', 'puesto', 'fechaIni', 'fechaFin',  'descripcion','eliminar']; //'actividades', 'funciones',
 
   visible = true;
   selectable = true;
@@ -55,14 +56,15 @@ export class ExperienciaComponent implements OnInit {
   }
 
   guardarExperiencia(form: NgForm): void {
-    if (this.puesto && this.empresa && this.fechaInicio && this.fechaFin && this.logros.length !== 0 && this.funcionesArray.length !== 0) {
+    if (this.puesto && this.empresa && this.fechaInicio && this.fechaFin && this.descripcion ) { // && this.logros.length !== 0 && this.funcionesArray.length !== 0
       const nuevaExperiencia: PeriodicElement = {
         puesto: this.puesto,
         empresa: this.empresa,
         fechaIni: this.fechaInicio,
         fechaFin: this.fechaFin,
         actividades: this.actividades,
-        funciones: this.funciones
+        funciones: this.funciones,
+        descripcion: this.descripcion
       };
 
       console.log('Nuevo elemento a agregar:', nuevaExperiencia);

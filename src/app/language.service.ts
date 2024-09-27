@@ -78,6 +78,7 @@ interface LanguageText {
   basico: string;
   intermedio: string;
   avanzado: string;
+  descripcionAct: string,
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -170,6 +171,7 @@ export class LanguageService {
       basico: 'Basic',
       intermedio: 'Intermediate',
       avanzado: 'Advanced',
+      descripcionAct: 'Describe your activities'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -249,6 +251,7 @@ export class LanguageService {
       basico: 'Básico',
       intermedio: 'Intermedio',
       avanzado: 'Avanzado',
+      descripcionAct: 'Describa sus actividades'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

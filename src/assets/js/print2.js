@@ -82,17 +82,21 @@ export function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, es
 
     a.document.write(`<p style="font-family: 'Tara SC Light', sans-serif; font-size: 16px; margin-bottom: 5px; color: black;">${tiempoFormateado}</p>`);
 
-        a.document.write('<div style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 10px; color: black;;"><ul style="list-style-type: disc; padding-left: 20px;">'); // Inicio de la lista
-        experiencia.actividades.forEach(function(actividad) {
-            a.document.write(`<li>${actividad}</li>`); // Mostrar cada actividad como un elemento de lista
-        });
-        a.document.write('</ul></div>'); // Fin de la lista
+        // a.document.write('<div style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 10px; color: black;;"><ul style="list-style-type: disc; padding-left: 20px;">'); // Inicio de la lista
+        // experiencia.actividades.forEach(function(actividad) {
+        //     a.document.write(`<li>${actividad}</li>`); // Mostrar cada actividad como un elemento de lista
+        // });
+        // a.document.write('</ul></div>'); // Fin de la lista
 
-        a.document.write('<div style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 10px; color: black;;"><ul style="list-style-type: disc; padding-left: 20px;">'); // Inicio de la lista
-        experiencia.funciones.forEach(function(funcion) {
-            a.document.write(`<li>${funcion}</li>`); // Mostrar cada función como un elemento de lista
-        });
-        a.document.write('</ul></div>'); // Fin de la lista
+        // a.document.write('<div style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 10px; color: black;;"><ul style="list-style-type: disc; padding-left: 20px;">'); // Inicio de la lista
+        // experiencia.funciones.forEach(function(funcion) {
+        //     a.document.write(`<li>${funcion}</li>`); // Mostrar cada función como un elemento de lista
+        // });
+        // a.document.write('</ul></div>'); // Fin de la lista
+
+        a.document.write('<div style="margin-top: 1px;">');
+        a.document.write(`<p style="font-family: 'TilpSerif EF Bold Italic', sans-serif; font-size: 16px; margin-bottom: 2px; color: black; text-align: justify;">${experiencia.descripcion}</p>`);
+        a.document.write("</div>");
 
         a.document.write("</div>"); // Cerrar el div de la experiencia laboral
     });
