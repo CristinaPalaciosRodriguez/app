@@ -34,6 +34,7 @@ import { ConocimientoTotalComponent } from './conocimiento-total/conocimiento-to
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CvModalComponent } from './cv-modal/cv-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PdfOneContentComponent } from './pdf-one-content/pdf-one-content.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     SkillsComponent,
     ConocimientoTotalComponent,
     CvModalComponent,
+    PdfOneContentComponent,
   ],
   imports: [
     BrowserModule,

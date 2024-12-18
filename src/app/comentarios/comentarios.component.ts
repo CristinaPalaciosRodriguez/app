@@ -5,6 +5,8 @@ import { LanguageService } from '../language.service';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
+import * as html2pdf from 'html2pdf.js';
+import { jsPDF } from 'jspdf';
 
 @Component({
   selector: 'app-comentarios',
@@ -83,6 +85,29 @@ export class ComentariosComponent implements OnInit {
       width: '80%',
       data: { content: htmlContent }
     });
+  }
+
+
+  downloadPdf() {
+    const doc = new jsPDF('p', 'in', 'letter'); // Configura la página en formato carta (8.5 x 11 in)
+
+    const element = document.getElementById('cv-container');
+    if (element) {
+      // Genera el PDF con el contenido de tu elemento
+      doc.html(element, {
+        margin: [0, 0, 0, 0], // Sin márgenes adicionales
+        x: 0, // Comienza en la esquina superior izquierda
+        y: 0, // Empieza en la parte superior
+        width: 8.5, // Ancho de la página
+        windowWidth: element.scrollWidth, // Ajusta el ancho de la ventana según el contenido
+        callback: () => {
+          // Guardar el PDF generado
+          doc.save('CV_Juan_Perez.pdf');
+        }
+      });
+    } else {
+      console.error('No se encontró el elemento con el ID "cv-container"');
+    }
   }
 
 }

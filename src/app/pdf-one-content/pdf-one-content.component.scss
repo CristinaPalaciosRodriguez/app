@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+/* Establecer el contenedor de tamaño carta */
+.cv-container {
+  width: 8.5in;    /* Ancho de carta */
+  height: 11in;    /* Alto de carta */
+  padding: 0.5in;  /* Reducir espaciado dentro del contenedor a 0.5in */
+  box-sizing: border-box;
+  font-family: Arial, sans-serif; /* Fuente predeterminada */
+  background-color: #fff; /* Fondo blanco */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Asegura que el texto largo se ajuste y baje a la siguiente línea */
+.cv-container,
+.section,
+.conocimientos2,
+.skills2,
+.estudio {
+  word-wrap: break-word; /* Romper las palabras largas si es necesario */
+  overflow-wrap: break-word; /* También asegura que el texto se divida si es necesario */
+}
+
+/* Si deseas controlar el ajuste de texto específicamente dentro de los detalles */
+.detail span {
+  white-space: normal; /* Permite que el texto fluya y se ajuste */
+}
+
+
+/* Ajustar el logo en el encabezado */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1px; /* Reducir el espacio debajo del encabezado */
+  font-size: 14px; /* Reducir el tamaño de la fuente */
+  font-family: 'Libre Franklin', sans-serif;
+  color: #31DCFE;
+  font-weight: bold;
+}
+
+.logo {
+  max-height: 80px; /* Reducir el tamaño del logo */
+}
+
+/* Títulos y secciones */
+.cv-title {
+  text-align: left;
+  margin-bottom: 1px;
+}
+
+.cv-title label {
+  font-size: 16px;
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.section h4, .conocimientos h4,.conocimientos2 h4,.skills2 h4, .skills h4 {
+  color: #1d40cc;
+  font-family: "Merriweather", serif;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.section h4 {
+  margin-bottom: 10px;
+}
+
+/* Detalles de cada sección */
+.detail {
+  margin-bottom: 5px;
+}
+
+/* Conocimientos y Skills en columnas */
+/* Contenedor de conocimientos y skills */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Cuando hay menos de 14 elementos, los conocimientos y skills se muestran en columnas */
+.skills-section.two-columns {
+  display: flex;  /* Usamos flexbox para colocar los elementos en la misma fila */
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre conocimientos y habilidades */
+  justify-content: space-between;
+}
+
+/* Asegurarse de que ambos, conocimientos y skills, tengan el mismo tamaño */
+.skills-section.two-columns .conocimientos,
+.skills-section.two-columns .skills {
+  flex: 1 1 48%;  /* Ambas ocupan 48% del espacio disponible */
+  box-sizing: border-box; /* Asegura que el padding y el borde se cuenten dentro del tamaño */
+  max-width: 48%; /* Limitar el ancho máximo para evitar que se desborden */
+  width: 100%;  /* Asegura que ocupen el 100% del espacio disponible dentro de sus contenedores */
+}
+
+/* Estilos adicionales para mejorar la legibilidad */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+/* Estilo para la línea debajo de cada h4 */
+h4 {
+  position: relative;
+  padding-bottom: 2px; /* Espacio entre el texto y la línea */
+  margin-bottom: 20px; /* Espacio debajo de la línea */
+}
+
+/* Estilo para la línea debajo */
+h4::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Hace que la línea ocupe todo el ancho del contenedor */
+  height: 1px; /* Altura de la línea */
+  background-color: #000; /* Color de la línea */
+}
+
+/* Contenedor principal que agrupa conocimientos y skills en una fila */
+.skills-section-columns {
+  display: flex;
+  flex-direction: column;  /* Establece que los elementos estén en una columna */
+  gap: 20px; /* Espacio entre los bloques de conocimientos y skills */
+}
+
+/* Configuración de la lista de conocimientos */
+.conocimientos-list,
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Divide en columnas */
+  gap: 10px; /* Espacio entre columnas */
+  list-style-type: disc; /* Puntos de la lista */
+  padding-left: 20px; /* Asegura el espaciado adecuado */
+}
+
+.conocimientos-list li {
+  margin-bottom: 8px;
+}
+
+.skills-list li {
+  margin-bottom: 8px;
+}
