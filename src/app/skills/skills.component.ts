@@ -14,7 +14,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 })
 export class SkillsComponent implements OnInit {
 
-  
+
   selection = new SelectionModel<SkillsElement>(true, []);
   dataSource = new MatTableDataSource<SkillsElement>([
     // Agrega más elementos si es necesario
@@ -34,8 +34,6 @@ export class SkillsComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log('displayedColumns:', this.displayedColumns);
-    console.log('dataSource.data:', this.dataSource.data);
   }
 
   guardarSkill(): void {
@@ -45,11 +43,9 @@ export class SkillsComponent implements OnInit {
         position: (this.dataSource.data.length + 1)
       };
 
-      console.log('Nuevo elemento a agregar:', nuevaExperiencia);
-
       this.dataSource.data.push(nuevaExperiencia);
-      this.dataSource.data = [...this.dataSource.data]; 
-      
+      this.dataSource.data = [...this.dataSource.data];
+
       this.selection.select(nuevaExperiencia);
 
       //this.dataFormularioService.guardarConocimientos(this.dataSource.data);
@@ -88,7 +84,6 @@ export class SkillsComponent implements OnInit {
 
   /** The label for the checkbox on the passed row */
   checkboxLabel(row?: SkillsElement): string {
-    console.log("this.selection",this.selection.selected);
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }

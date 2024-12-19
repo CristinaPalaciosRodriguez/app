@@ -11,6 +11,7 @@ import { IdiomasElement } from './models/idiomas.interface';
 import { CursoElement } from './models/cursos.interface';
 import { LanguageService } from './language.service';
 import { Subscription } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,20 @@ export class DataFormularioService {
   experiencias: PeriodicElement[] = [];
   cursos: CursoElement[] = [];
   idiomas: IdiomasElement[] = [];
+
+  sendNombre$ = new BehaviorSubject<any>('');
+  sendComentarios$ = new BehaviorSubject<any>('');
+  sendApellidos$ = new BehaviorSubject<any>('');
+  sendNacionalidad$ = new BehaviorSubject<any>('');
+  sendEdad$ = new BehaviorSubject<any>('');
+  sendCiudad$ = new BehaviorSubject<any>('');
+  sendPais$ = new BehaviorSubject<any>('');
+  sendEstudios$ = new BehaviorSubject<any>([]);
+  sendConocimientos$ = new BehaviorSubject<any>([]);
+  sendSkills$ = new BehaviorSubject<any>([]);
+  sendExperiencias$ = new BehaviorSubject<any>([]);
+  sendCursos$ = new BehaviorSubject<any>([]);
+  sendIdiomas$ = new BehaviorSubject<any>([]);
 
   // Variables para indicar si los arreglos tienen elementos
   tieneEstudios: boolean = false;
@@ -95,11 +110,19 @@ export class DataFormularioService {
     this.edad = edad;
     this.ciudad = ciudad;
     this.pais = pais;
+
+    this.sendNombre$.next(nombre);
+    this.sendNacionalidad$.next(nacionalidad);
+    this.sendApellidos$.next(apellidos);
+    this.sendEdad$.next(edad);
+    this.sendCiudad$.next(ciudad);
+    this.sendPais$.next(pais);
     this.actualizarEstadoArreglos();
   }
 
   guardarEstudios(estudios: EstudioElement[]) {
     this.estudios = estudios;
+    this.sendEstudios$.next(estudios);
     this.actualizarEstadoArreglos();
   }
 
@@ -112,7 +135,7 @@ export class DataFormularioService {
         this.conocimientos.push(conocimiento);
       }
     });
-
+    this.sendConocimientos$.next(this.conocimientos)
     // Actualizar el estado de los arreglos
     this.actualizarEstadoArreglos();
   }
@@ -122,27 +145,32 @@ export class DataFormularioService {
       !conocimientos.some(elem => elem.conocimiento === conocimiento.conocimiento)
     );
 
+    this.sendConocimientos$.next(this.conocimientos)
     // Actualizar el estado de los arreglos
     this.actualizarEstadoArreglos();
   }
 
   guardarSkills(skill: SkillsElement[]) {
     this.skills = skill;
+    this.sendSkills$.next(this.skills)
     this.actualizarEstadoArreglos();
   }
 
   guardarIdioma(idiomas: IdiomasElement[]) {
     this.idiomas = idiomas;
+    this.sendIdiomas$.next(this.idiomas)
     this.actualizarEstadoArreglos();
   }
 
   guardarExperiencias(experiencias: PeriodicElement[]) {
     this.experiencias = experiencias;
+    this.sendExperiencias$.next(this.experiencias);
     this.actualizarEstadoArreglos();
   }
 
   guardarCursos(cursos: CursoElement[]) {
     this.cursos = cursos;
+    this.sendCursos$.next(this.cursos)
     this.actualizarEstadoArreglos();
   }
 

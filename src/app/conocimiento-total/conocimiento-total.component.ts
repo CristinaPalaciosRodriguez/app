@@ -36,11 +36,9 @@ export class ConocimientoTotalComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log('displayedColumns:', this.displayedColumns);
-    console.log('dataSource.data:', this.dataSource.data);
   }
 
-  
+
   guardarConocimiento(): void {
     if (this.conocimiento) {
       const nuevaExperiencia: ConocimientoElement = {
@@ -50,7 +48,7 @@ export class ConocimientoTotalComponent implements OnInit {
 
       this.dataSource.data.push(nuevaExperiencia);
       this.dataSource.data = [...this.dataSource.data];
-      
+
       this.selection.select(nuevaExperiencia);
 
       this.dataFormularioService.guardarConocimientos(this.selection.selected);

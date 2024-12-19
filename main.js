@@ -323,8 +323,6 @@ class ExperienciaComponent {
         });
     }
     ngOnInit() {
-        console.log('displayedColumns:', this.displayedColumns);
-        console.log('dataSource.data:', this.dataSource.data);
     }
     guardarExperiencia() {
         if (this.puesto && this.empresa && this.fechaInicio && this.fechaFin && this.actividades.length !== 0 && this.funciones.length !== 0) {
@@ -782,7 +780,7 @@ function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, estudios,
     experiencias.forEach(experiencia => {
         a.document.write('<div style="margin-top: 15px;">');
         a.document.write(`<p style="font-family: \'Mediator Serif Narrow Bold\', sans-serif; font-size: 18px; margin-bottom: 5px; color: #444;"><strong>${experiencia.puesto}</strong> - <strong>${experiencia.empresa}</strong></p>`);
-    
+
         // =========== Tiempo ============
         // Convertir las fechas a objetos de fecha JavaScript
     const fechaInicio = new Date(experiencia.fechaIni);
@@ -810,19 +808,19 @@ function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, estudios,
     const tiempoFormateado = `${mesInicio} ${añoInicio} - ${mesFin} ${añoFin}`;
 
     a.document.write(`<p style="font-family: 'Tara SC Light', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${tiempoFormateado}</p>`);
-    
+
         a.document.write('<div style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 10px; color: #666;"><ul style="list-style-type: disc; padding-left: 20px;">'); // Inicio de la lista
         experiencia.actividades.forEach(function(actividad) {
             a.document.write(`<li>${actividad}</li>`); // Mostrar cada actividad como un elemento de lista
         });
         a.document.write('</ul></div>'); // Fin de la lista
-    
+
         a.document.write('<div style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 10px; color: #666;"><ul style="list-style-type: disc; padding-left: 20px;">'); // Inicio de la lista
         experiencia.funciones.forEach(function(funcion) {
             a.document.write(`<li>${funcion}</li>`); // Mostrar cada función como un elemento de lista
         });
         a.document.write('</ul></div>'); // Fin de la lista
-    
+
         a.document.write("</div>"); // Cerrar el div de la experiencia laboral
     });
     a.document.write("</div>");
@@ -836,7 +834,7 @@ function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, estudios,
         '<label style="font-weight: bold; font-family: \'Tara SC Bold\'; color: #3D5FEA !important; font-size: 20px; margin-top: 2%; ">' + languageTexts.estudioscursados + '</label>'
     );
     a.document.write("</div>");
-    
+
     estudios.forEach(estudio => {
         a.document.write('<div style="margin-top: 15px;">');
         a.document.write(`<p style="font-family: \'Mediator Serif Narrow Bold\', sans-serif; font-size: 18px; margin-bottom: 5px; color: #444;"><strong>${estudio.universidad}</strong></strong></p>`);
@@ -914,9 +912,9 @@ function printDiv2(nombre, apellido, nacionalidad, edad, ciudad, pais, estudios,
 
         // Construir la cadena de tiempo formateada
         const tiempoFormateado = `${mesInicio} ${añoInicio} - ${mesFin} ${añoFin}`;
-        
+
         a.document.write(`<p style="font-family: \'TilpSerif EF Bold Italic\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${curso.organizacion}</p>`);
-        
+
         a.document.write(`<p style="font-family: \'Tara SC Light\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${tiempoFormateado}</p>`);
         a.document.write(`<p style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${curso.entidad} - ${curso.tiempoEstudio}</p>`);
         a.document.write(`<p style="font-family: \'Tanseek Traditional Medium\', sans-serif; font-size: 16px; margin-bottom: 5px; color: #666;">${curso.descripcion}</p>`);
@@ -2001,8 +1999,8 @@ function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, estudios, 
     a.document.write(
       '<div style="display: inline-block; align-items: center; width:100%;">'
     );
-  
-  
+
+
     // =========== 1. DATOS PERSONALES ============
     a.document.write(
       '<div style="display: flex; border-bottom: 1px solid black;">'
@@ -2013,7 +2011,7 @@ function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, estudios, 
     );
     a.document.write("</div>");
     a.document.write("</div>");
-  
+
     // =========== Apellido y Nombre ============
     a.document.write('<div style="display: flex; margin-top: 15px;">');
     a.document.write('<div style="font-weight: bold; flex:10; font-family: \'Arial\'; font-size: 18px;"><label>' + languageTexts.apellidonombre + ': ' + apellido + ' ' + nombre + '</label></div>');
@@ -2058,7 +2056,7 @@ function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, estudios, 
       a.document.write(`<div style="flex:1; font-family: \'Arial\'; font-size: 18px;"><label>${languageTexts.carrera}: <strong>${estudio.carrera}</strong></label></div>`);
       a.document.write("</div>");
 
-      
+
       // =========== Fecha inicio ============
       a.document.write('<div style="display: flex; margin-top: 10px;">');
       a.document.write(`<div style="flex:2; font-family: \'Arial\'; font-size: 18px;"><label>${languageTexts.fechaInicio}: <strong>${estudio.fechaIni.getFullYear()}</strong></label></div>`);
@@ -2066,8 +2064,8 @@ function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, estudios, 
 
       // =========== Generacion ============
       a.document.write('<div style="display: flex; margin-top: 10px;">');
-      
-      
+
+
       const fechaHoy = new Date();
 
       // Validación para reemplazar el año con "Actualmente" si la fecha coincide con la fecha de hoy
@@ -2084,12 +2082,12 @@ function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, estudios, 
 
 
     // =========== CONOCIMIENTOS ============
-  
-    
+
+
     // Si hay tanto conocimientos como skills, mostramos dos columnas
     if (conocimientos.length > 0 && skills.length > 0) {
         a.document.write('<div style="display: flex; width: 100%;">');
-    
+
 
     // Columna de conocimientos
     a.document.write('<div style="flex: 1; margin-right: 20px;">');
@@ -2137,14 +2135,14 @@ function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, estudios, 
       a.document.write("</div>");
         // Si no hay skills, mostramos solo la columna de conocimientos como está actualmente
         a.document.write('<div style="display: flex;">');
-    
+
         const numConocimientos = conocimientos.length;
         const numColumnas = Math.ceil(numConocimientos / 8); // Calcula el número de columnas necesarias
-    
+
         for (let i = 0; i < numColumnas; i++) {
             // Abre una nueva columna
             a.document.write('<div style="flex: 1; margin-right: 20px;">');
-    
+
             // Itera sobre los 8 conocimientos para esta columna o menos si no hay suficientes
             for (let j = i * 8; j < Math.min((i + 1) * 8, numConocimientos); j++) {
                 const conocimiento = conocimientos[j];
@@ -2154,20 +2152,20 @@ function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, estudios, 
                 a.document.write(`<div style="font-family: Arial; font-size: 18px;"><label>${conocimiento.conocimiento}</label></div>`);
                 a.document.write('</div>');
             }
-    
+
             // Si la columna no tiene 8 conocimientos, añade espacios en blanco
             const numConocimientosEnColumna = Math.min(numConocimientos - i * 8, 8);
             for (let k = numConocimientosEnColumna; k < 8; k++) {
                 a.document.write('<div style="height: 22px;"></div>'); // Espacio en blanco para completar 8 elementos
             }
-    
+
             // Cierra la columna actual
             a.document.write('</div>');
         }
-    
+
         a.document.write('</div>'); // Cierra el contenedor de la única columna
     }
-    
+
 
     // =========== EXPERIENCIA LAB ============
     a.document.write(
@@ -2198,7 +2196,7 @@ function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, estudios, 
 
       // =========== Tiempo ============
       // Convertir las fechas a objetos de fecha JavaScri
-      
+
       const fechaInicio = new Date(experiencia.fechaIni);
       const fechaFin = new Date(experiencia.fechaFin);
 
@@ -2245,11 +2243,11 @@ function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, estudios, 
        a.document.write('<div style="font-family: \'Arial\'; font-size: 18px; margin-bottom: 10px;">');
        a.document.write('<ul>'); // Inicio de la lista
        experiencia.funciones.forEach(function(funcion) {
-         a.document.write(`<li>${funcion}</li>`); 
+         a.document.write(`<li>${funcion}</li>`);
        });
        a.document.write('</ul>'); // Fin de la lista
        a.document.write("</div>");
-      
+
       a.document.write("</div>");
     });
 
@@ -2276,7 +2274,7 @@ function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, estudios, 
 
           // =========== Tiempo ============
           // Convertir las fechas a objetos de fecha JavaScri
-          
+
           const fechaInicio = new Date(curso.fechaIni);
           const fechaFin = new Date(curso.fechaFin);
 
@@ -2351,13 +2349,13 @@ function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, estudios, 
               a.document.write(`<div style="font-family: Arial; font-size: 18px;"><label>${idioma.idioma}</label></div>`);
               a.document.write('</div>');
           }
-          
+
           // Si la columna no tiene 8 conocimientos, añade espacios en blanco
           const numIdiomasEnColumna = Math.min(numIdiomas - i * 8, 8);
           for (let k = numIdiomasEnColumna; k < 8; k++) {
               a.document.write('<div style="height: 22px;"></div>'); // Espacio en blanco para completar 8 elementos
           }
-          
+
           // Cierra la columna actual
           a.document.write('</div>');
       }
@@ -2375,22 +2373,22 @@ function printDiv2(nombre, apellido, nacionalidad,edad, ciudad, pais, estudios, 
         );
         a.document.write("</div>");
         a.document.write("</div>");
-      
+
         // =========== Nota ============
         a.document.write('<div style="display: flex; margin-top: 15px;">');
         a.document.write('<div style=" flex:10; font-family: \'Arial\'; font-size: 18px;"><label>' + languageTexts.comentarios + ': ' + comentarios + '</label></div>');
         a.document.write("</div>");
       }
-   
+
     a.document.write("</body></html>");
 
-    
+
     a.document.close();
     setTimeout(function () {
       a.print();
     }, 1000);
   }
-  
+
 
 /***/ }),
 

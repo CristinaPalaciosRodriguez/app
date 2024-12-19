@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataFormularioService } from '../data-formulario.service';
+import { LanguageService } from '../language.service';
 
 @Component({
   selector: 'app-pdf-one-content',
@@ -6,43 +8,122 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pdf-one-content.component.scss']
 })
 export class PdfOneContentComponent implements OnInit {
-  languageTexts = {
-    datospersonales: 'DATOS PERSONALES',
-    apellidonombre: 'Apellido y Nombre',
-    nacionalidad: 'Nacionalidad',
-    residenciaactual: 'Residencia Actual',
-    edad: 'Edad',
-    estudioscursados: 'Estudios Cursados',
-    carrera: 'Carrera',
-    fechaInicio: 'Fecha de Inicio',
-    generacion: 'Generación',
-    actualidad: 'Actualmente',
-    conocimientotec: 'Conocimientos Técnicos',
-    skillEt: 'Habilidades'
-  };
+  selectedLanguage: string = 'es';
+  languageTexts: any;
 
-  apellido = 'Doe';
-  nombre = 'John';
-  nacionalidad = 'Mexicana';
-  ciudad = 'Ciudad de México';
-  edad = 30;
-
+  apellido = '';
+  nombre = '';
+  nacionalidad = '';
+  ciudad = '';
+  edad = 0;
   estudios = [
     { universidad: 'UNAM', carrera: 'Ingeniería', fechaIni: new Date(2010, 1, 1), generacion: new Date(2014, 1, 1) }
   ];
+  experiencias = [{puesto: 'UNAM', empresa: 'Ingeniería',descripcion:'', fechaIni: new Date(2010, 1, 1), fechaFin: new Date(2014, 1, 1)}];
+  conocimientos = [ { conocimiento: 'Angular' } ];
+  skills = [{ skill: 'Trabajo en equipo' }];
+  cursos = [{ nombre: 'Ingeniería',organizacion:'',descripcion:'', fechaIni: new Date(2010, 1, 1), fechaFin: new Date(2014, 1, 1)}]
+  idiomas = [{idioma:'',nivel:''}]
+  comentarios = '';
 
-  conocimientos = [{ conocimiento: 'contenedor que divida el espacio disponible entre las dos columnas y que se ajusten de forma equilibrada' }, { conocimiento: 'Angular' }, { conocimiento: 'Angular' },
-    { conocimiento: 'Angular' }, { conocimiento: 'Angular' }, { conocimiento: 'Angular' }, { conocimiento: 'Angular' },
-    { conocimiento: 'Angular' }, { conocimiento: 'Angular' }, { conocimiento: 'Angular' }, { conocimiento: 'Angular' },
-    { conocimiento: 'Angular' }, { conocimiento: 'Angular' }, { conocimiento: 'Angular' }, { conocimiento: 'Angular' }
-  ];
-  skills = [{ skill: 'Trabajo en equipo' }, { skill: 'Liderazgo' }];
-  fechaHoy = new Date();
+  constructor(private dataFormularioService: DataFormularioService,private languageService: LanguageService) {
+    this.languageService.languageTexts$.subscribe(languageTexts => {
+      this.languageTexts = languageTexts;
+    });
+    this.selectedLanguage = this.languageService.language;
 
+    this.dataFormularioService.sendNombre$.subscribe({
+      next: (nombre) => {
+        this.nombre = nombre;
+      }
+    });
 
-  constructor() {}
+    this.dataFormularioService.sendApellidos$.subscribe({
+      next: (apellido) => {
+        this.apellido = apellido;
+      }
+    });
+
+    this.dataFormularioService.sendNacionalidad$.subscribe({
+      next: (nacionalidad) => {
+        this.nacionalidad = nacionalidad;
+      }
+    });
+
+    this.dataFormularioService.sendCiudad$.subscribe({
+      next: (ciudad) => {
+        this.ciudad = ciudad;
+      }
+    });
+
+    this.dataFormularioService.sendEdad$.subscribe({
+      next: (edad) => {
+        this.edad = edad;
+      }
+    });
+
+    this.dataFormularioService.sendConocimientos$.subscribe({
+      next: (conocimientos) => {
+        this.conocimientos = conocimientos;
+      }
+    });
+
+    this.dataFormularioService.sendSkills$.subscribe({
+      next: (skills) => {
+        this.skills = skills;
+      }
+    });
+
+    this.dataFormularioService.sendEstudios$.subscribe({
+      next: (estudios) => {
+        this.estudios = estudios;
+      }
+    });
+
+    this.dataFormularioService.sendExperiencias$.subscribe({
+      next: (experiencias) => {
+        this.experiencias = experiencias;
+      }
+    });
+
+    this.dataFormularioService.sendCursos$.subscribe({
+      next: (cursos) => {
+        this.cursos = cursos;
+      }
+    });
+
+    this.dataFormularioService.sendIdiomas$.subscribe({
+      next: (idiomas) => {
+        this.idiomas = idiomas;
+      }
+    });
+  }
 
   ngOnInit(): void {
 
   }
+
+  isToday(date: Date): boolean {
+    const today = new Date();
+    return (
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear()
+    );
+  }
+
+  capitalizeFirstLetter(text: Date): string {
+    if (!text) {
+      return ''; // Devuelve una cadena vacía si el texto es null o undefined
+    }
+
+    const monthIndex = text.getMonth(); // Obtiene el índice del mes (0-11)
+    const year = text.getFullYear(); // Obtiene el año
+    const month = this.languageTexts.mesesArray[monthIndex] || '';
+    const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1); // Capitaliza la primera letra
+    return `${capitalizedMonth} ${year}`;
+  }
+
+
+
 }

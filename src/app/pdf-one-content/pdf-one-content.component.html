@@ -43,7 +43,7 @@
       <div>
         <span>{{ languageTexts.generacion }}:
           <strong>
-            {{ estudio.generacion | date:'yyyy'}}
+            {{ isToday(estudio.generacion) ? languageTexts.actualidad : (estudio.generacion | date:'yyyy') }}
           </strong>
         </span>
       </div>
@@ -53,7 +53,7 @@
   <!-- Conocimientos y Skills -->
   <div class="skills-section" [class.two-columns]="conocimientos.length <= 14 && skills.length <= 14">
     <!-- Mostrar juntos si ambos tienen menos de 14 elementos -->
-    <ng-container *ngIf="conocimientos.length <= 14 && skills.length <= 14; else separateView">
+    <ng-container *ngIf="conocimientos.length <= 14 && skills.length <= 14 && conocimientos.length > 0 && skills.length > 0; else separateView">
       <div class="conocimientos">
         <h4>{{ languageTexts.conocimientotec }}</h4>
         <ul>
@@ -86,7 +86,7 @@
         </div>
 
         <!-- Skills debajo de los conocimientos, también en columnas -->
-        <div class="skills2">
+        <div *ngIf="skills.length > 0" class="skills2">
           <h4>{{ languageTexts.skillEt }}</h4>
           <ul class="skills-list">
             <li *ngFor="let skill of skills">
@@ -98,4 +98,69 @@
     </ng-template>
   </div>
 
+  <!-- EXPERIENCIA LAB -->
+  <div class="section">
+    <h4>{{ languageTexts.experiencialab }}</h4>
+    <div *ngFor="let experiencia of experiencias" class="experience">
+      <div>
+        <span>{{ languageTexts.puesto }}: <strong>{{ experiencia.puesto }}</strong></span>
+      </div>
+      <div>
+        <span>{{ languageTexts.empresa }}: <strong>{{ experiencia.empresa }}</strong></span>
+      </div>
+      <div>
+        <span>{{ languageTexts.fecha }}:
+          <strong>
+            {{ experiencia.fechaIni ? capitalizeFirstLetter(experiencia.fechaIni) : '' }} -
+            {{ experiencia.fechaFin ? capitalizeFirstLetter(experiencia.fechaFin) : languageTexts.actualidad }}
+          </strong>
+        </span>
+      </div>
+      <div>
+        <span>{{ experiencia.descripcion }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CURSOS -->
+  <div *ngIf="cursos.length > 0" class="section">
+    <h4>{{ languageTexts.otrosEstudios }}</h4>
+    <div *ngFor="let curso of cursos" class="course">
+      <div>
+        <span><strong>{{ curso.nombre }}</strong></span>
+      </div>
+      <div>
+        <span><strong>{{ languageTexts.organizacion }}: {{ curso.organizacion }}</strong></span>
+      </div>
+      <div>
+        <span>
+          {{ capitalizeFirstLetter(curso.fechaIni) }} -
+          {{ curso.fechaFin ? capitalizeFirstLetter(curso.fechaFin) : languageTexts.actualidad }}
+        </span>
+      </div>
+      <div>
+        <span>{{ languageTexts.descripcion }}: {{ curso.descripcion }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- IDIOMAS -->
+  <div class="skills-section-columns">
+    <div class="conocimientos2">
+      <h4>{{ languageTexts.idiomas }}</h4>
+      <ul class="conocimientos-list">
+        <li *ngFor="let idioma of idiomas">
+          {{ idioma.idioma }} - {{ idioma.nivel }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+   <!-- COMENTARIOS -->
+   <div class="section">
+    <h4>{{ languageTexts.comentariotTitulo }}</h4>
+    <div class="detail">
+      <span>{{ comentarios }}</span>
+    </div>
+  </div>
 </div>

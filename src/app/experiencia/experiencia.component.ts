@@ -51,8 +51,6 @@ export class ExperienciaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('displayedColumns:', this.displayedColumns);
-    console.log('dataSource.data:', this.dataSource.data);
   }
 
   guardarExperiencia(form: NgForm): void {
@@ -67,12 +65,9 @@ export class ExperienciaComponent implements OnInit {
         descripcion: this.descripcion
       };
 
-      console.log('Nuevo elemento a agregar:', nuevaExperiencia);
-
       this.dataSource.data.push(nuevaExperiencia);
       this.dataSource.data = [...this.dataSource.data];
 
-      console.log('dataSource.data después de agregar:', this.dataSource.data);
       this.dataFormularioService.guardarExperiencias(this.dataSource.data);
       this.resetFormulario(form);
     } else {

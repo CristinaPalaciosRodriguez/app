@@ -28,13 +28,12 @@ export class PersonalComponent {
   plantillaHTML: string = '';
 
   handleBlurEvent(): void {
-    console.log("LLEGA AQUI")
     this.ngOnDestroy();
     this.dataFormularioService.guardarPersonal(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais);
   }
 
   ngOnDestroy() {
-   
+
   }
 
 }

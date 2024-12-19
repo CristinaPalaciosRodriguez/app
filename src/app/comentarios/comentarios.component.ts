@@ -34,7 +34,6 @@ export class ComentariosComponent implements OnInit {
 
 
   enviarDatos() {
-    console.log(this.disenoHoja)
     this.dataFormularioService.guardarDatos(this.comentario, this.disenoHoja);
   }
 

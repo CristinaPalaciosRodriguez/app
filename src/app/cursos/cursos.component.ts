@@ -39,8 +39,6 @@ export class CursosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('displayedColumns:', this.displayedColumns);
-    console.log('dataSource.data:', this.dataSource.data);
   }
 
   guardarCurso(form: NgForm): void {
