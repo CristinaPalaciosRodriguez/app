@@ -11,7 +11,7 @@
   </div>
 
   <!-- Datos Personales -->
-  <div class="section">
+  <div class="section pdf-section">
     <h4>{{ languageTexts.datospersonales }}</h4>
     <div class="detail">
       <span>{{ languageTexts.apellidonombre }}: {{ apellido }} {{ nombre }}</span>
@@ -28,7 +28,7 @@
   </div>
 
   <!-- Estudios Cursados -->
-  <div class="section">
+  <div class="section pdf-section">
     <h4>{{ languageTexts.estudioscursados }}</h4>
     <div *ngFor="let estudio of estudios" class="estudio">
       <div>
@@ -50,7 +50,7 @@
     </div>
   </div>
 
-  <div class="skills-section-columns" *ngIf="conocimientos.length <14 && skills.length < 14 && conocimientos.length > 0 && skills.length > 0">
+  <div class="skills-section-columns pdf-section" *ngIf="conocimientos.length <14 && skills.length < 14 && conocimientos.length > 0 && skills.length > 0">
     <!-- Columna de conocimientos -->
     <div *ngIf="conocimientos.length > 0" class="column conocimientos">
       <h4>{{ languageTexts.conocimientotec }}</h4>
@@ -72,7 +72,7 @@
     </div>
   </div>
 
-  <div class="knowledge-and-skills" *ngIf="(conocimientos.length > 0 && skills.length === 0) || (skills.length > 0 && conocimientos.length === 0)
+  <div class="knowledge-and-skills pdf-section" *ngIf="(conocimientos.length > 0 && skills.length === 0) || (skills.length > 0 && conocimientos.length === 0)
     || (conocimientos.length > 13 || skills.length > 13)">
      <!-- Fila para Conocimientos -->
     <div class="knowledge-row">
@@ -99,7 +99,7 @@
   </div>
 
   <!-- EXPERIENCIA LAB -->
-  <div class="section">
+  <div class="section pdf-section">
     <h4>{{ languageTexts.experiencialab }}</h4>
     <div *ngFor="let experiencia of experiencias" class="experience">
       <div>
@@ -123,7 +123,7 @@
   </div>
 
   <!-- CURSOS -->
-  <div *ngIf="cursos.length > 0" class="section">
+  <div *ngIf="cursos.length > 0" class="section pdf-section">
     <h4>{{ languageTexts.otrosEstudios }}</h4>
     <div *ngFor="let curso of cursos" class="course">
       <div>
@@ -145,7 +145,7 @@
   </div>
 
   <!-- IDIOMAS -->
-  <div class="knowledge-and-skills">
+  <div class="knowledge-and-skills pdf-section">
     <div class="knowledge-row">
       <h4>{{ languageTexts.idiomas }}</h4>
       <div class="knowledge-columns"> <!-- Utilizas la misma clase de columnas -->
@@ -159,7 +159,7 @@
   </div>
 
    <!-- COMENTARIOS -->
-   <div class="section">
+   <div class="section pdf-section">
     <h4>{{ languageTexts.comentariotTitulo }}</h4>
     <div class="detail">
       <span>{{ comentarios }}</span>

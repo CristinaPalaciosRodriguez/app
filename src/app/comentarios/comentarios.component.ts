@@ -94,14 +94,14 @@ export class ComentariosComponent implements OnInit {
     if (element) {
       // Genera el PDF con el contenido de tu elemento
       doc.html(element, {
-        margin: [0, 0, 0, 0], // Sin márgenes adicionales
+        margin: [0.5, 0, 0.5, 0], // Sin márgenes adicionales
         x: 0, // Comienza en la esquina superior izquierda
         y: 0, // Empieza en la parte superior
         width: 8.5, // Ancho de la página
         windowWidth: element.scrollWidth, // Ajusta el ancho de la ventana según el contenido
         callback: () => {
           // Guardar el PDF generado
-          doc.save('CV_Juan_Perez.pdf');
+          doc.save('CV.pdf');
         }
       });
     } else {
