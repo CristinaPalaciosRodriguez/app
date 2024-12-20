@@ -97,6 +97,12 @@ export class PdfOneContentComponent implements OnInit {
         this.idiomas = idiomas;
       }
     });
+
+    this.dataFormularioService.sendComentarios$.subscribe({
+      next: (comentarios) => {
+        this.comentarios = comentarios;
+      }
+    });
   }
 
   ngOnInit(): void {

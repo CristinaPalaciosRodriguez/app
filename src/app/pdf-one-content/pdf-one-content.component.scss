@@ -126,27 +126,100 @@ h4::after {
   background-color: #000; /* Color de la línea */
 }
 
-/* Contenedor principal que agrupa conocimientos y skills en una fila */
+/* Contenedor principal con flexbox para columnas */
 .skills-section-columns {
   display: flex;
-  flex-direction: column;  /* Establece que los elementos estén en una columna */
-  gap: 20px; /* Espacio entre los bloques de conocimientos y skills */
+  flex-wrap: nowrap; /* Evita que las columnas se envuelvan a otra fila */
+  justify-content: space-between; /* Espaciado entre las columnas */
+  gap: 20px; /* Espaciado entre columnas */
 }
 
-/* Configuración de la lista de conocimientos */
+/* Estilo para las columnas individuales */
+.skills-section-columns .column {
+  flex: 1 1 48%; /* Cada columna ocupa aproximadamente el 48% del contenedor */
+  box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+  max-width: 48%; /* Limita el ancho máximo */
+}
+
+/* Listas dentro de las columnas */
 .conocimientos-list,
 .skills-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Divide en columnas */
-  gap: 10px; /* Espacio entre columnas */
-  list-style-type: disc; /* Puntos de la lista */
-  padding-left: 20px; /* Asegura el espaciado adecuado */
+  list-style-type: disc; /* Lista con viñetas */
+  padding-left: 20px; /* Indentación para las viñetas */
+  margin: 0;
 }
 
-.conocimientos-list li {
-  margin-bottom: 8px;
-}
-
+.conocimientos-list li,
 .skills-list li {
-  margin-bottom: 8px;
+  margin-bottom: 8px; /* Espacio entre elementos de la lista */
+}
+
+/* Títulos dentro de las columnas */
+.skills-section-columns h4 {
+  margin-bottom: 10px; /* Espaciado debajo del título */
+  font-size: 15px;
+  color: #1d40cc;
+  font-family: "Merriweather", serif;
+  font-weight: bold;
+}
+
+/* Contenedor principal */
+.knowledge-and-skills {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px; /* Espaciado entre filas de conocimientos y habilidades */
+}
+
+/* Fila de conocimientos y habilidades */
+.knowledge-row,
+.skills-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.knowledge-row h4,
+.skills-row h4 {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #1d40cc;
+  font-family: "Merriweather", serif;
+}
+
+/* Configurar contenedor en cuadrícula */
+.knowledge-columns,
+.skills-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
+  column-gap: 20px; /* Espaciado entre columnas */
+  row-gap: 1px; /* Espaciado entre filas */
+}
+
+/* Estilo para los elementos de cada columna */
+.knowledge-column,
+.skills-column {
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* Aplicar puntitos a la lista */
+.knowledge-column ul,
+.skills-column ul {
+  list-style-type: disc; /* Mostrar puntitos */
+  padding-left: 10px; /* Espaciado entre el borde y el contenido de la lista */
+  margin: 0;
+}
+
+/* Estilo de cada ítem de la lista */
+.knowledge-column li,
+.skills-column li {
+  margin-bottom: 5px; /* Espaciado entre los elementos de la lista */
+  color: #333; /* Color de texto */
+}
+
+/* Alinear correctamente los elementos en la última fila */
+.knowledge-columns::after,
+.skills-columns::after {
+  content: ''; /* Añadir elementos ficticios */
+  grid-column: span 1; /* Ocupa una columna */
+  visibility: hidden; /* No visible pero ocupa espacio */
 }

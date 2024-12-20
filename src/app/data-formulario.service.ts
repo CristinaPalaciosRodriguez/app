@@ -92,14 +92,15 @@ export class DataFormularioService {
 
   guardarDatos(comentarios: string, estilo: string) {
     this.comentarios = comentarios;
+    this.sendComentarios$.next(this.comentarios);
     this.actualizarEstadoArreglos();
-    if(estilo === "Diseño de una columna"){
-      Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.estudios, this.conocimientos,
-        this.experiencias, this.cursos, this.idiomas, this.languageTexts, this.comentarios, this.skills);
-    } else {
-      Print2.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.estudios, this.conocimientos,
-        this.experiencias, this.cursos, this.idiomas, this.languageTexts, this.skills);
-    }
+    // if(estilo === "Diseño de una columna"){
+    //   Print.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.estudios, this.conocimientos,
+    //     this.experiencias, this.cursos, this.idiomas, this.languageTexts, this.comentarios, this.skills);
+    // } else {
+    //   Print2.printDiv2(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.estudios, this.conocimientos,
+    //     this.experiencias, this.cursos, this.idiomas, this.languageTexts, this.skills);
+    // }
 
   }
 
