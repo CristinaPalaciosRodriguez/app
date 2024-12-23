@@ -78,12 +78,7 @@ export class ComentariosComponent implements OnInit {
   }
 
   openPdfViewer() {
-    const htmlContent = this.dataFormularioService.obtenerHtmlPdf(this.disenoHoja);
-
-    this.dialog.open(CvModalComponent, {
-      width: '80%',
-      data: { content: htmlContent }
-    });
+    this.dialog.open(CvModalComponent);
   }
 
 

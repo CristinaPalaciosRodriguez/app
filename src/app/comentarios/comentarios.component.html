@@ -33,11 +33,11 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <button mat-raised-button class="btazul" type="submit">{{ languageTexts.generarDoc }}</button>
+      <!-- <button mat-raised-button class="btazul" type="submit">{{ languageTexts.generarDoc }}</button> -->
     </div>
   </form>
   <app-pdf-one-content></app-pdf-one-content>
-  <button (click)="downloadPdf()">Descargar CV como PDF</button>
+  <button mat-raised-button class="btazul" (click)="downloadPdf()" style="margin-right: 10px;">Generar PDF</button>
   <button mat-raised-button class="btazul" (click)="openPdfViewer()">Visualizar documento / View document</button>
 </div>
 
