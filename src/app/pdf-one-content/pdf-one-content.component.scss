@@ -229,6 +229,24 @@ h4::after {
   visibility: hidden; /* No visible pero ocupa espacio */
 }
 
+.detail.idiomas-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.detail.idiomas-detail ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; /* Elimina los puntos de la lista */
+  column-count: 3; /* Número de columnas */
+  column-gap: 20px; /* Espacio entre columnas */
+}
+
+.detail.idiomas-detail ul li {
+  break-inside: avoid; /* Evita que los elementos de la lista se rompan entre columnas */
+}
+
 @media print {
 
   .pdf-section {

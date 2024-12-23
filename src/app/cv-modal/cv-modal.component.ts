@@ -7,8 +7,13 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./cv-modal.component.scss']
 })
 export class CvModalComponent {
+  tipo: string = '';
 
-  constructor( public dialogRef: MatDialogRef<CvModalComponent>,@Inject(MAT_DIALOG_DATA) public data: { content: string }) { }
+  constructor( public dialogRef: MatDialogRef<CvModalComponent>,@Inject(MAT_DIALOG_DATA) public data: { tipo: string }) {
+    if (data?.tipo) {
+      this.tipo = data.tipo;
+    }
+   }
 
   onClose(): void {
     this.dialogRef.close();

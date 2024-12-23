@@ -78,7 +78,7 @@ export class ComentariosComponent implements OnInit {
   }
 
   openPdfViewer() {
-    this.dialog.open(CvModalComponent);
+    this.dialog.open(CvModalComponent,{data: { tipo: this.disenoHoja }});
   }
 
 

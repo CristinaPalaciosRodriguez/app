@@ -19,6 +19,12 @@
     <div class="detail">
       <span>{{ languageTexts.nacionalidad }}: {{ nacionalidad }}</span>
     </div>
+    <div class="detail idiomas-detail">
+      <span>{{ languageTexts.idiomas }}:</span>
+      <ul>
+        <li *ngFor="let idioma of idiomas">{{ idioma.idioma }} - {{ idioma.nivel }}</li>
+      </ul>
+    </div>
     <div class="detail">
       <span>{{ languageTexts.residenciaactual }}: {{ ciudad }}</span>
     </div>
@@ -145,10 +151,10 @@
   </div>
 
   <!-- IDIOMAS -->
-  <div class="knowledge-and-skills pdf-section">
+  <!-- <div class="knowledge-and-skills pdf-section">
     <div class="knowledge-row">
       <h4>{{ languageTexts.idiomas }}</h4>
-      <div class="knowledge-columns"> <!-- Utilizas la misma clase de columnas -->
+      <div class="knowledge-columns">
         <div class="knowledge-column" *ngFor="let idioma of idiomas">
           <ul>
             <li>{{ idioma.idioma }} - {{ idioma.nivel }}</li>
@@ -156,7 +162,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
    <!-- COMENTARIOS -->
    <div class="section pdf-section">

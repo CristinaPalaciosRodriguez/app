@@ -1,5 +1,5 @@
 <div mat-dialog-content style="max-height: 80vh; overflow: auto;">
-  <app-pdf-one-content></app-pdf-one-content>
+  <app-pdf-one-content *ngIf="tipo === 'Diseño de una columna'"></app-pdf-one-content>
 </div>
 
 <mat-dialog-actions>
