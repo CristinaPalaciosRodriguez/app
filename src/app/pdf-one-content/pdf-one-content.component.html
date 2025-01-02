@@ -1,12 +1,12 @@
 <div class="cv-container" id="cv-container">
   <!-- Encabezado -->
-  <div class="header">
+  <div class="header pdf-section">
     <img class="logo" src="./assets/images/logo.png" alt="logo">
     <h3 class="title">Curriculum Vitae</h3>
   </div>
 
   <!-- Título CV -->
-  <div class="cv-title">
+  <div class="cv-title pdf-section">
     <label>Curriculum Vitae</label>
   </div>
 
@@ -146,6 +146,12 @@
       </div>
       <div>
         <span>{{ languageTexts.descripcion }}: {{ curso.descripcion }}</span>
+      </div>
+      <div>
+        <span>{{ languageTexts.entidadet }}: {{ curso.entidad }}</span>
+      </div>
+      <div>
+        <span>{{ languageTexts.tiempodeEst }}: {{ curso.tiempoEstudio }}</span>
       </div>
     </div>
   </div>

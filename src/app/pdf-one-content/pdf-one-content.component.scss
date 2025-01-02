@@ -242,15 +242,3 @@ h4::after {
   column-count: 3; /* Número de columnas */
   column-gap: 20px; /* Espacio entre columnas */
 }
-
-.detail.idiomas-detail ul li {
-  break-inside: avoid; /* Evita que los elementos de la lista se rompan entre columnas */
-}
-
-@media print {
-
-  .pdf-section {
-    break-inside: avoid;  /* Evita que se rompa dentro de una sección */
-    page-break-before: always;
-  }
-}

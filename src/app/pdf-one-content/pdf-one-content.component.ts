@@ -22,7 +22,7 @@ export class PdfOneContentComponent implements OnInit {
   experiencias = [{puesto: 'UNAM', empresa: 'Ingeniería',descripcion:'', fechaIni: new Date(2010, 1, 1), fechaFin: new Date(2014, 1, 1)}];
   conocimientos = [ { conocimiento: 'Angular' } ];
   skills = [{ skill: 'Trabajo en equipo' }];
-  cursos = [{ nombre: 'Ingeniería',organizacion:'',descripcion:'', fechaIni: new Date(2010, 1, 1), fechaFin: new Date(2014, 1, 1)}]
+  cursos = [{ nombre: 'Ingeniería',organizacion:'',descripcion:'', fechaIni: new Date(2010, 1, 1), fechaFin: new Date(2014, 1, 1), entidad: '', tiempoEstudio: ''}]
   idiomas = [{idioma:'',nivel:''}]
   comentarios = '';
 
