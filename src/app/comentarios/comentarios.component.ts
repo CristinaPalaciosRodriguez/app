@@ -42,6 +42,7 @@ export class ComentariosComponent implements OnInit {
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
     this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
       this.languageTexts = languageTexts;
+      this.selectedLanguage = this.languageService.language;
     });
 
     this.dataFormularioService.sendNombre$.subscribe({

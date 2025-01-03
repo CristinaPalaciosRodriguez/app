@@ -11,6 +11,9 @@
       <span><strong>{{ apellido }} {{ nombre }}</strong></span>
     </div>
     <div class="detail">
+      <span>{{ languageTexts.edad }}: {{ edad }}</span>
+    </div>
+    <div class="detail">
       <span>{{ languageTexts.nacionalidad }}: {{ nacionalidad }}</span>
     </div>
     <div class="detail idiomas-detail">
@@ -21,9 +24,6 @@
     </div>
     <div class="detail">
       <span>{{ languageTexts.residenciaactual }}: {{ ciudad }}</span>
-    </div>
-    <div class="detail">
-      <span>{{ languageTexts.edad }}: {{ edad }}</span>
     </div>
   </div>
 
@@ -77,6 +77,31 @@
           </div>
         </div>
       </div>
+
+       <!-- Cursos -->
+       <div *ngIf="cursos.length > 0" class="section">
+        <h4>{{ languageTexts.otrosEstudios }}</h4>
+        <div *ngFor="let curso of cursos" class="estudio">
+          <div>
+            <span class="label">{{ curso.nombre }}</span>
+          </div>
+          <div>
+            <span>{{ languageTexts.organizacion }}: <strong>{{ curso.organizacion }}</strong></span>
+          </div>
+          <div>
+            <span>
+              {{ capitalizeFirstLetter(curso.fechaIni) }} -
+              {{ curso.fechaFin ? capitalizeFirstLetter(curso.fechaFin) : languageTexts.actualidad }}
+            </span>
+          </div>
+          <div>
+            <span>{{ curso.entidad }} - {{ curso.tiempoEstudio }}</span>
+          </div>
+          <div>
+            <span> {{ curso.descripcion }}</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Segunda columna -->
@@ -99,6 +124,14 @@
             {{ skill.skill }}
           </li>
         </ul>
+      </div>
+
+       <!-- COMENTARIOS -->
+      <div class="section">
+        <h4>{{ languageTexts.comentariotTitulo }}</h4>
+        <div class="detail">
+          <span>{{ comentarios }}</span>
+        </div>
       </div>
     </div>
   </div>
