@@ -80,6 +80,7 @@ interface LanguageText {
   avanzado: string;
   descripcionAct: string,
   mesesArray: Array<any>,
+  ingles: string
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -129,7 +130,7 @@ export class LanguageService {
       fechaFin: 'End date',
       organizacion: 'Organization',
       tiempodeEst: 'Study Time',
-      selectidioma: 'Enter the Language',
+      selectidioma: 'Select language',
       idioma: 'Language',
       logroet: 'Accomplishments',
       funcionet: 'Functions',
@@ -167,7 +168,7 @@ export class LanguageService {
       conocimiento5: 'Vision Systems',
       conocimiento6: 'Drives / Protections',
       conocimiento7: 'Reading and Designing Electrical Drawings',
-      indicacion: 'This form will generate a PDF document, please send it to the human resources staff.',
+      indicacion: 'This form will generate a WORD document, please send it to the human resources staff.',
       selectnivel: 'Select language level',
       basico: 'Basic',
       intermedio: 'Intermediate',
@@ -176,7 +177,8 @@ export class LanguageService {
       mesesArray: [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
-      ]
+      ],
+      ingles: 'English'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -213,7 +215,7 @@ export class LanguageService {
       fechaFin: 'Fecha de fin',
       organizacion: 'Organización',
       tiempodeEst: 'Tiempo de estudios',
-      selectidioma: 'Ingrese el idioma',
+      selectidioma: 'Selecciona el idioma',
       idioma: 'Idioma',
       logroet: 'Logros',
       funcionet: 'Funciones',
@@ -251,7 +253,7 @@ export class LanguageService {
       conocimiento5: 'Sistemas de vision',
       conocimiento6: 'Accionamientos / Protecciones',
       conocimiento7: 'Lectura y diseños de Planos Electricos',
-      indicacion: 'En este formulario se generara un documento en PDF, favor de enviarlo al personal de recursos humanos.',
+      indicacion: 'En este formulario se generara un documento en WORD, favor de enviarlo al personal de recursos humanos.',
       selectnivel: 'Selecciona el nivel del idioma',
       basico: 'Básico',
       intermedio: 'Intermedio',
@@ -261,6 +263,7 @@ export class LanguageService {
         'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
         'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
       ],
+      ingles: 'Inglés'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

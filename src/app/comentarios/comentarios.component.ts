@@ -23,6 +23,7 @@ export class ComentariosComponent implements OnInit {
   nombre = '';
   nacionalidad = '';
   ciudad = '';
+  pais = '';
   edad = 0;
   estudios = [
     { universidad: 'UNAM', carrera: 'Ingeniería', fechaIni: new Date(2010, 1, 1), generacion: new Date(2014, 1, 1) }
@@ -64,6 +65,12 @@ export class ComentariosComponent implements OnInit {
     this.dataFormularioService.sendCiudad$.subscribe({
       next: (ciudad) => {
         this.ciudad = ciudad;
+      }
+    });
+
+    this.dataFormularioService.sendPais$.subscribe({
+      next: (pais) => {
+        this.pais = pais;
       }
     });
 
@@ -182,7 +189,11 @@ export class ComentariosComponent implements OnInit {
     if(this.disenoHoja === 'Diseño de una columna'){
       if((this.conocimientos.length > 0 && this.skills.length === 0) || (this.skills.length > 0 && this.conocimientos.length === 0)
         || (this.conocimientos.length > 13 || this.skills.length > 13)){
-          templateUrl = 'assets/PlantillaUno.docx';
+          if(this.selectedLanguage === 'es'){
+            templateUrl = 'assets/PlantillaUno.docx';
+          } else {
+            templateUrl = 'assets/PlantillaUnoEng.docx';
+          }
            // Agrupar los conocimientos en objetos de 4 propiedades
             for (let i = 0; i < this.conocimientos.length; i += 4) {
               const bloque: any = {};
@@ -225,14 +236,26 @@ export class ComentariosComponent implements OnInit {
             }
             // Fin agrupacion skills
       } else if (this.conocimientos.length <14 && this.skills.length < 14 && this.conocimientos.length > 0 && this.skills.length > 0){
-        templateUrl = 'assets/PlantillaUnoColumnas.docx';
+        if(this.selectedLanguage === 'es'){
+          templateUrl = 'assets/PlantillaUnoColumnas.docx';
+        } else {
+          templateUrl = 'assets/PlantillaUnoColumnasEng.docx';
+        }
         habilidadesFormateados = [];
         habilidadesFormateados = this.skills;
         conocimientosFormateados = [];
         conocimientosFormateados = this.conocimientos;
       }
     } else {
-
+      if(this.selectedLanguage === 'es'){
+        templateUrl = 'assets/PlantillaDos.docx';
+      } else {
+        templateUrl = 'assets/PlantillaDosEng.docx';
+      }
+      habilidadesFormateados = [];
+      habilidadesFormateados = this.skills;
+      conocimientosFormateados = [];
+      conocimientosFormateados = this.conocimientos;
     }
 
 
@@ -291,8 +314,8 @@ export class ComentariosComponent implements OnInit {
         const datos = {
           EtNom: this.apellido + ' ' + this.nombre,
           EtNa: this.nacionalidad,
-          EtId: 'Español, Inglés',
-          EtRe: this.ciudad,
+          EtId: this.idiomas,
+          EtRe: this.ciudad+ ', '+this.pais,
           EtEd: this.edad,
           estudios: estudiosNew,
           conocimientos:  conocimientosFormateados,

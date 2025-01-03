@@ -1,0 +1,105 @@
+<div class="cv-container" id="cv-container">
+  <!-- Encabezado -->
+  <div class="header pdf-section">
+    <img class="logo" src="./assets/images/logo.png" alt="logo">
+    <h3 class="title">Curriculum Vitae</h3>
+  </div>
+
+  <!-- Datos Personales -->
+  <div class="personal-info-section pdf-section">
+    <div class="detail">
+      <span><strong>{{ apellido }} {{ nombre }}</strong></span>
+    </div>
+    <div class="detail">
+      <span>{{ languageTexts.nacionalidad }}: {{ nacionalidad }}</span>
+    </div>
+    <div class="detail idiomas-detail">
+      <span>{{ languageTexts.idiomas }}:</span>
+      <ul>
+        <li *ngFor="let idioma of idiomas">{{ idioma.idioma }} - {{ idioma.nivel }}</li>
+      </ul>
+    </div>
+    <div class="detail">
+      <span>{{ languageTexts.residenciaactual }}: {{ ciudad }}</span>
+    </div>
+    <div class="detail">
+      <span>{{ languageTexts.edad }}: {{ edad }}</span>
+    </div>
+  </div>
+
+  <!-- Contenido en dos columnas -->
+  <div class="two-columns pdf-section">
+    <!-- Primera columna -->
+    <div class="column">
+      <!-- Experiencia Laboral -->
+      <div class="section">
+        <h4>{{ languageTexts.experiencialab }}</h4>
+        <div *ngFor="let experiencia of experiencias" class="experience">
+          <div>
+            <span>{{ languageTexts.puesto }}: <strong>{{ experiencia.puesto }}</strong></span>
+          </div>
+          <div>
+            <span>{{ languageTexts.empresa }}: <strong>{{ experiencia.empresa }}</strong></span>
+          </div>
+          <div>
+            <span>{{ languageTexts.fecha }}:
+              <strong>
+                {{ experiencia.fechaIni ? capitalizeFirstLetter(experiencia.fechaIni) : '' }} -
+                {{ experiencia.fechaFin ? capitalizeFirstLetter(experiencia.fechaFin) : languageTexts.actualidad }}
+              </strong>
+            </span>
+          </div>
+          <div>
+            <span>{{ experiencia.descripcion }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estudios Cursados -->
+      <div class="section">
+        <h4>{{ languageTexts.estudioscursados }}</h4>
+        <div *ngFor="let estudio of estudios" class="estudio">
+          <div>
+            <span class="label">{{ estudio.universidad }}</span>
+          </div>
+          <div>
+            <span>{{ languageTexts.carrera }}: <strong>{{ estudio.carrera }}</strong></span>
+          </div>
+          <div>
+            <span>{{ languageTexts.fechaInicio }}: <strong>{{ estudio.fechaIni | date:'yyyy' }}</strong></span>
+          </div>
+          <div>
+            <span>{{ languageTexts.generacion }}:
+              <strong>
+                {{ isToday(estudio.generacion) ? languageTexts.actualidad : (estudio.generacion | date:'yyyy') }}
+              </strong>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Segunda columna -->
+    <div class="column">
+      <!-- Conocimientos -->
+      <div class="section">
+        <h4>{{ languageTexts.conocimientotec }}</h4>
+        <ul>
+          <li *ngFor="let conocimiento of conocimientos">
+            {{ conocimiento.conocimiento }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- Habilidades -->
+      <div class="section">
+        <h4>{{ languageTexts.skillEt }}</h4>
+        <ul>
+          <li *ngFor="let skill of skills">
+            {{ skill.skill }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

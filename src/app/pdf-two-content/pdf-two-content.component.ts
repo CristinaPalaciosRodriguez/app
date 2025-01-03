@@ -3,11 +3,11 @@ import { DataFormularioService } from '../data-formulario.service';
 import { LanguageService } from '../language.service';
 
 @Component({
-  selector: 'app-pdf-one-content',
-  templateUrl: './pdf-one-content.component.html',
-  styleUrls: ['./pdf-one-content.component.scss']
+  selector: 'app-pdf-two-content',
+  templateUrl: './pdf-two-content.component.html',
+  styleUrls: ['./pdf-two-content.component.scss']
 })
-export class PdfOneContentComponent implements OnInit {
+export class PdfTwoContentComponent implements OnInit {
   selectedLanguage: string = 'es';
   languageTexts: any;
 
@@ -54,12 +54,6 @@ export class PdfOneContentComponent implements OnInit {
     this.dataFormularioService.sendCiudad$.subscribe({
       next: (ciudad) => {
         this.ciudad = ciudad;
-      }
-    });
-
-    this.dataFormularioService.sendPais$.subscribe({
-      next: (pais) => {
-        this.pais = pais;
       }
     });
 
@@ -110,6 +104,12 @@ export class PdfOneContentComponent implements OnInit {
         this.comentarios = comentarios;
       }
     });
+
+    this.dataFormularioService.sendPais$.subscribe({
+      next: (pais) => {
+        this.pais = pais;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -136,7 +136,5 @@ export class PdfOneContentComponent implements OnInit {
     const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1); // Capitaliza la primera letra
     return `${capitalizedMonth} ${year}`;
   }
-
-
 
 }

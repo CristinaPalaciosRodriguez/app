@@ -35,6 +35,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { CvModalComponent } from './cv-modal/cv-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PdfOneContentComponent } from './pdf-one-content/pdf-one-content.component';
+import { PdfTwoContentComponent } from './pdf-two-content/pdf-two-content.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { PdfOneContentComponent } from './pdf-one-content/pdf-one-content.compon
     ConocimientoTotalComponent,
     CvModalComponent,
     PdfOneContentComponent,
+    PdfTwoContentComponent,
   ],
   imports: [
     BrowserModule,

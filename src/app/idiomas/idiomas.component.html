@@ -5,7 +5,11 @@
       <div class="columna">
         <mat-form-field class="campo">
           <mat-label>{{ languageTexts.selectidioma }}</mat-label>
-          <input matInput placeholder="{{ languageTexts.idioma }}" name="idioma" required [(ngModel)]="idioma" #idiomaModel="ngModel">
+          <mat-select name="idioma" required [(ngModel)]="idioma" #idiomaModel="ngModel">
+            <mat-option *ngFor="let option of idiomaOptions" [value]="option.value">
+              {{ option.viewValue }}
+            </mat-option>
+          </mat-select>
           <mat-error *ngIf="idiomaModel.invalid && (idiomaModel.dirty || idiomaModel.touched)">
             {{ languageTexts.obligatorio }}
           </mat-error>

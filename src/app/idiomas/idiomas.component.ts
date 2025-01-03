@@ -20,6 +20,7 @@ export class IdiomasComponent implements OnInit, OnDestroy {
   selectedLanguage: string = 'es';
   languageTexts: any;
   nivelOptions: any;
+  idiomaOptions: any;
   private languageSubscription: Subscription;
 
   displayedColumns = ['idioma', 'nivel', 'eliminar'];
@@ -33,6 +34,10 @@ export class IdiomasComponent implements OnInit, OnDestroy {
         { value: languageTexts.intermedio, viewValue: languageTexts.intermedio },
         { value: languageTexts.avanzado, viewValue: languageTexts.avanzado }
       ];
+      this.idiomaOptions = [
+        { value: languageTexts.ingles, viewValue: languageTexts.ingles },
+      ];
+      this.idioma = this.idiomaOptions[0]?.value;
     });
   }
 
