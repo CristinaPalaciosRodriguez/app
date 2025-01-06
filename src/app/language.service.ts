@@ -195,7 +195,7 @@ export class LanguageService {
       validarGenerarR: ' is empty',
       cursosNav: 'Courses',
       experienciaNav: 'Experience',
-      estudiosNav: 'Studies',
+      estudiosNav: 'University',
       datosNav: 'Personal data'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
@@ -289,7 +289,7 @@ export class LanguageService {
       validarGenerarR: ' está vacío',
       cursosNav: 'Cursos',
       experienciaNav: 'Experiencia',
-      estudiosNav: 'Estudios',
+      estudiosNav: 'Universidad',
       datosNav: 'Datos personales'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
