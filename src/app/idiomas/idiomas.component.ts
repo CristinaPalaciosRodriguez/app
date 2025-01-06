@@ -66,7 +66,7 @@ export class IdiomasComponent implements OnInit, OnDestroy {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Por favor completa todos los campos obligatorios.',
+        text: this.languageTexts.validar,
       });
     }
   }

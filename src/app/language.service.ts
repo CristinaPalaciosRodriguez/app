@@ -80,7 +80,12 @@ interface LanguageText {
   avanzado: string;
   descripcionAct: string,
   mesesArray: Array<any>,
-  ingles: string
+  ingles: string,
+  validar: string,
+  agregarExp: string,
+  alerta: string,
+  validarGenerarL: string,
+  validarGenerarR: string
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -178,7 +183,12 @@ export class LanguageService {
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
       ],
-      ingles: 'English'
+      ingles: 'English',
+      validar: 'Please complete all required fields.',
+      agregarExp: 'Additional experience. You can add more experiences to your CV in this section.',
+      alerta: 'Alert',
+      validarGenerarL: '',
+      validarGenerarR: ' is empty'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -263,7 +273,12 @@ export class LanguageService {
         'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
         'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
       ],
-      ingles: 'Inglés'
+      ingles: 'Inglés',
+      validar: 'Por favor completa todos los campos obligatorios.',
+      agregarExp: 'Experiencia agregada. Puedes agregar más experiencias a tu cv en este apartado.',
+      alerta: 'Alerta',
+      validarGenerarL: 'La sección de ',
+      validarGenerarR: ' está vacío'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

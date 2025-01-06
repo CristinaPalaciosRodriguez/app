@@ -69,12 +69,17 @@ export class ExperienciaComponent implements OnInit {
       this.dataSource.data = [...this.dataSource.data];
 
       this.dataFormularioService.guardarExperiencias(this.dataSource.data);
+      Swal.fire({
+        icon: 'success',
+        title: this.languageTexts.alert,
+        text: this.languageTexts.agregarExp
+      })
       this.resetFormulario(form);
     } else {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Por favor completa todos los campos obligatorios.',
+        text: this.languageTexts.validar,
       });
     }
   }

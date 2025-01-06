@@ -36,13 +36,10 @@
         <h4>{{ languageTexts.experiencialab }}</h4>
         <div *ngFor="let experiencia of experiencias" class="experience">
           <div>
-            <span>{{ languageTexts.puesto }}: <strong>{{ experiencia.puesto }}</strong></span>
+            <span><strong>{{ experiencia.puesto }} - {{ experiencia.empresa }}</strong></span>
           </div>
           <div>
-            <span>{{ languageTexts.empresa }}: <strong>{{ experiencia.empresa }}</strong></span>
-          </div>
-          <div>
-            <span>{{ languageTexts.fecha }}:
+            <span>
               <strong>
                 {{ experiencia.fechaIni ? capitalizeFirstLetter(experiencia.fechaIni) : '' }} -
                 {{ experiencia.fechaFin ? capitalizeFirstLetter(experiencia.fechaFin) : languageTexts.actualidad }}
@@ -63,7 +60,7 @@
             <span class="label">{{ estudio.universidad }}</span>
           </div>
           <div>
-            <span>{{ languageTexts.carrera }}: <strong>{{ estudio.carrera }}</strong></span>
+            <span><strong>{{ estudio.carrera }}</strong></span>
           </div>
           <div>
             <span>{{ languageTexts.fechaInicio }}: <strong>{{ estudio.fechaIni | date:'yyyy' }}</strong></span>
@@ -86,7 +83,7 @@
             <span class="label">{{ curso.nombre }}</span>
           </div>
           <div>
-            <span>{{ languageTexts.organizacion }}: <strong>{{ curso.organizacion }}</strong></span>
+            <span><strong>{{ curso.organizacion }}</strong></span>
           </div>
           <div>
             <span>

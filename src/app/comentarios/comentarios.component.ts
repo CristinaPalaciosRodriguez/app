@@ -169,7 +169,7 @@ export class ComentariosComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: `La sección de ${resultado.arregloVacio} está vacío`,
+        text: `${this.languageTexts.validarGenerarL} ${resultado.arregloVacio} ${this.languageTexts.validarGenerarR}`,
       });
     } else {
       // Si todos los arreglos están llenos, permite el submit
