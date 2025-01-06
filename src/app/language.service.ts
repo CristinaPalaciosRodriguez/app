@@ -85,7 +85,11 @@ interface LanguageText {
   agregarExp: string,
   alerta: string,
   validarGenerarL: string,
-  validarGenerarR: string
+  validarGenerarR: string,
+  cursosNav: string,
+  experienciaNav: string,
+  estudiosNav: string,
+  datosNav: string
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -188,7 +192,11 @@ export class LanguageService {
       agregarExp: 'Additional experience. You can add more experiences to your CV in this section.',
       alerta: 'Alert',
       validarGenerarL: '',
-      validarGenerarR: ' is empty'
+      validarGenerarR: ' is empty',
+      cursosNav: 'Courses',
+      experienciaNav: 'Experience',
+      estudiosNav: 'Studies',
+      datosNav: 'Personal data'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -278,7 +286,11 @@ export class LanguageService {
       agregarExp: 'Experiencia agregada. Puedes agregar más experiencias a tu cv en este apartado.',
       alerta: 'Alerta',
       validarGenerarL: 'La sección de ',
-      validarGenerarR: ' está vacío'
+      validarGenerarR: ' está vacío',
+      cursosNav: 'Cursos',
+      experienciaNav: 'Experiencia',
+      estudiosNav: 'Estudios',
+      datosNav: 'Datos personales'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario
