@@ -348,7 +348,11 @@ export class ComentariosComponent implements OnInit {
 
         // Obtener el archivo generado y descargarlo
         const docxContent = doc.getZip().generate({ type: 'blob' });
-        saveAs(docxContent, 'Curriculum_Vitae.docx');
+        const blob = new Blob([docxContent], {
+          type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        });
+        saveAs(blob, 'Curriculum_Vitae.docx');
+
       })
       .catch(error => {
         console.error('Error al cargar la plantilla DOCX:', error);
