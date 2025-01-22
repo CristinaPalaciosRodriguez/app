@@ -48,10 +48,10 @@
           <button mat-button matSuffix type="button" (click)="setFechaActual()">{{ languageTexts.actual }}</button>
         </div>
 
-        <div class="columna">
+        <div class="columna-completa">
           <mat-form-field class="campo">
-            <mat-label>{{ languageTexts.descripcion }}</mat-label>
-            <textarea matInput placeholder="{{ languageTexts.descripcion }}" name="descripcion" required [(ngModel)]="descripcion" #descripcionModel="ngModel" rows="5"></textarea>
+            <mat-label>{{ languageTexts.descripcionInd }}</mat-label>
+            <textarea matInput placeholder="{{ languageTexts.descripcion }}" name="descripcion" required [(ngModel)]="descripcion" #descripcionModel="ngModel" rows="6"></textarea>
             <mat-error *ngIf="descripcionModel.invalid && (descripcionModel.dirty || descripcionModel.touched)">
               {{ languageTexts.obligatorio }}
             </mat-error>

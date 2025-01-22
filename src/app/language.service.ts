@@ -89,7 +89,8 @@ interface LanguageText {
   cursosNav: string,
   experienciaNav: string,
   estudiosNav: string,
-  datosNav: string
+  datosNav: string,
+  descripcionInd: string
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -196,7 +197,8 @@ export class LanguageService {
       cursosNav: 'Courses',
       experienciaNav: 'Experience',
       estudiosNav: 'University',
-      datosNav: 'Personal data'
+      datosNav: 'Personal data',
+      descripcionInd: 'Description (Please write in paragraph form)'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -290,7 +292,8 @@ export class LanguageService {
       cursosNav: 'Cursos',
       experienciaNav: 'Experiencia',
       estudiosNav: 'Universidad',
-      datosNav: 'Datos personales'
+      datosNav: 'Datos personales',
+      descripcionInd: 'Descripción (Favor de escribirlo en forma de párrafos)'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario
