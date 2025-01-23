@@ -3,7 +3,13 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar class="toolbar">
+      <span>Menu</span>
+      <span class="spacer"></span>
+      <img src="./assets/images/logo.png"
+            class="logo"
+            alt="Logo Tesis">
+    </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#datospersonales">{{ languageTexts.datosNav }}</a>
       <a mat-list-item href="#idiomas">{{ languageTexts.idiomas }}</a>
@@ -16,7 +22,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="toolbar">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -25,9 +31,9 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <img src="./assets/images/logoT2.jpg" style="max-width: 100px; height: auto; margin-right: 10px;" alt="Logo Tesis">
-      <span>CV</span>
-      <span class="spacer"></span> <!-- Agregar un espacio entre "CV" y el selector de idioma -->
+      <span class="spacera"></span> <!-- Espaciador flexible a la izquierda -->
+      <span class="center-text">{{ languageTexts.bienvenido }}</span> <!-- Texto centrado -->
+      <span class="spacera"></span> <!-- Espaciador flexible a la derecha -->
       <mat-form-field class="small-select">
         <mat-label>{{ languageTexts.selectLanguage }}</mat-label>
         <mat-select [(value)]="selectedLanguage" (selectionChange)="updateLanguageTexts()" class="custom-select">
@@ -37,6 +43,7 @@
         </mat-select>
       </mat-form-field>
     </mat-toolbar>
+
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>

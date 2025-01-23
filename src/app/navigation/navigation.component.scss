@@ -33,11 +33,27 @@
   color: black !important;
 }
 
-.spacer {
+.spacera {
   flex: 1; /* Esto crea un espacio flexible entre "CV" y el selector de idioma */
 }
 
 .small-select {
   width: 150px; /* ajusta el ancho según sea necesario */
   font-size: 12px; /* ajusta el tamaño de fuente según sea necesario */
+}
+
+
+.toolbar {
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
+.spacer {
+  flex-grow: 1; /* Hace que el espacio se expanda */
+}
+
+.logo {
+  max-width: 100px;
+  height: auto;
+  margin-left: auto; /* Empuja la imagen hacia la derecha */
 }
