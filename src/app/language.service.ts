@@ -91,7 +91,9 @@ interface LanguageText {
   estudiosNav: string,
   datosNav: string,
   descripcionInd: string,
-  bienvenido: string
+  bienvenido: string,
+  tiempoExperiencia: string,
+  tiempoExpEtiqueta: string,
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -200,7 +202,9 @@ export class LanguageService {
       estudiosNav: 'University',
       datosNav: 'Personal data',
       descripcionInd: 'Description (Please write in paragraph form)',
-      bienvenido: 'Welcome'
+      bienvenido: 'Welcome',
+      tiempoExperiencia: 'Years of professional experience',
+      tiempoExpEtiqueta: 'Total years of professional experience to date'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -296,7 +300,9 @@ export class LanguageService {
       estudiosNav: 'Universidad',
       datosNav: 'Datos personales',
       descripcionInd: 'Descripción (Favor de escribirlo en forma de párrafos)',
-      bienvenido: 'Bienvenido'
+      bienvenido: 'Bienvenido',
+      tiempoExperiencia: 'Años de experiencia profesional',
+      tiempoExpEtiqueta: 'Total de años de experiencia profesional a la fecha'
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

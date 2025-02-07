@@ -17,6 +17,7 @@ export class PdfOneContentComponent implements OnInit {
   ciudad = '';
   pais = '';
   edad = 0;
+  tiempoExperiencia = 0;
   estudios = [
     { universidad: 'UNAM', carrera: 'Ingeniería', fechaIni: new Date(2010, 1, 1), generacion: new Date(2014, 1, 1) }
   ];
@@ -66,6 +67,12 @@ export class PdfOneContentComponent implements OnInit {
     this.dataFormularioService.sendEdad$.subscribe({
       next: (edad) => {
         this.edad = edad;
+      }
+    });
+
+    this.dataFormularioService.sendTiempoExp$.subscribe({
+      next: (tiempoExperiencia) => {
+        this.tiempoExperiencia = tiempoExperiencia;
       }
     });
 

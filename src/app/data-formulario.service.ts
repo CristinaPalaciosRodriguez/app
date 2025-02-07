@@ -24,6 +24,7 @@ export class DataFormularioService {
   apellidos: string = '';
   nacionalidad: string = '';
   edad: number = 18;
+  tiempoExperiencia: number = 0;
   ciudad: string = '';
   pais: string = '';
   estudios: EstudioElement[] = [];
@@ -38,6 +39,7 @@ export class DataFormularioService {
   sendApellidos$ = new BehaviorSubject<any>('');
   sendNacionalidad$ = new BehaviorSubject<any>('');
   sendEdad$ = new BehaviorSubject<any>('');
+  sendTiempoExp$ = new BehaviorSubject<any>('');
   sendCiudad$ = new BehaviorSubject<any>('');
   sendPais$ = new BehaviorSubject<any>('');
   sendEstudios$ = new BehaviorSubject<any>([]);
@@ -74,6 +76,7 @@ export class DataFormularioService {
       this.apellidos = datos.apellidos;
       this.nacionalidad = datos.nacionalidad;
       this.edad = datos.edad;
+      this.tiempoExperiencia = datos.tiempoExperiencia;
       this.ciudad = datos.ciudad;
       this.pais = datos.pais;
       this.estudios = datos.estudios;
@@ -104,13 +107,14 @@ export class DataFormularioService {
 
   }
 
-  guardarPersonal(nombre: string, apellidos: string, nacionalidad: string, edad: number, ciudad: string, pais: string) {
+  guardarPersonal(nombre: string, apellidos: string, nacionalidad: string, edad: number, ciudad: string, pais: string, tiempoExperiencia: number) {
     this.nombre = nombre;
     this.apellidos = apellidos;
     this.nacionalidad = nacionalidad;
     this.edad = edad;
     this.ciudad = ciudad;
     this.pais = pais;
+    this.tiempoExperiencia = tiempoExperiencia;
 
     this.sendNombre$.next(nombre);
     this.sendNacionalidad$.next(nacionalidad);
@@ -118,6 +122,7 @@ export class DataFormularioService {
     this.sendEdad$.next(edad);
     this.sendCiudad$.next(ciudad);
     this.sendPais$.next(pais);
+    this.sendTiempoExp$.next(tiempoExperiencia)
     this.actualizarEstadoArreglos();
   }
 
@@ -183,7 +188,7 @@ export class DataFormularioService {
     this.tieneIdiomas = this.idiomas.length > 0;
     this.tieneSkills = this.skills.length > 0;
 
-    if(this.nombre != "" && this.apellidos != "" && this.nacionalidad != "" && this.ciudad != "" && this.pais != "" ) {
+    if(this.nombre != "" && this.apellidos != "" && this.nacionalidad != "" && this.ciudad != "" && this.pais != "" && this.edad > 0 && this.tiempoExperiencia > 0) {
       this.tienePersonal = true;
     } else {
       this.tienePersonal = false;

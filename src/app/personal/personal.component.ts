@@ -23,13 +23,14 @@ export class PersonalComponent {
   apellidos: string = '';
   nacionalidad: string = '';
   edad: number = 0;
+  tiempoExperiencia: any;
   ciudad: string = '';
   pais: string = '';
   plantillaHTML: string = '';
 
   handleBlurEvent(): void {
     this.ngOnDestroy();
-    this.dataFormularioService.guardarPersonal(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais);
+    this.dataFormularioService.guardarPersonal(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.tiempoExperiencia);
   }
 
   ngOnDestroy() {

@@ -50,5 +50,14 @@
         </mat-form-field>
       </div>
     </div>
+    <div class="fila">
+      <div class="columna">
+        <mat-form-field class="campo">
+          <mat-label>{{ languageTexts.tiempoExpEtiqueta }}</mat-label>
+          <input matInput placeholder="{{ languageTexts.tiempoExpEtiqueta }}" type="number" required [(ngModel)]="tiempoExperiencia" name="tiempoExperiencia">
+          <mat-error *ngIf="!tiempoExperiencia">{{ languageTexts.obligatorio }}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
   </form>
 </div>
