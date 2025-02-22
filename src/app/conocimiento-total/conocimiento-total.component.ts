@@ -4,7 +4,7 @@ import { DataFormularioService } from '../data-formulario.service';
 import { LanguageService } from '../language.service';
 import { Subscription } from 'rxjs';
 import { ConocimientoElement } from '../models/conocimientos.interface';
-import {SelectionModel} from '@angular/cdk/collections';
+import { SelectionModel } from '@angular/cdk/collections';
 
 type Category = {
   title: string;
@@ -25,7 +25,7 @@ export class ConocimientoTotalComponent implements OnInit {
   languageTexts: any;
   private languageSubscription: Subscription;
 
-  displayedColumns = ['select','conocimiento', 'eliminar'];
+  displayedColumns = ['select', 'conocimiento', 'eliminar'];
 
   constructor(private dataFormularioService: DataFormularioService, private languageService: LanguageService) {
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
@@ -33,11 +33,11 @@ export class ConocimientoTotalComponent implements OnInit {
       this.languageTexts = languageTexts;
       this.updateCategories();
     });
-   }
-
-  ngOnInit(): void {
   }
 
+  ngOnInit(): void {
+    this.cargarSeleccionadosDesdeLocalStorage();
+  }
 
   guardarConocimiento(): void {
     if (this.conocimiento) {
@@ -50,8 +50,9 @@ export class ConocimientoTotalComponent implements OnInit {
       this.dataSource.data = [...this.dataSource.data];
 
       this.selection.select(nuevaExperiencia);
+      this.dataFormularioService.guardarConocimientos([nuevaExperiencia]);
 
-      this.dataFormularioService.guardarConocimientos(this.selection.selected);
+      this.guardarSeleccionadosEnLocalStorage(); // Guardar cambios en localStorage
       this.resetFormulario();
     } else {
       alert('Por favor completa todos los campos.');
@@ -66,6 +67,8 @@ export class ConocimientoTotalComponent implements OnInit {
     this.dataSource.data = this.dataSource.data.filter(item => item !== elemento);
     this.selection.deselect(elemento);
     this.dataFormularioService.eliminarConocimientos([elemento]);
+
+    this.guardarSeleccionadosEnLocalStorage(); // Guardar cambios en localStorage
   }
 
   isAllSelected() {
@@ -83,6 +86,8 @@ export class ConocimientoTotalComponent implements OnInit {
       this.dataSource.data.forEach(row => this.selection.select(row));
       this.dataFormularioService.guardarConocimientos(this.selection.selected);
     }
+
+    this.guardarSeleccionadosEnLocalStorage(); // Guardar cambios en localStorage
   }
 
   checkboxLabel(row?: ConocimientoElement): string {
@@ -94,10 +99,43 @@ export class ConocimientoTotalComponent implements OnInit {
 
   toggleSelection(row: ConocimientoElement) {
     this.selection.toggle(row);
+
     if (this.selection.isSelected(row)) {
       this.dataFormularioService.guardarConocimientos([row]);
     } else {
       this.dataFormularioService.eliminarConocimientos([row]);
+    }
+
+    this.guardarSeleccionadosEnLocalStorage(); // Guardar cambios en localStorage
+  }
+
+  guardarSeleccionadosEnLocalStorage() {
+    const seleccionados = this.selection.selected.map(item => ({
+      conocimiento: item.conocimiento,
+      position: item.position
+    }));
+
+    localStorage.setItem('conocimientosSeleccionados', JSON.stringify(seleccionados));
+  }
+
+  cargarSeleccionadosDesdeLocalStorage() {
+    const seleccionadosGuardados = localStorage.getItem('conocimientosSeleccionados');
+
+    if (seleccionadosGuardados) {
+      const seleccionados: ConocimientoElement[] = JSON.parse(seleccionadosGuardados);
+
+      setTimeout(() => {
+        this.selection.clear(); // Limpiar la selección antes de restaurar
+
+        seleccionados.forEach((item: ConocimientoElement) => {
+          const elementoExistente = this.dataSource.data.find(e => e.conocimiento === item.conocimiento);
+          if (elementoExistente) {
+            this.selection.select(elementoExistente);
+          }
+        });
+
+        this.selection.changed.next(); // Forzar actualización
+      }, 100);
     }
   }
 
@@ -116,9 +154,9 @@ export class ConocimientoTotalComponent implements OnInit {
       { conocimiento: 'Sensores', position: 2 },
       { conocimiento: 'Válvulas', position: 3 },
       { conocimiento: 'Encoders', position: 4 },
-      { conocimiento: this.languageTexts.conocimiento5 , position: 5 },
-      { conocimiento: this.languageTexts.conocimiento6 , position: 6 },
-      { conocimiento: this.languageTexts.conocimiento7 , position: 7 },
+      { conocimiento: this.languageTexts.conocimiento5, position: 5 },
+      { conocimiento: this.languageTexts.conocimiento6, position: 6 },
+      { conocimiento: this.languageTexts.conocimiento7, position: 7 },
       // Agrega más elementos si es necesario
     ];
   }

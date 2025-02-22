@@ -33,23 +33,30 @@ export class SkillsComponent implements OnInit {
     });
    }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
+    // Cargar datos desde localStorage al iniciar
+    const storedSkills = localStorage.getItem('skills');
+    if (storedSkills) {
+      this.dataSource.data = JSON.parse(storedSkills);
+    }
   }
 
   guardarSkill(): void {
     if (this.skill) {
-      const nuevaExperiencia: SkillsElement = {
+      const nuevaSkill: SkillsElement = {
         skill: this.skill,
-        position: (this.dataSource.data.length + 1)
+        position: this.dataSource.data.length + 1
       };
 
-      this.dataSource.data.push(nuevaExperiencia);
+      this.dataSource.data.push(nuevaSkill);
       this.dataSource.data = [...this.dataSource.data];
 
-      this.selection.select(nuevaExperiencia);
-
-      //this.dataFormularioService.guardarConocimientos(this.dataSource.data);
+      this.selection.select(nuevaSkill);
       this.dataFormularioService.guardarSkills(this.selection.selected);
+
+      // Guardar en localStorage
+      localStorage.setItem('skills', JSON.stringify(this.dataSource.data));
+
       this.resetFormulario();
     } else {
       alert('Por favor completa todos los campos.');
@@ -62,8 +69,11 @@ export class SkillsComponent implements OnInit {
 
   eliminarElemento(elemento: SkillsElement): void {
     this.dataSource.data = this.dataSource.data.filter(item => item !== elemento);
-    this.selection.deselect(elemento); // Deselecciona el elemento eliminado
+    this.selection.deselect(elemento);
     this.dataFormularioService.guardarSkills(this.dataSource.data);
+
+    // Actualizar localStorage
+    localStorage.setItem('skills', JSON.stringify(this.dataSource.data));
   }
 
    // Para select en tabla

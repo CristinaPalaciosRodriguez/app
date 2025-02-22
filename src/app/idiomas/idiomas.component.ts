@@ -42,6 +42,7 @@ export class IdiomasComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.cargarIdiomasDesdeStorage();
   }
 
   ngOnDestroy(): void {
@@ -60,6 +61,7 @@ export class IdiomasComponent implements OnInit, OnDestroy {
       this.dataSource.data.push(nuevoIdioma);
       this.dataSource.data = [...this.dataSource.data];
 
+      this.guardarIdiomasEnStorage();
       this.dataFormularioService.guardarIdioma(this.dataSource.data);
       this.resetFormulario(form);
     } else {
@@ -79,6 +81,18 @@ export class IdiomasComponent implements OnInit, OnDestroy {
 
   eliminarElemento(elemento: IdiomasElement): void {
     this.dataSource.data = this.dataSource.data.filter(item => item !== elemento);
+    this.guardarIdiomasEnStorage();
     this.dataFormularioService.guardarIdioma(this.dataSource.data);
+  }
+
+  private guardarIdiomasEnStorage(): void {
+    localStorage.setItem('idiomas', JSON.stringify(this.dataSource.data));
+  }
+
+  private cargarIdiomasDesdeStorage(): void {
+    const storedData = localStorage.getItem('idiomas');
+    if (storedData) {
+      this.dataSource.data = JSON.parse(storedData);
+    }
   }
 }
