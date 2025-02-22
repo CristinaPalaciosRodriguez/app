@@ -151,9 +151,9 @@ export class ComentariosComponent implements OnInit {
     if (!this.dataFormularioService.tieneConocimientos) {
       return { llenos: false, arregloVacio: 'CONOCIMIENTO TECNICO / TECHNICIAL KNOWHOW' };
     }
-    if (!this.dataFormularioService.tieneExperiencias) {
-      return { llenos: false, arregloVacio: 'EXPERIENCIA LABORAL / WORK EXPERIENCE' };
-    }
+    // if (!this.dataFormularioService.tieneExperiencias) {
+    //   return { llenos: false, arregloVacio: 'EXPERIENCIA LABORAL / WORK EXPERIENCE' };
+    // }
     if (!this.dataFormularioService.tieneIdiomas) {
       return { llenos: false, arregloVacio: 'IDIOMAS / LANGUAGES' };
     }
