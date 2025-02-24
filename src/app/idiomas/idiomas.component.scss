@@ -14,20 +14,20 @@
 }
 
 .example-container {
-    height: 400px;
+    height: 200px;
     overflow: auto;
   }
-  
+
   table {
     width: 100%;
   }
-  
+
   .fila {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  
+
   .columna {
     flex-basis: calc(50% - 10px);
     margin-bottom: 20px;
@@ -46,6 +46,6 @@ button {
 
   .example-container {
     margin-top: 20px;
-    height: 400px;
+    height: 200px;
     overflow: auto;
   }
