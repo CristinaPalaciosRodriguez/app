@@ -13,6 +13,11 @@ export class PersonalComponent {
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
     this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
       this.languageTexts = languageTexts;
+      this.idiomaOptions = [
+        { value: languageTexts.ingles + ' - ' + languageTexts.basico, viewValue: languageTexts.ingles + ' - ' + languageTexts.basico },
+        { value: languageTexts.ingles + ' - ' + languageTexts.intermedio, viewValue: languageTexts.ingles + ' - ' + languageTexts.intermedio },
+        { value: languageTexts.ingles + ' - ' + languageTexts.avanzado, viewValue: languageTexts.ingles + ' - ' + languageTexts.avanzado },
+      ];
     });
    }
 
@@ -27,9 +32,19 @@ export class PersonalComponent {
   ciudad: string = '';
   pais: string = '';
   plantillaHTML: string = '';
+  idiomaOptions: any;
+  idioma: string = '';
 
   handleBlurEvent(): void {
     this.ngOnDestroy();
+     const nuevoIdioma: any = {
+            idioma: this.idioma,
+            nivel: this.idioma
+          };
+
+    var idiomas= [nuevoIdioma]
+
+    this.dataFormularioService.guardarIdioma(idiomas);
     this.dataFormularioService.guardarPersonal(this.nombre, this.apellidos, this.nacionalidad, this.edad, this.ciudad, this.pais, this.tiempoExperiencia);
   }
 
