@@ -58,6 +58,20 @@
           <mat-error *ngIf="!tiempoExperiencia">{{ languageTexts.obligatorio }}</mat-error>
         </mat-form-field>
       </div>
+
+      <div class="columna">
+        <mat-form-field class="campo">
+          <mat-label>{{ languageTexts.selectidioma }}</mat-label>
+          <mat-select name="idioma" required [(ngModel)]="idioma" #idiomaModel="ngModel">
+            <mat-option *ngFor="let option of idiomaOptions" [value]="option.value">
+              {{ option.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="idiomaModel.invalid && (idiomaModel.dirty || idiomaModel.touched)">
+            {{ languageTexts.obligatorio }}
+          </mat-error>
+        </mat-form-field>
+      </div>
     </div>
   </form>
 </div>
