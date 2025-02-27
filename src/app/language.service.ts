@@ -94,6 +94,7 @@ interface LanguageText {
   bienvenido: string,
   tiempoExperiencia: string,
   tiempoExpEtiqueta: string,
+  skills: {},
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -204,7 +205,19 @@ export class LanguageService {
       descripcionInd: 'Description (Please write in paragraph form)',
       bienvenido: 'Welcome',
       tiempoExperiencia: 'Years of professional experience',
-      tiempoExpEtiqueta: 'Total years of professional experience to date'
+      tiempoExpEtiqueta: 'Total years of professional experience to date',
+      skills: {
+        "1": "Effective Communication",
+        "2": "Teamwork",
+        "3": "Critical Thinking",
+        "4": "Problem Solving",
+        "5": "Adaptability",
+        "6": "Time Management",
+        "7": "Leadership",
+        "8": "Attention to Detail",
+        "9": "Decision Making",
+        "10": "Proactivity"
+      }
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -302,7 +315,19 @@ export class LanguageService {
       descripcionInd: 'Descripción (Favor de escribirlo en forma de párrafos)',
       bienvenido: 'Bienvenido',
       tiempoExperiencia: 'Años de experiencia profesional',
-      tiempoExpEtiqueta: 'Total de años de experiencia profesional a la fecha'
+      tiempoExpEtiqueta: 'Total de años de experiencia profesional a la fecha',
+      skills: {
+        "1": "Comunicación efectiva",
+        "2": "Trabajo en equipo",
+        "3": "Pensamiento crítico",
+        "4": "Resolución de problemas",
+        "5": "Adaptabilidad",
+        "6": "Gestión del tiempo",
+        "7": "Liderazgo",
+        "8": "Atención al detalle",
+        "9": "Toma de decisiones",
+        "10": "Proactividad"
+      }
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
     }
     // Agrega más idiomas según sea necesario

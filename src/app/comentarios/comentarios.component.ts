@@ -160,6 +160,9 @@ export class ComentariosComponent implements OnInit {
     if (!this.dataFormularioService.tienePersonal) {
       return { llenos: false, arregloVacio: 'DATOS PERSONALES / PERSONAL DATA' };
     }
+    if (!this.dataFormularioService.tieneSkills) {
+      return { llenos: false, arregloVacio: 'HABILIDADES BLANDAS / SOFT SKILLS' };
+    }
     return { llenos: true, arregloVacio: null };
   }
 
