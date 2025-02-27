@@ -57,8 +57,7 @@ export class SkillsComponent implements OnInit {
       "skill": "Proactividad",
       "position": 10
     }
-  ]
-  );
+  ]);
   skill: string = '';
   selectedLanguage: string = 'es';
   languageTexts: any;
@@ -70,6 +69,18 @@ export class SkillsComponent implements OnInit {
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
     this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
       this.languageTexts = languageTexts;
+      // Guardar los IDs de los elementos seleccionados
+      const selectedPositions = this.selection.selected.map(skill => skill.position);
+      // Actualizar los datos sin eliminar los que no están en languageTexts.skills
+      this.dataSource.data = this.dataSource.data.map(skill => ({
+        ...skill,
+        skill: this.languageTexts.skills[skill.position] ?? skill.skill // Si no hay traducción, mantiene el original
+      }));
+
+      // Restaurar la selección con las referencias actualizadas
+      const updatedSelected = this.dataSource.data.filter(skill => selectedPositions.includes(skill.position));
+      this.selection.clear();
+      updatedSelected.forEach(skill => this.selection.select(skill));
     });
    }
 
