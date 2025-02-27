@@ -17,8 +17,48 @@ export class SkillsComponent implements OnInit {
 
   selection = new SelectionModel<SkillsElement>(true, []);
   dataSource = new MatTableDataSource<SkillsElement>([
-    // Agrega más elementos si es necesario
-  ]);
+    {
+      "skill": "Comunicación efectiva",
+      "position": 1
+    },
+    {
+      "skill": "Trabajo en equipo",
+      "position": 2
+    },
+    {
+      "skill": "Pensamiento crítico",
+      "position": 3
+    },
+    {
+      "skill": "Resolución de problemas",
+      "position": 4
+    },
+    {
+      "skill": "Adaptabilidad",
+      "position": 5
+    },
+    {
+      "skill": "Gestión del tiempo",
+      "position": 6
+    },
+    {
+      "skill": "Liderazgo",
+      "position": 7
+    },
+    {
+      "skill": "Atención al detalle",
+      "position": 8
+    },
+    {
+      "skill": "Toma de decisiones",
+      "position": 9
+    },
+    {
+      "skill": "Proactividad",
+      "position": 10
+    }
+  ]
+  );
   skill: string = '';
   selectedLanguage: string = 'es';
   languageTexts: any;
