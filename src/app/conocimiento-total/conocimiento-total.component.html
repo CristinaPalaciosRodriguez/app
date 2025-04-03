@@ -19,11 +19,6 @@
       <button mat-raised-button color="primary" class="boton" (click)="guardarConocimiento()">{{ languageTexts.guardarCono }}</button>
     </form>
 
-    <app-conocimientos
-    *ngFor="let category of categories"
-    [categoryTitle]="category.title">
-    </app-conocimientos>
-
     <div class="example-container mat-elevation-z8">
       <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="select">
@@ -60,6 +55,12 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </div>
+
+    <app-conocimientos
+    *ngFor="let category of categories"
+    [categoryTitle]="category.title">
+    </app-conocimientos>
+
 </div>
 
 
