@@ -96,7 +96,8 @@ interface LanguageText {
   tiempoExpEtiqueta: string,
   skills: {},
   careers: any,
-  carreraselect: string
+  carreraselect: string,
+  etiquetaBDP: string
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -232,7 +233,9 @@ export class LanguageService {
         { value: "Information Technology Engineering", viewValue: "Information Technology Engineering" },
         { value: "Instrumentation and Control Engineering", viewValue: "Instrumentation and Control Engineering" }
       ],
-      carreraselect: "Select the career that best matches your profile or area of specialization"
+      carreraselect: "Select the career that best matches your profile or area of specialization",
+      etiquetaBDP: "Database and programming"
+      // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
       selectLanguage: 'Seleccionar idioma',
@@ -354,7 +357,8 @@ export class LanguageService {
         { value: "Ingeniería en Tecnologías de la Información", viewValue: "Ingeniería en Tecnologías de la Información" },
         { value: "Ingeniería en Instrumentación y Control", viewValue: "Ingeniería en Instrumentación y Control" }
       ],
-      carreraselect: "Seleccione la carrera que más se acerque a su perfil o área de especialización"
+      carreraselect: "Seleccione la carrera que más se acerque a su perfil o área de especialización",
+      etiquetaBDP: "Base de datos y programación"
     }
     // Agrega más idiomas según sea necesario
   };
