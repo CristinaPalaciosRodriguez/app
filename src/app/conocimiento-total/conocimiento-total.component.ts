@@ -24,6 +24,8 @@ export class ConocimientoTotalComponent implements OnInit {
   selectedLanguage: string = 'es';
   languageTexts: any;
   private languageSubscription: Subscription;
+  conocimientosPredeterminados: ConocimientoElement[] = [];
+  conocimientosUsuario: ConocimientoElement[] = [];
 
   displayedColumns = ['select','conocimiento', 'eliminar'];
 
@@ -35,7 +37,8 @@ export class ConocimientoTotalComponent implements OnInit {
     });
    }
 
-  ngOnInit(): void {
+   ngOnInit(): void {
+    this.updateCategories();
   }
 
 
@@ -43,14 +46,13 @@ export class ConocimientoTotalComponent implements OnInit {
     if (this.conocimiento) {
       const nuevaExperiencia: ConocimientoElement = {
         conocimiento: this.conocimiento,
-        position: (this.dataSource.data.length + 1)
+        position: this.dataSource.data.length + 1
       };
 
-      this.dataSource.data.push(nuevaExperiencia);
-      this.dataSource.data = [...this.dataSource.data];
+      this.conocimientosUsuario.unshift(nuevaExperiencia); // 🔹 Guardar en conocimientos del usuario
+      this.dataSource.data = [...this.conocimientosUsuario, ...this.conocimientosPredeterminados]; // 🔹 Mantener los agregados
 
       this.selection.select(nuevaExperiencia);
-
       this.dataFormularioService.guardarConocimientos(this.selection.selected);
       this.resetFormulario();
     } else {
@@ -63,7 +65,9 @@ export class ConocimientoTotalComponent implements OnInit {
   }
 
   eliminarElemento(elemento: ConocimientoElement): void {
-    this.dataSource.data = this.dataSource.data.filter(item => item !== elemento);
+    this.conocimientosUsuario = this.conocimientosUsuario.filter(item => item !== elemento); // 🔹 Eliminar solo si es agregado por el usuario
+    this.dataSource.data = [...this.conocimientosUsuario, ...this.conocimientosPredeterminados];
+
     this.selection.deselect(elemento);
     this.dataFormularioService.eliminarConocimientos([elemento]);
   }
@@ -108,10 +112,11 @@ export class ConocimientoTotalComponent implements OnInit {
       { title: 'DRIVEs / SERVOs' },
       { title: 'Software' },
       { title: this.languageTexts.lenguajeProgramacion },
-      { title: 'Network' }
+      { title: 'Network' },
+      { title: this.languageTexts.etiquetaBDP}
     ];
 
-    this.dataSource.data = [
+    this.conocimientosPredeterminados = [ // 🔹 No sobrescribimos dataSource.data directamente
       { conocimiento: 'Safety', position: 1 },
       { conocimiento: 'Sensores', position: 2 },
       { conocimiento: 'Válvulas', position: 3 },
@@ -119,8 +124,8 @@ export class ConocimientoTotalComponent implements OnInit {
       { conocimiento: this.languageTexts.conocimiento5 , position: 5 },
       { conocimiento: this.languageTexts.conocimiento6 , position: 6 },
       { conocimiento: this.languageTexts.conocimiento7 , position: 7 },
-      // Agrega más elementos si es necesario
     ];
-  }
 
+    this.dataSource.data = [...this.conocimientosUsuario, ...this.conocimientosPredeterminados]; // 🔹 Mantener conocimientos del usuario
+  }
 }

@@ -94,6 +94,10 @@ interface LanguageText {
   bienvenido: string,
   tiempoExperiencia: string,
   tiempoExpEtiqueta: string,
+  skills: {},
+  careers: any,
+  carreraselect: string,
+  etiquetaBDP: string
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -204,7 +208,33 @@ export class LanguageService {
       descripcionInd: 'Description (Please write in paragraph form)',
       bienvenido: 'Welcome',
       tiempoExperiencia: 'Years of professional experience',
-      tiempoExpEtiqueta: 'Total years of professional experience to date'
+      tiempoExpEtiqueta: 'Total years of professional experience to date',
+      skills: {
+        "1": "Effective Communication",
+        "2": "Teamwork",
+        "3": "Critical Thinking",
+        "4": "Problem Solving",
+        "5": "Adaptability",
+        "6": "Time Management",
+        "7": "Leadership",
+        "8": "Attention to Detail",
+        "9": "Decision Making",
+        "10": "Proactivity"
+      },
+      careers: [
+        { value: "Mechatronics Engineering", viewValue: "Mechatronics Engineering" },
+        { value: "Automation and Control Engineering", viewValue: "Automation and Control Engineering" },
+        { value: "Computer Systems Engineering", viewValue: "Computer Systems Engineering" },
+        { value: "Software Engineering", viewValue: "Software Engineering" },
+        { value: "Electronics Engineering", viewValue: "Electronics Engineering" },
+        { value: "Robotics Engineering", viewValue: "Robotics Engineering" },
+        { value: "Artificial Intelligence Engineering", viewValue: "Artificial Intelligence Engineering" },
+        { value: "Computer Engineering", viewValue: "Computer Engineering" },
+        { value: "Information Technology Engineering", viewValue: "Information Technology Engineering" },
+        { value: "Instrumentation and Control Engineering", viewValue: "Instrumentation and Control Engineering" }
+      ],
+      carreraselect: "Select the career that best matches your profile or area of specialization",
+      etiquetaBDP: "Database and programming"
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -302,8 +332,33 @@ export class LanguageService {
       descripcionInd: 'Descripción (Favor de escribirlo en forma de párrafos)',
       bienvenido: 'Bienvenido',
       tiempoExperiencia: 'Años de experiencia profesional',
-      tiempoExpEtiqueta: 'Total de años de experiencia profesional a la fecha'
-      // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en español
+      tiempoExpEtiqueta: 'Total de años de experiencia profesional a la fecha',
+      skills: {
+        "1": "Comunicación efectiva",
+        "2": "Trabajo en equipo",
+        "3": "Pensamiento crítico",
+        "4": "Resolución de problemas",
+        "5": "Adaptabilidad",
+        "6": "Gestión del tiempo",
+        "7": "Liderazgo",
+        "8": "Atención al detalle",
+        "9": "Toma de decisiones",
+        "10": "Proactividad"
+      },
+      careers: [
+        { value: "Ingeniería en Mecatrónica", viewValue: "Ingeniería en Mecatrónica" },
+        { value: "Ingeniería en Automatización y Control", viewValue: "Ingeniería en Automatización y Control" },
+        { value: "Ingeniería en Sistemas Computacionales", viewValue: "Ingeniería en Sistemas Computacionales" },
+        { value: "Ingeniería en Software", viewValue: "Ingeniería en Software" },
+        { value: "Ingeniería Electrónica", viewValue: "Ingeniería Electrónica" },
+        { value: "Ingeniería en Robótica", viewValue: "Ingeniería en Robótica" },
+        { value: "Ingeniería en Inteligencia Artificial", viewValue: "Ingeniería en Inteligencia Artificial" },
+        { value: "Ingeniería en Computación", viewValue: "Ingeniería en Computación" },
+        { value: "Ingeniería en Tecnologías de la Información", viewValue: "Ingeniería en Tecnologías de la Información" },
+        { value: "Ingeniería en Instrumentación y Control", viewValue: "Ingeniería en Instrumentación y Control" }
+      ],
+      carreraselect: "Seleccione la carrera que más se acerque a su perfil o área de especialización",
+      etiquetaBDP: "Base de datos y programación"
     }
     // Agrega más idiomas según sea necesario
   };

@@ -151,14 +151,17 @@ export class ComentariosComponent implements OnInit {
     if (!this.dataFormularioService.tieneConocimientos) {
       return { llenos: false, arregloVacio: 'CONOCIMIENTO TECNICO / TECHNICIAL KNOWHOW' };
     }
-    if (!this.dataFormularioService.tieneExperiencias) {
-      return { llenos: false, arregloVacio: 'EXPERIENCIA LABORAL / WORK EXPERIENCE' };
-    }
+    // if (!this.dataFormularioService.tieneExperiencias) {
+    //   return { llenos: false, arregloVacio: 'EXPERIENCIA LABORAL / WORK EXPERIENCE' };
+    // }
     if (!this.dataFormularioService.tieneIdiomas) {
       return { llenos: false, arregloVacio: 'IDIOMAS / LANGUAGES' };
     }
     if (!this.dataFormularioService.tienePersonal) {
       return { llenos: false, arregloVacio: 'DATOS PERSONALES / PERSONAL DATA' };
+    }
+    if (!this.dataFormularioService.tieneSkills) {
+      return { llenos: false, arregloVacio: 'HABILIDADES BLANDAS / SOFT SKILLS' };
     }
     return { llenos: true, arregloVacio: null };
   }

@@ -20,6 +20,7 @@ export class EstudiosComponent implements OnInit {
   fechaIni: Date | null = null;
   selectedLanguage: string = 'es';
   languageTexts: any;
+  careersOptions: any;
   private languageSubscription: Subscription;
   fechaActual: Date = new Date();
 
@@ -29,6 +30,7 @@ export class EstudiosComponent implements OnInit {
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
     this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
       this.languageTexts = languageTexts;
+      this.careersOptions = languageTexts.careers;
     });
   }
 

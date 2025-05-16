@@ -30,21 +30,13 @@
 
       <div class="columna">
         <mat-form-field class="campo">
-          <mat-label>{{ languageTexts.carrera }}</mat-label>
-          <input
-            matInput
-            placeholder="{{ languageTexts.carrera }}"
-            name="carrera"
-            required
-            [(ngModel)]="carrera"
-            #carreraModel="ngModel"
-          />
-          <mat-error
-            *ngIf="
-              carreraModel.invalid &&
-              (carreraModel.dirty || carreraModel.touched)
-            "
-          >
+          <mat-label>{{ languageTexts.carreraselect }}</mat-label>
+          <mat-select name="carrera" required [(ngModel)]="carrera" #carreraModel="ngModel">
+            <mat-option *ngFor="let option of careersOptions" [value]="option.value">
+              {{ option.viewValue }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="carreraModel.invalid && (carreraModel.dirty || carreraModel.touched)">
             {{ languageTexts.obligatorio }}
           </mat-error>
         </mat-form-field>

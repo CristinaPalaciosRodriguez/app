@@ -75,6 +75,19 @@ export class ConocimientosComponent implements OnInit, OnChanges {
     // Agrega más elementos según sea necesario
   ];
 
+  conocimientosBD: ConocimientoElement[] = [
+    { conocimiento: 'MySQL', position: 1 },
+    { conocimiento: 'PostgreSQL', position: 2 },
+    { conocimiento: 'Oracle', position: 3 },
+    { conocimiento: 'SQL Server', position: 4 },
+    { conocimiento: 'MongoDB', position: 5 },
+    { conocimiento: 'Python', position: 6 },
+    { conocimiento: 'C#', position: 7 },
+    { conocimiento: 'JavaScript', position: 8 },
+    { conocimiento: '.NET', position: 9 },
+    { conocimiento: 'HTML, CSS', position: 10 },
+  ];
+
   conocimientosNetwork: ConocimientoElement[] = [
     { conocimiento: 'Profinet', position: 1 },
     { conocimiento: 'Profibus DP', position: 2 },
@@ -126,9 +139,15 @@ export class ConocimientosComponent implements OnInit, OnChanges {
       case 'Lenguaje de programación':
         this.dataSource.data = this.conocimientosLenguaje;
         break;
-        case 'Language of programming':
-          this.dataSource.data = this.conocimientosLenguaje;
-          break;
+      case 'Language of programming':
+        this.dataSource.data = this.conocimientosLenguaje;
+        break;
+      case 'Database and programming':
+        this.dataSource.data = this.conocimientosBD;
+        break;
+      case 'Base de datos y programación':
+        this.dataSource.data = this.conocimientosBD;
+        break;
       case 'Network':
         this.dataSource.data = this.conocimientosNetwork;
         break;
@@ -147,7 +166,7 @@ export class ConocimientosComponent implements OnInit, OnChanges {
 
       this.dataSource.data.push(nuevaExperiencia);
       this.dataSource.data = [...this.dataSource.data];
-      
+
       this.selection.select(nuevaExperiencia);
 
       this.dataFormularioService.guardarConocimientos(this.selection.selected);

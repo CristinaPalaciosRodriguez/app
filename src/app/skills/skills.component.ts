@@ -17,7 +17,46 @@ export class SkillsComponent implements OnInit {
 
   selection = new SelectionModel<SkillsElement>(true, []);
   dataSource = new MatTableDataSource<SkillsElement>([
-    // Agrega más elementos si es necesario
+    {
+      "skill": "Comunicación efectiva",
+      "position": 1
+    },
+    {
+      "skill": "Trabajo en equipo",
+      "position": 2
+    },
+    {
+      "skill": "Pensamiento crítico",
+      "position": 3
+    },
+    {
+      "skill": "Resolución de problemas",
+      "position": 4
+    },
+    {
+      "skill": "Adaptabilidad",
+      "position": 5
+    },
+    {
+      "skill": "Gestión del tiempo",
+      "position": 6
+    },
+    {
+      "skill": "Liderazgo",
+      "position": 7
+    },
+    {
+      "skill": "Atención al detalle",
+      "position": 8
+    },
+    {
+      "skill": "Toma de decisiones",
+      "position": 9
+    },
+    {
+      "skill": "Proactividad",
+      "position": 10
+    }
   ]);
   skill: string = '';
   selectedLanguage: string = 'es';
@@ -30,6 +69,18 @@ export class SkillsComponent implements OnInit {
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
     this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
       this.languageTexts = languageTexts;
+      // Guardar los IDs de los elementos seleccionados
+      const selectedPositions = this.selection.selected.map(skill => skill.position);
+      // Actualizar los datos sin eliminar los que no están en languageTexts.skills
+      this.dataSource.data = this.dataSource.data.map(skill => ({
+        ...skill,
+        skill: this.languageTexts.skills[skill.position] ?? skill.skill // Si no hay traducción, mantiene el original
+      }));
+
+      // Restaurar la selección con las referencias actualizadas
+      const updatedSelected = this.dataSource.data.filter(skill => selectedPositions.includes(skill.position));
+      this.selection.clear();
+      updatedSelected.forEach(skill => this.selection.select(skill));
     });
    }
 
